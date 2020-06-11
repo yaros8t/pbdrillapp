@@ -1,24 +1,315 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eD8-0L-gvW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Root View Controller-->
+        <scene sceneID="La3-ik-bI8">
+            <objects>
+                <viewController storyboardIdentifier="RootViewController" id="eD8-0L-gvW" customClass="RootViewController" customModule="PB_Drill_Assistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="elq-Xf-CdW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffe-IG-kJG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="786"/>
+                                <connections>
+                                    <segue destination="5gX-AS-HJE" kind="embed" id="UH4-vT-ghF"/>
+                                </connections>
+                            </containerView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TDB-ie-g25">
+                                <rect key="frame" x="16" y="825" width="382" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.8901960784313725" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aar-JR-by5" customClass="ConfirmView" customModule="PB_Drill_Assistant" customModuleProvider="target">
+                                <rect key="frame" x="4" y="694" width="406" height="198"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="198" id="4LY-B3-kxg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aar-JR-by5" secondAttribute="bottom" constant="4" id="0CQ-c0-zbV"/>
+                            <constraint firstItem="U4R-8K-sBW" firstAttribute="bottom" secondItem="ffe-IG-kJG" secondAttribute="bottom" constant="32" id="FoO-1G-udc"/>
+                            <constraint firstItem="TDB-ie-g25" firstAttribute="leading" secondItem="U4R-8K-sBW" secondAttribute="leading" constant="16" id="IxJ-PM-JDQ"/>
+                            <constraint firstItem="U4R-8K-sBW" firstAttribute="bottom" secondItem="TDB-ie-g25" secondAttribute="bottom" id="Q5d-Vy-138"/>
+                            <constraint firstItem="TDB-ie-g25" firstAttribute="centerX" secondItem="elq-Xf-CdW" secondAttribute="centerX" id="Tn0-zU-nnm"/>
+                            <constraint firstItem="U4R-8K-sBW" firstAttribute="trailing" secondItem="aar-JR-by5" secondAttribute="trailing" constant="4" id="bkJ-EW-NBh"/>
+                            <constraint firstItem="U4R-8K-sBW" firstAttribute="trailing" secondItem="TDB-ie-g25" secondAttribute="trailing" constant="16" id="g4b-e8-Lvt"/>
+                            <constraint firstItem="aar-JR-by5" firstAttribute="leading" secondItem="U4R-8K-sBW" secondAttribute="leading" constant="4" id="kOe-rn-7ET"/>
+                            <constraint firstItem="U4R-8K-sBW" firstAttribute="trailing" secondItem="ffe-IG-kJG" secondAttribute="trailing" id="uEW-1P-p57"/>
+                            <constraint firstItem="ffe-IG-kJG" firstAttribute="top" secondItem="U4R-8K-sBW" secondAttribute="top" id="vhg-yi-ZWJ"/>
+                            <constraint firstItem="ffe-IG-kJG" firstAttribute="leading" secondItem="U4R-8K-sBW" secondAttribute="leading" id="wyL-X8-ULR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="U4R-8K-sBW"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmView" destination="aar-JR-by5" id="dSn-DN-Btw"/>
+                        <outlet property="confirmViewBottomConstraint" destination="0CQ-c0-zbV" id="1Nf-9D-68Q"/>
+                        <outlet property="containerView" destination="ffe-IG-kJG" id="uor-qH-XES"/>
+                        <outlet property="pageControl" destination="TDB-ie-g25" id="aMs-kE-Del"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wHm-RZ-I5M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2114" y="195"/>
+        </scene>
+        <!--Pages View Controller-->
+        <scene sceneID="BHY-Yt-hfe">
+            <objects>
+                <pageViewController storyboardIdentifier="PagesViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5gX-AS-HJE" customClass="PagesViewController" customModule="PB_Drill_Assistant" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VBL-EV-Zrh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1201" y="157"/>
+        </scene>
+        <!--Drill View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrillViewController" id="BYZ-38-t0r" customClass="DrillViewController" customModule="PB_Drill_Assistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cOy-1K-SVL">
+                                <rect key="frame" x="16" y="234" width="382" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" placeholder="YES" id="ojT-Tv-NnY"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Training" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-Ec-dk2">
+                                <rect key="frame" x="150.5" y="64" width="113" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8o0-6r-r1c" customClass="RunButton" customModule="PB_Drill_Assistant" customModuleProvider="target">
+                                <rect key="frame" x="117" y="234" width="180" height="400"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="Jeh-xq-o8v"/>
+                                    <constraint firstAttribute="width" constant="180" id="n7b-Wd-5ej"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbk-dn-o4l">
+                                <rect key="frame" x="80" y="138" width="254" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="2gq-GB-30a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="96"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Qbk-dn-o4l" firstAttribute="top" secondItem="9Ag-Ec-dk2" secondAttribute="bottom" constant="38" id="2J0-Bq-Rto"/>
+                            <constraint firstItem="8o0-6r-r1c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gcp-LC-gRV"/>
+                            <constraint firstItem="cOy-1K-SVL" firstAttribute="top" secondItem="Qbk-dn-o4l" secondAttribute="bottom" constant="20" id="Jai-Tv-82B"/>
+                            <constraint firstItem="9Ag-Ec-dk2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jso-G0-MwT"/>
+                            <constraint firstItem="cOy-1K-SVL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Z2r-bQ-zLO"/>
+                            <constraint firstItem="8o0-6r-r1c" firstAttribute="top" secondItem="Qbk-dn-o4l" secondAttribute="bottom" constant="20" id="m4u-ry-TgD"/>
+                            <constraint firstItem="Qbk-dn-o4l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tCB-w6-9Pj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cOy-1K-SVL" secondAttribute="trailing" constant="16" id="th6-8Y-gV7"/>
+                            <constraint firstItem="9Ag-Ec-dk2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="wL6-Uh-Jp8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="runButton" destination="8o0-6r-r1c" id="jaX-cQ-Dm6"/>
+                        <outlet property="stackView" destination="cOy-1K-SVL" id="pbI-05-IHf"/>
+                        <outlet property="timeLabel" destination="Qbk-dn-o4l" id="6Uc-nM-P6P"/>
+                        <outlet property="titleLabel" destination="9Ag-Ec-dk2" id="pUZ-Ff-EfY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-348" y="184"/>
+        </scene>
+        <!--Rand Assistant View Controller-->
+        <scene sceneID="CPr-9r-eQG">
+            <objects>
+                <viewController storyboardIdentifier="RandAssistantViewController" id="23T-Tl-fRm" customClass="RandAssistantViewController" customModule="PB_Drill_Assistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="it6-ea-Ag6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound Assistant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRG-ox-Nef">
+                                <rect key="frame" x="92.5" y="64" width="229" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="m6t-NB-dxQ">
+                                <rect key="frame" x="16" y="132" width="382" height="110"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Fm-Pd-frh">
+                                        <rect key="frame" x="0.0" y="25" width="193" height="60.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drill time: 78" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJJ-4d-WJX">
+                                                <rect key="frame" x="48.5" y="0.0" width="96" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="MBy-Wn-9Ec">
+                                                <rect key="frame" x="49.5" y="28.5" width="94" height="32"/>
+                                            </stepper>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QfD-AF-MSU">
+                                        <rect key="frame" x="193" y="25" width="189" height="60.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeats: 78" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctw-wj-E2B">
+                                                <rect key="frame" x="49" y="0.0" width="91" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="NhO-pT-hNK">
+                                                <rect key="frame" x="47.5" y="28.5" width="94" height="32"/>
+                                            </stepper>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="jcW-cE-bQT"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xDc-66-bQu">
+                                <rect key="frame" x="33" y="250" width="32" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ktS-eb-y0U">
+                                <rect key="frame" x="16" y="274" width="60" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="xEf-Gr-LNQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zkb-DC-bNW">
+                                <rect key="frame" x="92" y="281" width="306" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ktS-eb-y0U" firstAttribute="leading" secondItem="cGl-1q-rwR" secondAttribute="leading" constant="16" id="03a-yn-3Tc"/>
+                            <constraint firstItem="cGl-1q-rwR" firstAttribute="trailing" secondItem="m6t-NB-dxQ" secondAttribute="trailing" constant="16" id="0nc-iK-fzB"/>
+                            <constraint firstItem="Zkb-DC-bNW" firstAttribute="leading" secondItem="ktS-eb-y0U" secondAttribute="trailing" constant="16" id="9iI-yT-Vlv"/>
+                            <constraint firstItem="rRG-ox-Nef" firstAttribute="top" secondItem="cGl-1q-rwR" secondAttribute="top" constant="20" id="9y5-83-s33"/>
+                            <constraint firstItem="m6t-NB-dxQ" firstAttribute="leading" secondItem="cGl-1q-rwR" secondAttribute="leading" constant="16" id="DDQ-3W-HuC"/>
+                            <constraint firstItem="Zkb-DC-bNW" firstAttribute="centerY" secondItem="ktS-eb-y0U" secondAttribute="centerY" id="Fgv-Ak-GDV"/>
+                            <constraint firstItem="cGl-1q-rwR" firstAttribute="trailing" secondItem="Zkb-DC-bNW" secondAttribute="trailing" constant="16" id="LhV-6X-iOU"/>
+                            <constraint firstItem="rRG-ox-Nef" firstAttribute="centerX" secondItem="it6-ea-Ag6" secondAttribute="centerX" id="mJ2-xr-fzd"/>
+                            <constraint firstItem="ktS-eb-y0U" firstAttribute="top" secondItem="m6t-NB-dxQ" secondAttribute="bottom" constant="32" id="v0S-Yy-lQI"/>
+                            <constraint firstItem="m6t-NB-dxQ" firstAttribute="top" secondItem="rRG-ox-Nef" secondAttribute="bottom" constant="32" id="wQi-YF-cV0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cGl-1q-rwR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ytf-eD-RTH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="177"/>
+        </scene>
+        <!--Feedback View Controller-->
+        <scene sceneID="a3R-w0-43a">
+            <objects>
+                <viewController storyboardIdentifier="FeedbackViewController" id="FR2-7h-Ubj" customClass="FeedbackViewController" customModule="PB_Drill_Assistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zui-O9-tz8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIf-ky-JMh">
+                                <rect key="frame" x="138.5" y="64" width="137" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SIf-ky-JMh" firstAttribute="top" secondItem="xsc-fH-9Av" secondAttribute="top" constant="20" id="G01-hx-7Ts"/>
+                            <constraint firstItem="SIf-ky-JMh" firstAttribute="centerX" secondItem="Zui-O9-tz8" secondAttribute="centerX" id="cCa-wq-J89"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xsc-fH-9Av"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AUH-R9-0qh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1919" y="183"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="n3e-Zx-jAJ">
+            <objects>
+                <viewController storyboardIdentifier="GameViewController" id="aE4-zO-zS7" customClass="GameViewController" customModule="PB_Drill_Assistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xSE-f9-Tmk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VDu-8p-4WQ">
+                                <rect key="frame" x="16" y="234" width="382" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" placeholder="YES" id="iFh-xK-fUQ"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc6-6Y-8KQ">
+                                <rect key="frame" x="166" y="64" width="82.5" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsZ-Wh-p4f" customClass="RunButton" customModule="PB_Drill_Assistant" customModuleProvider="target">
+                                <rect key="frame" x="117" y="234" width="180" height="400"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="Rwb-rw-7k5"/>
+                                    <constraint firstAttribute="height" constant="400" id="ja2-Ff-A6L"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pn-Ah-LxH">
+                                <rect key="frame" x="80" y="138" width="254" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="hLh-WH-fvW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="96"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="h3I-E6-q3E" firstAttribute="trailing" secondItem="VDu-8p-4WQ" secondAttribute="trailing" constant="16" id="3Eg-gx-7Si"/>
+                            <constraint firstItem="Oc6-6Y-8KQ" firstAttribute="top" secondItem="h3I-E6-q3E" secondAttribute="top" constant="20" id="9Kn-qL-6WY"/>
+                            <constraint firstItem="jsZ-Wh-p4f" firstAttribute="centerX" secondItem="xSE-f9-Tmk" secondAttribute="centerX" id="Dsi-OZ-8Fp"/>
+                            <constraint firstItem="jsZ-Wh-p4f" firstAttribute="top" secondItem="2Pn-Ah-LxH" secondAttribute="bottom" constant="20" id="GDL-9E-bdE"/>
+                            <constraint firstItem="VDu-8p-4WQ" firstAttribute="top" secondItem="2Pn-Ah-LxH" secondAttribute="bottom" constant="20" id="Kv8-NE-CgG"/>
+                            <constraint firstItem="VDu-8p-4WQ" firstAttribute="leading" secondItem="h3I-E6-q3E" secondAttribute="leading" constant="16" id="SNF-ie-c0X"/>
+                            <constraint firstItem="Oc6-6Y-8KQ" firstAttribute="centerX" secondItem="xSE-f9-Tmk" secondAttribute="centerX" id="VXZ-HI-Bw1"/>
+                            <constraint firstItem="2Pn-Ah-LxH" firstAttribute="top" secondItem="Oc6-6Y-8KQ" secondAttribute="bottom" constant="38" id="aTw-Mv-4x0"/>
+                            <constraint firstItem="2Pn-Ah-LxH" firstAttribute="centerX" secondItem="xSE-f9-Tmk" secondAttribute="centerX" id="lVO-EB-zVU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h3I-E6-q3E"/>
+                    </view>
+                    <connections>
+                        <outlet property="runButton" destination="jsZ-Wh-p4f" id="Qk5-7z-E7Y"/>
+                        <outlet property="stackView" destination="VDu-8p-4WQ" id="QJZ-jl-r7a"/>
+                        <outlet property="timeLabel" destination="2Pn-Ah-LxH" id="1M8-Ho-MVn"/>
+                        <outlet property="titleLabel" destination="Oc6-6Y-8KQ" id="I1B-yf-ATM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="08f-DO-dcD" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="386" y="178"/>
         </scene>
     </scenes>
 </document>

@@ -115,7 +115,7 @@ class RunButton: UIView {
         }
     }
     
-    func setupSliderMode(animated: Bool, range: ClosedRange<Int>) {
+    func setupSliderMode(animated: Bool, range: ClosedRange<Int>, value: Int) {
         self.range = range
         buttonOverlayView.isHidden = false
         
@@ -139,6 +139,7 @@ class RunButton: UIView {
         }
         
         titleLabel.text = ""
+        setOverlay(value: value)
     }
     
     func setupStartMode(animated: Bool = true) {
@@ -181,6 +182,14 @@ class RunButton: UIView {
         titleLabel.textColor = #colorLiteral(red: 0.1137254902, green: 0.1176470588, blue: 0.1176470588, alpha: 1)
     }
     
+    private func setOverlay(value: Int) {
+//        let min: CGFloat = CGFloat(range.min() ?? 0)
+        let max: CGFloat = CGFloat(range.max() ?? 0)
+        
+        let y: CGFloat = buttonView.frame.height - (CGFloat(value) * buttonView.frame.height / max)
+        buttonOverlayViewTopCnstr.constant = y
+    }
+    
     private func setOverlay(percent: CGFloat) {
         let y: CGFloat = buttonView.frame.height * (percent / 100)
         buttonOverlayViewTopCnstr.constant = y
@@ -195,8 +204,11 @@ class RunButton: UIView {
     }
     
     private func updateValue(y: CGFloat) {
-        let percent: CGFloat = y * 100 / buttonView.frame.height
-        print("overlay percent: \(percent)")
+        let percentage: CGFloat = min(100, max(0, (buttonView.frame.height - y) * 100 / buttonView.frame.height))
+        let min: CGFloat = CGFloat(range.min() ?? 0)
+        let max: CGFloat = CGFloat(range.max() ?? 0)
+        let value: CGFloat = (percentage * (max - min) / 100) + min
+        delegate?.didChangeValue(Int(value))
     }
 }
 

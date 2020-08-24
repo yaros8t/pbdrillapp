@@ -10,6 +10,7 @@ import Foundation
 
 
 struct TimeModel {
+    let id: Int
     let name: String
     var value: Int
     let range: ClosedRange<Int>

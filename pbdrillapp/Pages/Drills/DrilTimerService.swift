@@ -11,8 +11,8 @@ import AVFoundation
 
 
 protocol DrilTimerServiceDelegate: class {
-    func drilTimerService(_ service: DrilTimerService, didUpdateDril time: String)
-    func drilTimerService(_ service: DrilTimerService, didUpdatePause time: String)
+    func drilTimerService(_ service: DrilTimerService, didUpdateDril time: Int)
+    func drilTimerService(_ service: DrilTimerService, didUpdatePause time: Int)
     func drilTimerService(_ service: DrilTimerService, didUpdateRepeats count: Int)
     func drilTimerServiceDidEnd()
 }
@@ -175,25 +175,15 @@ final class DrilTimerService: NSObject {
     
     //MARK: - Delegates
     private func updateDrill() {
-        let time = secondsToHoursMinutesSeconds(interval: currentDrillValue)
-        delegate?.drilTimerService(self, didUpdateDril: time)
+        delegate?.drilTimerService(self, didUpdateDril: currentDrillValue)
     }
     
     private func updatePause() {
-        let time = secondsToHoursMinutesSeconds(interval: currentPauseValue)
-        delegate?.drilTimerService(self, didUpdatePause: time)
+        delegate?.drilTimerService(self, didUpdatePause: currentPauseValue)
     }
     
     private func updateRepeats() {
         delegate?.drilTimerService(self, didUpdateRepeats: currentRepeatsValue)
-    }
-    
-    //MARK: - Utils
-    private func secondsToHoursMinutesSeconds(interval : Int) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.unitsStyle = .abbreviated
-        return formatter.string(from: TimeInterval(interval))!
     }
 }
 

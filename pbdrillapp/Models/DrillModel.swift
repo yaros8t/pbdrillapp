@@ -10,14 +10,14 @@ import Foundation
 
 struct DrillModel {
     let id: Int
-    let pause: TimeModel
-    let total: TimeModel
-    let repeats: TimeModel
+    var pause: TimeModel
+    var total: TimeModel
+    var repeats: TimeModel
     
     static var `default`: DrillModel = DrillModel(id: 1,
-                                                  pause: TimeModel(name: "Pause time:", value: 3, range: 0...30, icon: "iconTime"),
-                                                  total: TimeModel(name: "Drill time:", value: 4, range: 0...100, icon: "iconDelay"),
-                                                  repeats: TimeModel(name: "Repeats:", value: 2, range: 0...10, icon: "iconReplay")
+                                                  pause: TimeModel(id: 1, name: "Pause time:", value: 3, range: 0...30, icon: "iconTime"),
+                                                  total: TimeModel(id: 2, name: "Drill time:", value: 4, range: 0...100, icon: "iconDelay"),
+                                                  repeats: TimeModel(id: 3, name: "Repeats:", value: 2, range: 0...10, icon: "iconReplay")
                                                   )
 }
 

@@ -11,7 +11,7 @@ import Foundation
 
 struct TimeModel {
     let name: String
-    let value: Int
+    var value: Int
     let range: ClosedRange<Int>
     let icon: String
 }

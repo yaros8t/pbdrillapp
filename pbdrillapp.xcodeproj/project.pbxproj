@@ -30,6 +30,8 @@
 		9CDBE1512492C9CD0048D95E /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1502492C9CD0048D95E /* GameModel.swift */; };
 		9CDBE1552492C9E10048D95E /* stop-game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBE1532492C9E10048D95E /* stop-game.mp3 */; };
 		9CDBE1562492C9E10048D95E /* start-game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBE1542492C9E10048D95E /* start-game.mp3 */; };
+		9CE1A7E524F44B0500BA732C /* DrilTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A7E424F44B0500BA732C /* DrilTimerService.swift */; };
+		9CE1A7E724F4503400BA732C /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A7E624F4503400BA732C /* Sounds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		9CDBE1502492C9CD0048D95E /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		9CDBE1532492C9E10048D95E /* stop-game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "stop-game.mp3"; sourceTree = "<group>"; };
 		9CDBE1542492C9E10048D95E /* start-game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "start-game.mp3"; sourceTree = "<group>"; };
+		9CE1A7E424F44B0500BA732C /* DrilTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrilTimerService.swift; sourceTree = "<group>"; };
+		9CE1A7E624F4503400BA732C /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 				9CDBE12A2492A9540048D95E /* TimeModel.swift */,
 				9CDBE1492492B0CC0048D95E /* DrillModel.swift */,
 				9CDBE1502492C9CD0048D95E /* GameModel.swift */,
+				9CE1A7E624F4503400BA732C /* Sounds.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				9CDBE13C2492A9540048D95E /* DrillViewController.swift */,
+				9CE1A7E424F44B0500BA732C /* DrilTimerService.swift */,
 			);
 			path = Drills;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 				9CDBE1162492A8CC0048D95E /* AppDelegate.swift in Sources */,
 				9CDBE1412492A9540048D95E /* RunButton.swift in Sources */,
 				9CDBE13D2492A9540048D95E /* TimeModel.swift in Sources */,
+				9CE1A7E724F4503400BA732C /* Sounds.swift in Sources */,
 				9CDBE1422492A9540048D95E /* TimeView.swift in Sources */,
 				9CDBE1432492A9540048D95E /* RandAssistantViewController.swift in Sources */,
 				9CDBE1512492C9CD0048D95E /* GameModel.swift in Sources */,
@@ -289,6 +296,7 @@
 				9CDBE1442492A9540048D95E /* GameViewController.swift in Sources */,
 				9CDBE14D2492C7D50048D95E /* Storage.swift in Sources */,
 				9CDBE13F2492A9540048D95E /* ConfirmView.swift in Sources */,
+				9CE1A7E524F44B0500BA732C /* DrilTimerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

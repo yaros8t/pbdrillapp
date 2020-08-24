@@ -15,16 +15,21 @@ class DrillViewController: BaseDrillViewController {
     @IBOutlet private var runButton: RunButton!
     
     private lazy var storage: Storage = Storage()
-    private var drillModel: DrillModel { storage.getDrillModel() }
+    private var drillModel: DrillModel!
     
     private var selectedTimeView: TimeView?
+    private var selectedTime: TimeModel?
+    
+    private lazy var service: DrilTimerService = DrilTimerService(delegate: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        drillModel.options.forEach {
-            addTimeView(with: $0)
-        }
+         
+        drillModel = storage.getDrillModel()
+        
+        addTimeView(with: drillModel.total)
+        addTimeView(with: drillModel.pause)
+        addTimeView(with: drillModel.repeats)
 
         timeLabel.alpha = 0
         runButton.delegate = self
@@ -45,10 +50,12 @@ class DrillViewController: BaseDrillViewController {
     }
     
     override func applyNewValue() {
+        save(selectedTime)
          changeMode(.regular)
     }
     
     override func cancelNewValue() {
+        selectedTime = nil
         changeMode(.regular)
     }
     
@@ -63,13 +70,15 @@ class DrillViewController: BaseDrillViewController {
     }
     
     private func startEditMode(_ view: TimeView) {
+        guard let model = view.model else { assert(false); return }
+        
         (stackView.arrangedSubviews as! [TimeView]).forEach {
             $0.setupEditMode()
             $0.setActive($0 == view)
             $0.setButtonActive($0 == view)
         }
         
-        runButton.setupSliderMode()
+        runButton.setupSliderMode(animated: true, range: model.range)
         
         UIView.animate(withDuration: 0.3) {
             self.timeLabel.alpha = 1
@@ -89,6 +98,22 @@ class DrillViewController: BaseDrillViewController {
             self.timeLabel.alpha = 0
         }
     }
+    
+    private func save(_ time: TimeModel?) {
+//        guard let time = time else { assert(false); return }
+//        guard let index = drillModel.options.firstIndex(of: time) else { assert(false); return }
+//
+//        drillModel.options.remove(at: index)
+//        drillModel.options.insert(time, at: index)
+//        storage.save(settings: drillModel)
+    }
+    
+    // Timers
+    private func start() {
+        runButton.setupStartMode()
+        delegate?.drillViewController(self, didStartTimer: drillModel)
+        
+    }
 }
 
 extension DrillViewController: TimeViewDelegate {
@@ -102,14 +127,15 @@ extension DrillViewController: TimeViewDelegate {
             changeMode(.edit)
         }
     }
-    
-    func timeView(_ view: TimeView, didChange model: TimeModel) {
-//        drillModel.options.index(of: view.model)
-//        storage.save(settings: )
-    }
 }
 
 extension DrillViewController: RunButtonDelegate {
+    
+    func didChangeValue(_ value: Int) {
+        guard let model = selectedTimeView?.model else { assert(false); return }
+        selectedTime = model
+        timeLabel.text = "\(value)"
+    }
     
     func runButtonDidTap() {
         guard mode != .edit else { return }
@@ -117,11 +143,34 @@ extension DrillViewController: RunButtonDelegate {
         if isRunned {
             runButton.setupStopMode()
             delegate?.drillViewController(self, didStopTimer: drillModel)
+            service.stop()
+            UIView.animate(withDuration: 0.3) {
+                self.timeLabel.alpha = 0
+            }
         } else {
             runButton.setupStartMode()
             delegate?.drillViewController(self, didStartTimer: drillModel)
+            service.start(with: drillModel)
+            UIView.animate(withDuration: 0.3) {
+                self.timeLabel.alpha = 1
+            }
         }
         
         isRunned = !isRunned
+    }
+}
+
+extension DrillViewController: DrilTimerServiceDelegate {
+    
+    func drilTimerService(_ service: DrilTimerService, didUpdateDril time: String) {
+        timeLabel.text = time
+    }
+    
+    func drilTimerService(_ service: DrilTimerService, didUpdatePause time: String) {
+        timeLabel.text = time
+    }
+    
+    func drilTimerService(_ service: DrilTimerService, didUpdateRepeat time: String) {
+        
     }
 }

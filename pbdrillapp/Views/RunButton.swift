@@ -10,6 +10,7 @@ import UIKit
 
 protocol RunButtonDelegate: class {
     func runButtonDidTap()
+    func didChangeValue(_ value: Int)
 }
 
 class RunButton: UIView {
@@ -28,6 +29,7 @@ class RunButton: UIView {
     
     private var startLocation: CGPoint = .zero
     private var currentOverlayPercent: Int = 0
+    private var range: ClosedRange<Int> = 0...0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,23 +92,22 @@ class RunButton: UIView {
             startLocation = gesture.location(in: buttonView)
         case .changed:
             let slideY: CGFloat = max(gesture.location(in: buttonView).y, 0)
-            print(slideY)
             buttonOverlayViewTopCnstr.constant = slideY
-//
+            updateValue(y: slideY)
+
 //            UIView.animate(withDuration: 0.3) {
 //                self.layoutIfNeeded()
 //            }
             
 //            let changed: CGFloat = slideY - max(startLocation.y, 0)
 //            let draggedThumb: CGFloat = -(changed * 100 / buttonView.frame.height)
-//
+
 //            setOverlay(percent: Int(draggedThumb))
         case .ended, .cancelled, .failed:
             break
 //            let slideY: CGFloat = max(gesture.location(in: buttonView).y, 0)
 //            let changed: CGFloat = slideY - max(startLocation.y, 0)
 //            let draggedThumb: CGFloat = -(changed * 100 / buttonView.frame.height) / 2
-//
 //            setOverlay(percent: Int(draggedThumb) + currentOverlayPercent)
             
         default:
@@ -114,7 +115,8 @@ class RunButton: UIView {
         }
     }
     
-    func setupSliderMode(animated: Bool = true) {
+    func setupSliderMode(animated: Bool, range: ClosedRange<Int>) {
+        self.range = range
         buttonOverlayView.isHidden = false
         
         buttonOverlayViewTopCnstr.constant = 500
@@ -187,9 +189,14 @@ class RunButton: UIView {
 //            self.layoutIfNeeded()
 //        }
         
-//        print("overlay y: \(y)")
+        
 //        let step: CGFloat = buttonView.frame.height / 100
         
+    }
+    
+    private func updateValue(y: CGFloat) {
+        let percent: CGFloat = y * 100 / buttonView.frame.height
+        print("overlay percent: \(percent)")
     }
 }
 

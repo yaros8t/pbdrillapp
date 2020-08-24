@@ -10,7 +10,6 @@ import UIKit
 
 protocol TimeViewDelegate: class {
     func timeView(_ view: TimeView, didSelect: Bool)
-    func timeView(_ view: TimeView, didChange model: TimeModel)
 }
 
 

@@ -10,14 +10,15 @@ import Foundation
 
 struct DrillModel {
     let id: Int
-    let options: [TimeModel]
-
+    let pause: TimeModel
+    let total: TimeModel
+    let repeats: TimeModel
+    
     static var `default`: DrillModel = DrillModel(id: 1,
-                                                  options: [
-                                                      TimeModel(name: "Pause time:", value: 12, range: 0...100, icon: "iconTime"),
-                                                      TimeModel(name: "Drill time:", value: 14, range: 0...100, icon: "iconDelay"),
-                                                      TimeModel(name: "Repeats:", value: 16, range: 0...100, icon: "iconReplay"),
-                                                  ])
+                                                  pause: TimeModel(name: "Pause time:", value: 12, range: 0...30, icon: "iconTime"),
+                                                  total: TimeModel(name: "Drill time:", value: 14, range: 0...100, icon: "iconDelay"),
+                                                  repeats: TimeModel(name: "Repeats:", value: 16, range: 0...10, icon: "iconReplay")
+                                                  )
 }
 
 extension DrillModel: Codable {}

@@ -52,6 +52,10 @@ class TimeView: UIView {
         button.tintColor = .black
     }
     
+    func update(value: String) {
+        timeLabel.text = value
+    }
+    
     private func commonSetup() {
         timeLabel.font = UIFont.systemFont(ofSize: 30)
         timeLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.262745098, blue: 0.2705882353, alpha: 1)
@@ -80,6 +84,9 @@ class TimeView: UIView {
         NSLayoutConstraint.activate([buttonVCnstr, buttonTCnstr, buttonWCnstr, buttonHCnstr])
         
 //        backgroundColor = .green
+        
+        layer.cornerRadius = 8.0
+        layer.masksToBounds = true
         
         setupRegularMode(animated: false)
     }

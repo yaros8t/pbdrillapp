@@ -13,7 +13,8 @@ import AVFoundation
 protocol DrilTimerServiceDelegate: class {
     func drilTimerService(_ service: DrilTimerService, didUpdateDril time: String)
     func drilTimerService(_ service: DrilTimerService, didUpdatePause time: String)
-    func drilTimerService(_ service: DrilTimerService, didUpdateRepeat time: String)
+    func drilTimerService(_ service: DrilTimerService, didUpdateRepeats count: Int)
+    func drilTimerServiceDidEnd()
 }
 
 
@@ -29,9 +30,9 @@ final class DrilTimerService: NSObject {
     private var audioPlayer: AVAudioPlayer?
     
     private var isRuned: Bool = false
-    private var currentTimerValue: Int = 0
+    private var currentDrillValue: Int = 0
     private var currentRepeatsValue: Int = 0
-    private var currentWaitValue: Int = 0
+    private var currentPauseValue: Int = 0
     
     private var model: DrillModel = .default
     
@@ -41,68 +42,39 @@ final class DrilTimerService: NSObject {
         self.delegate = delegate
     }
     
+    //MARK: -
     func start(with model: DrillModel) {
-        self.model = model
-        currentTimerValue = model.total.value
-        currentRepeatsValue = model.repeats.value
-        currentWaitValue = model.pause.value
-        
-        startDrilTimer()
+        setup(model: model)
+        startPauseTimer()
     }
     
     func stop() {
-        
+        resetAllTimers()
     }
     
-    private func startPauseTimer() {
-        pauseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
-            guard let self = self else { return }
-            
-            if self.currentWaitValue > 1 {
-                self.currentWaitValue -= 1
-                self.delegate?.drilTimerService(self, didUpdatePause: "\(self.currentWaitValue)")
-            } else {
-                self.currentRepeatsValue -= 1
-                self.delegate?.drilTimerService(self, didUpdateRepeat: "\(self.currentRepeatsValue)")
-
-                self.resetWaitTimer()
-                self.startDrilTimer()
-            }
-            })
-        
-        RunLoop.main.add(pauseTimer!, forMode: .common)
+    //MARK: -
+    private func setup(model: DrillModel) {
+        self.model = model
+        currentDrillValue = model.total.value
+        currentRepeatsValue = model.repeats.value
+        currentPauseValue = model.pause.value
     }
     
-    private func resetWaitTimer() {
-        pauseTimer?.invalidate()
-        pauseTimer = nil
-        
-//        currentWaitValue = settings.wait
-//        updateWaitLabel()
-    }
+    //MARK: - Drill timer
     
-    private func startDrilTimer() {
-        isRuned = true
-        
-        speech(text: "\(currentTimerValue)")
+    private func startDrillTimer() {
+        updateDrill()
         
         drillTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
             guard let self = self else { return }
             
-            if self.currentTimerValue > 1 {
-                self.currentTimerValue -= 1
-                self.delegate?.drilTimerService(self, didUpdateDril: "\(self.currentTimerValue)")
-
-            } else if self.currentRepeatsValue == 1 {
-                self.playSound(name: .startTrainig)
-                self.resetAllTimers()
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.playSound(name: .stopTrainig)
-                }
+            if self.currentDrillValue > 1 {
+                self.currentDrillValue -= 1
+                self.updateDrill()
             } else {
-                self.playSound(name: .startTrainig)
-                self.resetLimitTimer()
+                self.currentDrillValue -= 1
+                self.updateDrill()
+                self.resetDrillTimer()
                 self.startPauseTimer()
             }
         })
@@ -110,22 +82,65 @@ final class DrilTimerService: NSObject {
         RunLoop.main.add(drillTimer!, forMode: .common)
     }
     
-    private func resetLimitTimer() {
+    private func resetDrillTimer() {
         drillTimer?.invalidate()
         drillTimer = nil
+        currentDrillValue = model.total.value
+    }
+    
+    //MARK: - Pause timer
+    
+    private func startPauseTimer() {
+        isRuned = true
         
-        currentTimerValue = model.total.value
-        delegate?.drilTimerService(self, didUpdateDril: "\(self.currentTimerValue)")
+        updatePause()
+        speech(text: "\(currentPauseValue)")
+        
+        pauseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+            guard let self = self else { return }
+            
+            if self.currentPauseValue > 1 {
+                self.currentPauseValue -= 1
+                self.updatePause()
+
+            } else if self.currentRepeatsValue == 1 {
+                self.playSound(name: .startTrainig)
+                self.resetAllTimers()
+                self.updateRepeats()
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.playSound(name: .stopTrainig)
+                }
+                
+                self.delegate?.drilTimerServiceDidEnd()
+            } else {
+                self.currentRepeatsValue -= 1
+                self.updateRepeats()
+                self.playSound(name: .startTrainig)
+                self.resetPauseTimer()
+                self.startDrillTimer()
+            }
+        })
+        
+        RunLoop.main.add(pauseTimer!, forMode: .common)
+    }
+    
+    private func resetPauseTimer() {
+        pauseTimer?.invalidate()
+        pauseTimer = nil
+        
+        currentPauseValue = model.pause.value
     }
     
     private func resetAllTimers() {
         isRuned = false
-
-        resetLimitTimer()
-        resetWaitTimer()
-        model = .default
+        setup(model: model)
+        
+        resetDrillTimer()
+        resetPauseTimer()
     }
     
+    //MARK: - Sounds
     private func speech(text: String) {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = synthesisVoice
@@ -156,6 +171,29 @@ final class DrilTimerService: NSObject {
     private func stopAudioPlayer() {
         audioPlayer?.stop()
         audioPlayer = nil
+    }
+    
+    //MARK: - Delegates
+    private func updateDrill() {
+        let time = secondsToHoursMinutesSeconds(interval: currentDrillValue)
+        delegate?.drilTimerService(self, didUpdateDril: time)
+    }
+    
+    private func updatePause() {
+        let time = secondsToHoursMinutesSeconds(interval: currentPauseValue)
+        delegate?.drilTimerService(self, didUpdatePause: time)
+    }
+    
+    private func updateRepeats() {
+        delegate?.drilTimerService(self, didUpdateRepeats: currentRepeatsValue)
+    }
+    
+    //MARK: - Utils
+    private func secondsToHoursMinutesSeconds(interval : Int) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute, .second]
+        formatter.unitsStyle = .abbreviated
+        return formatter.string(from: TimeInterval(interval))!
     }
 }
 

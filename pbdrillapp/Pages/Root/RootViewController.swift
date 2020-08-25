@@ -108,12 +108,12 @@ extension RootViewController: BaseDrillViewControllerDelegate {
         confirmView.cancelAction = nil
     }
     
-    func drillViewController(_ controller: BaseDrillViewController, didStartTimer model: DrillModel) {
+    func drillViewControllerDidStartTimer() {
         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         pagesViewController?.isPagingEnabled = false
     }
 
-    func drillViewController(_ controller: BaseDrillViewController, didStopTimer model: DrillModel) {
+    func drillViewControllerDidStopTimer() {
         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         pagesViewController?.isPagingEnabled = true
     }

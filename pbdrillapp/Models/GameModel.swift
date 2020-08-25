@@ -10,10 +10,13 @@ import Foundation
 
 struct GameModel {
     let id: Int
-    let limit: Int
-    let wait: Int
+    var wait: TimeModel
+    var limit: TimeModel
     
-    static var `default`: GameModel = GameModel(id: 1, limit: 0, wait: 45)
+    static var `default`: GameModel = GameModel(id: 1,
+                                                  wait: TimeModel(id: 1, name: "Pause time:", value: 3, range: 0...120, icon: "iconTime"),
+                                                  limit: TimeModel(id: 2, name: "Limit time:", value: 4, range: 0...600, icon: "iconDelay")
+                                                  )
 }
 
 extension GameModel: Codable { }

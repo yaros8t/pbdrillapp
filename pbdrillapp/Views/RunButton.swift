@@ -14,35 +14,34 @@ protocol RunButtonDelegate: class {
 }
 
 class RunButton: UIView {
-    
     var delegate: RunButtonDelegate?
-    
+
     let titleLabel = UILabel()
     let buttonView = UIView(frame: .zero)
     let buttonOverlayView = UIView(frame: .zero)
-    
+
     var buttonViewWCnstr: NSLayoutConstraint!
     var buttonViewHCnstr: NSLayoutConstraint!
     var buttonOverlayViewTopCnstr: NSLayoutConstraint!
-    
+
     var buttonViewTopCnstr: NSLayoutConstraint!
-    
+
     private var startLocation: CGPoint = .zero
     private var currentOverlayPercent: Int = 0
-    private var range: ClosedRange<Int> = 0...0
-    
+    private var range: ClosedRange<Int> = 0 ... 0
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         commonSetup()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
+
         commonSetup()
     }
-    
+
     private func commonSetup() {
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(buttonView)
@@ -52,18 +51,18 @@ class RunButton: UIView {
         let buttonViewBottomCnstr = bottomAnchor.constraint(equalTo: buttonView.bottomAnchor)
         let buttonViewXCnstr = centerXAnchor.constraint(equalTo: buttonView.centerXAnchor)
         NSLayoutConstraint.activate([buttonViewWCnstr, buttonViewHCnstr, buttonViewBottomCnstr, buttonViewXCnstr])
-        
+
         buttonOverlayView.isHidden = true
         buttonOverlayView.translatesAutoresizingMaskIntoConstraints = false
         buttonView.addSubview(buttonOverlayView)
         buttonOverlayView.backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
         buttonOverlayViewTopCnstr = buttonOverlayView.topAnchor.constraint(equalTo: buttonView.topAnchor)
-        
+
         let buttonOverlayViewBottomCnstr = buttonView.bottomAnchor.constraint(equalTo: buttonOverlayView.bottomAnchor)
         let buttonOverlayViewTCnstr = buttonOverlayView.trailingAnchor.constraint(equalTo: buttonView.trailingAnchor)
         let buttonOverlayViewLCnstr = buttonOverlayView.leadingAnchor.constraint(equalTo: buttonView.leadingAnchor)
         NSLayoutConstraint.activate([buttonOverlayViewTopCnstr, buttonOverlayViewBottomCnstr, buttonOverlayViewTCnstr, buttonOverlayViewLCnstr])
-        
+
         titleLabel.font = UIFont.systemFont(ofSize: 36)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         buttonView.addSubview(titleLabel)
@@ -71,21 +70,21 @@ class RunButton: UIView {
             buttonView.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
             buttonView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
         ])
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         buttonView.addGestureRecognizer(tap)
-        
+
         let slide = UIPanGestureRecognizer(target: self, action: #selector(slide(_:)))
         buttonView.addGestureRecognizer(slide)
         slide.delegate = self
-        
+
         setupStopMode(animated: false)
     }
-    
-    @objc private func tap(_ gesture: UITapGestureRecognizer) {
+
+    @objc private func tap(_: UITapGestureRecognizer) {
         delegate?.runButtonDidTap()
     }
-    
+
     @objc private func slide(_ gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .began:
@@ -98,7 +97,7 @@ class RunButton: UIView {
 //            UIView.animate(withDuration: 0.3) {
 //                self.layoutIfNeeded()
 //            }
-            
+
 //            let changed: CGFloat = slideY - max(startLocation.y, 0)
 //            let draggedThumb: CGFloat = -(changed * 100 / buttonView.frame.height)
 
@@ -109,24 +108,24 @@ class RunButton: UIView {
 //            let changed: CGFloat = slideY - max(startLocation.y, 0)
 //            let draggedThumb: CGFloat = -(changed * 100 / buttonView.frame.height) / 2
 //            setOverlay(percent: Int(draggedThumb) + currentOverlayPercent)
-            
+
         default:
             break
         }
     }
-    
+
     func setupSliderMode(animated: Bool, range: ClosedRange<Int>, value: Int) {
         self.range = range
         buttonOverlayView.isHidden = false
-        
+
         buttonOverlayViewTopCnstr.constant = 500
         layoutIfNeeded()
-        
+
         buttonView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.262745098, blue: 0.2705882353, alpha: 1)
         buttonViewWCnstr.constant = 100
         buttonViewHCnstr.isActive = false
         buttonViewTopCnstr.isActive = true
-        
+
         setOverlay(percent: 50)
 
         let duration: TimeInterval = animated ? 0.3 : 0
@@ -137,72 +136,70 @@ class RunButton: UIView {
         }) { _ in
 //            self.setOverlay(percent: 50)
         }
-        
+
         titleLabel.text = ""
         setOverlay(value: value)
     }
-    
+
     func setupStartMode(animated: Bool = true) {
         buttonView.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.2196078431, blue: 0.3215686275, alpha: 1)
-        
+
         buttonOverlayView.isHidden = true
         buttonViewWCnstr.constant = 180
         buttonViewHCnstr.constant = 180
         buttonViewTopCnstr.isActive = false
         buttonViewHCnstr.isActive = true
-        
+
         let duration: TimeInterval = animated ? 0.3 : 0
         UIView.animate(withDuration: duration) {
             self.buttonView.layer.cornerRadius = 90
             self.buttonView.layer.masksToBounds = true
             self.layoutIfNeeded()
         }
-        
+
         titleLabel.text = "stop"
         titleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
-    
+
     func setupStopMode(animated: Bool = true) {
         buttonView.backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
-        
+
         buttonOverlayView.isHidden = true
         buttonViewWCnstr.constant = 180
         buttonViewHCnstr.constant = 180
         buttonViewTopCnstr.isActive = false
         buttonViewHCnstr.isActive = true
-        
+
         let duration: TimeInterval = animated ? 0.3 : 0
         UIView.animate(withDuration: duration) {
             self.buttonView.layer.cornerRadius = 90
             self.buttonView.layer.masksToBounds = true
             self.layoutIfNeeded()
         }
-        
+
         titleLabel.text = "start"
         titleLabel.textColor = #colorLiteral(red: 0.1137254902, green: 0.1176470588, blue: 0.1176470588, alpha: 1)
     }
-    
+
     private func setOverlay(value: Int) {
 //        let min: CGFloat = CGFloat(range.min() ?? 0)
         let max: CGFloat = CGFloat(range.max() ?? 0)
-        
+
         let y: CGFloat = buttonView.frame.height - (CGFloat(value) * buttonView.frame.height / max)
         buttonOverlayViewTopCnstr.constant = y
     }
-    
+
     private func setOverlay(percent: CGFloat) {
         let y: CGFloat = buttonView.frame.height * (percent / 100)
         buttonOverlayViewTopCnstr.constant = y
-        
+
 //        UIView.animate(withDuration: 0) {
 //            self.layoutIfNeeded()
 //        }
-        
-        
+
 //        let step: CGFloat = buttonView.frame.height / 100
-        
     }
-    
+
     private func updateValue(y: CGFloat) {
         let percentage: CGFloat = min(100, max(0, (buttonView.frame.height - y) * 100 / buttonView.frame.height))
         let min: CGFloat = CGFloat(range.min() ?? 0)
@@ -213,5 +210,5 @@ class RunButton: UIView {
 }
 
 extension RunButton: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool { true }
+    func gestureRecognizer(_: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith _: UIGestureRecognizer) -> Bool { true }
 }

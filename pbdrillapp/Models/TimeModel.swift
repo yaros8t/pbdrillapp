@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct TimeModel {
     let id: Int
     let name: String

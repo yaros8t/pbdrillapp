@@ -9,10 +9,9 @@
 import UIKit
 
 final class RootViewController: UIViewController {
-    
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var containerView: UIView!
-    
+
     @IBOutlet private var confirmView: ConfirmView!
     @IBOutlet private var confirmViewBottomConstraint: NSLayoutConstraint!
 
@@ -21,7 +20,7 @@ final class RootViewController: UIViewController {
             pagesViewController?.pagesDelegate = self
         }
     }
-    
+
     private lazy var drillControllers: [BaseDrillViewController] = {
         [initController("DrillViewController"),
          initController("GameViewController"),
@@ -31,41 +30,41 @@ final class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         pageControl.addTarget(self, action: #selector(didChangePageControlValue), for: .valueChanged)
-        
+
         hideConfirmView(animated: false)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if let pagesViewController = segue.destination as? PagesViewController {
             self.pagesViewController = pagesViewController
             self.pagesViewController?.orderedViewControllers = drillControllers
         }
     }
 
-    @IBAction func didTapNextButton(_ sender: Any) {
+    @IBAction func didTapNextButton(_: Any) {
         pagesViewController?.scrollToNextViewController()
     }
 
     @objc func didChangePageControlValue() {
         pagesViewController?.scrollToViewController(index: pageControl.currentPage)
     }
-    
+
     private func showConfitmView() {
         confirmViewBottomConstraint.constant = 4
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
-    
-    private func hideConfirmView(animated: Bool = true) {
+
+    private func hideConfirmView(animated _: Bool = true) {
         confirmViewBottomConstraint.constant = -300
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
-    
+
     private func initController(_ name: String) -> BaseDrillViewController {
         let base = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: name) as! BaseDrillViewController
         base.delegate = self
@@ -74,22 +73,22 @@ final class RootViewController: UIViewController {
 }
 
 extension RootViewController: PagesViewControllerDelegate {
-    func pagesViewController(pagesViewController: PagesViewController,didUpdatePageCount count: Int) {
+    func pagesViewController(pagesViewController _: PagesViewController, didUpdatePageCount count: Int) {
         pageControl.numberOfPages = count
     }
 
-    func pagesViewController(pagesViewController: PagesViewController,didUpdatePageIndex index: Int) {
+    func pagesViewController(pagesViewController _: PagesViewController, didUpdatePageIndex index: Int) {
         pageControl.currentPage = index
     }
 }
 
 extension RootViewController: BaseDrillViewControllerDelegate {
-    func drillViewController(_ controller: BaseDrillViewController, didStartEditMode model: TimeModel) {
+    func drillViewController(_ controller: BaseDrillViewController, didStartEditMode _: TimeModel) {
         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         pagesViewController?.isPagingEnabled = false
         showConfitmView()
         controller.changeMode(.edit)
-        
+
         confirmView.doneAction = {
             controller.applyNewValue()
         }
@@ -97,17 +96,17 @@ extension RootViewController: BaseDrillViewControllerDelegate {
             controller.cancelNewValue()
         }
     }
-    
-    func drillViewController(_ controller: BaseDrillViewController, didEndEditMode model: TimeModel) {
+
+    func drillViewController(_ controller: BaseDrillViewController, didEndEditMode _: TimeModel) {
         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         pagesViewController?.isPagingEnabled = true
         hideConfirmView()
         controller.changeMode(.regular)
-        
+
         confirmView.doneAction = nil
         confirmView.cancelAction = nil
     }
-    
+
     func drillViewControllerDidStartTimer() {
         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         pagesViewController?.isPagingEnabled = false

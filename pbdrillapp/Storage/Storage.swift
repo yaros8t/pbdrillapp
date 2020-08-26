@@ -12,17 +12,16 @@ private let kDrillModel = "DrillModel"
 private let kGameModel = "GameModel"
 
 final class Storage {
-    
     private lazy var defaults: UserDefaults = UserDefaults.standard
-    
+
     func save(settings: DrillModel) {
         defaults.set(try? JSONEncoder().encode(settings), forKey: kDrillModel)
     }
-    
+
     func save(settings: GameModel) {
         defaults.set(try? JSONEncoder().encode(settings), forKey: kGameModel)
     }
-    
+
     func getDrillModel() -> DrillModel {
         if let data = UserDefaults.standard.object(forKey: kDrillModel) as? Data {
             if let settings = try? JSONDecoder().decode(DrillModel.self, from: data) {
@@ -34,7 +33,7 @@ final class Storage {
             return DrillModel.default
         }
     }
-    
+
     func getGameSettings() -> GameModel {
         if let data = UserDefaults.standard.object(forKey: kGameModel) as? Data {
             if let settings = try? JSONDecoder().decode(GameModel.self, from: data) {

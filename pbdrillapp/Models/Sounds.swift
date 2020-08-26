@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension String {
     static var startTrainig: String { "start-game" }
     static var stopTrainig: String { "stop-game" }

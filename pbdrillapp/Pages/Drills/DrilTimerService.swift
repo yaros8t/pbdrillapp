@@ -6,9 +6,8 @@
 //  Copyright © 2020 Yaros8T. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
-
+import Foundation
 
 protocol DrilTimerServiceDelegate: class {
     func drilTimerService(_ service: DrilTimerService, didUpdateDril time: Int)
@@ -17,57 +16,60 @@ protocol DrilTimerServiceDelegate: class {
     func drilTimerServiceDidEnd()
 }
 
-
 final class DrilTimerService: NSObject {
-    
     weak var delegate: DrilTimerServiceDelegate?
-    
+
     private var drillTimer: Timer?
     private var pauseTimer: Timer?
-    
+
     private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: "ru")
     private lazy var synthesizer = AVSpeechSynthesizer()
     private var audioPlayer: AVAudioPlayer?
-    
+
     private var isRuned: Bool = false
     private var currentDrillValue: Int = 0
     private var currentRepeatsValue: Int = 0
     private var currentPauseValue: Int = 0
-    
+
     private var model: DrillModel = .default
-    
+
     init(delegate: DrilTimerServiceDelegate?) {
         super.init()
-        
+
         self.delegate = delegate
     }
-    
-    //MARK: -
+
+    // MARK: -
+
     func start(with model: DrillModel) {
         setup(model: model)
         startPauseTimer()
     }
-    
+
     func stop() {
         resetAllTimers()
+        
+        currentRepeatsValue = model.repeats.value
+        updateRepeats()
     }
-    
-    //MARK: -
+
+    // MARK: -
+
     private func setup(model: DrillModel) {
         self.model = model
         currentDrillValue = model.total.value
         currentRepeatsValue = model.repeats.value
         currentPauseValue = model.pause.value
     }
-    
-    //MARK: - Drill timer
-    
+
+    // MARK: - Drill timer
+
     private func startDrillTimer() {
         updateDrill()
-        
+
         drillTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
             guard let self = self else { return }
-            
+
             if self.currentDrillValue > 1 {
                 self.currentDrillValue -= 1
                 self.updateDrill()
@@ -78,27 +80,27 @@ final class DrilTimerService: NSObject {
                 self.startPauseTimer()
             }
         })
-        
+
         RunLoop.main.add(drillTimer!, forMode: .common)
     }
-    
+
     private func resetDrillTimer() {
         drillTimer?.invalidate()
         drillTimer = nil
         currentDrillValue = model.total.value
     }
-    
-    //MARK: - Pause timer
-    
+
+    // MARK: - Pause timer
+
     private func startPauseTimer() {
         isRuned = true
-        
+
         updatePause()
         speech(text: "\(currentPauseValue)")
-        
+
         pauseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
             guard let self = self else { return }
-            
+
             if self.currentPauseValue > 1 {
                 self.currentPauseValue -= 1
                 self.updatePause()
@@ -111,7 +113,7 @@ final class DrilTimerService: NSObject {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.playSound(name: .stopTrainig)
                 }
-                
+
                 self.delegate?.drilTimerServiceDidEnd()
             } else {
                 self.currentRepeatsValue -= 1
@@ -121,33 +123,34 @@ final class DrilTimerService: NSObject {
                 self.startDrillTimer()
             }
         })
-        
+
         RunLoop.main.add(pauseTimer!, forMode: .common)
     }
-    
+
     private func resetPauseTimer() {
         pauseTimer?.invalidate()
         pauseTimer = nil
-        
+
         currentPauseValue = model.pause.value
     }
-    
+
     private func resetAllTimers() {
         isRuned = false
         setup(model: model)
-        
+
         resetDrillTimer()
         resetPauseTimer()
     }
-    
-    //MARK: - Sounds
+
+    // MARK: - Sounds
+
     private func speech(text: String) {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = synthesisVoice
         utterance.rate = 0.4
         synthesizer.speak(utterance)
     }
-    
+
     private func setupPlayer() {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
@@ -156,7 +159,7 @@ final class DrilTimerService: NSObject {
             print(error.localizedDescription)
         }
     }
-    
+
     private func playSound(name: String) {
         guard let url = Bundle.main.url(forResource: name, withExtension: "mp3") else { return }
         do {
@@ -167,28 +170,29 @@ final class DrilTimerService: NSObject {
             print(error.localizedDescription)
         }
     }
-    
+
     private func stopAudioPlayer() {
         audioPlayer?.stop()
         audioPlayer = nil
     }
-    
-    //MARK: - Delegates
+
+    // MARK: - Delegates
+
     private func updateDrill() {
         delegate?.drilTimerService(self, didUpdateDril: currentDrillValue)
     }
-    
+
     private func updatePause() {
         delegate?.drilTimerService(self, didUpdatePause: currentPauseValue)
     }
-    
+
     private func updateRepeats() {
         delegate?.drilTimerService(self, didUpdateRepeats: currentRepeatsValue)
     }
 }
 
 extension DrilTimerService: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+    func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully _: Bool) {
         stopAudioPlayer()
     }
 }

@@ -9,10 +9,7 @@
 import UIKit
 
 class RandAssistantViewController: BaseDrillViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
 }

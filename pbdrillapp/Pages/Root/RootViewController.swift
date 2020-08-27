@@ -24,7 +24,7 @@ final class RootViewController: UIViewController {
     private lazy var drillControllers: [BaseDrillViewController] = {
         [initController("DrillViewController"),
          initController("GameViewController"),
-         initController("RandAssistantViewController"),
+         initController("SoundAssistantViewController"),
          initController("FeedbackViewController")]
     }()
 

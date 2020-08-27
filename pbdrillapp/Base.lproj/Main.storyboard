@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eD8-0L-gvW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eD8-0L-gvW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -132,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="-348" y="184"/>
         </scene>
-        <!--Rand Assistant View Controller-->
+        <!--Sound Assistant View Controller-->
         <scene sceneID="CPr-9r-eQG">
             <objects>
-                <viewController storyboardIdentifier="RandAssistantViewController" id="23T-Tl-fRm" customClass="RandAssistantViewController" customModule="PB_Drill_Assistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SoundAssistantViewController" id="23T-Tl-fRm" customClass="SoundAssistantViewController" customModule="PB_Drill_Assistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="it6-ea-Ag6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

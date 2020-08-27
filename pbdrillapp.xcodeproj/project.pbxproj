@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7AFFDC2024F58BD900D267A1 /* GameTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFFDC1F24F58BD900D267A1 /* GameTimerService.swift */; };
 		7AFFDC2224F59FA200D267A1 /* 10-seconds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AFFDC2124F59FA200D267A1 /* 10-seconds.mp3 */; };
+		7AFFDC2424F6F53A00D267A1 /* SoundAssistantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFFDC2324F6F53A00D267A1 /* SoundAssistantModel.swift */; };
 		9CDBE1162492A8CC0048D95E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1152492A8CC0048D95E /* AppDelegate.swift */; };
 		9CDBE1182492A8CC0048D95E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1172492A8CC0048D95E /* SceneDelegate.swift */; };
 		9CDBE11A2492A8CC0048D95E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1192492A8CC0048D95E /* ViewController.swift */; };
@@ -21,7 +22,7 @@
 		9CDBE1402492A9540048D95E /* TimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE12F2492A9540048D95E /* TimeButton.swift */; };
 		9CDBE1412492A9540048D95E /* RunButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1302492A9540048D95E /* RunButton.swift */; };
 		9CDBE1422492A9540048D95E /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1312492A9540048D95E /* TimeView.swift */; };
-		9CDBE1432492A9540048D95E /* RandAssistantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1342492A9540048D95E /* RandAssistantViewController.swift */; };
+		9CDBE1432492A9540048D95E /* SoundAssistantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1342492A9540048D95E /* SoundAssistantViewController.swift */; };
 		9CDBE1442492A9540048D95E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1362492A9540048D95E /* GameViewController.swift */; };
 		9CDBE1452492A9540048D95E /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1382492A9540048D95E /* FeedbackViewController.swift */; };
 		9CDBE1462492A9540048D95E /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1392492A9540048D95E /* PagesViewController.swift */; };
@@ -34,11 +35,14 @@
 		9CDBE1562492C9E10048D95E /* start-game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBE1542492C9E10048D95E /* start-game.mp3 */; };
 		9CE1A7E524F44B0500BA732C /* DrilTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A7E424F44B0500BA732C /* DrilTimerService.swift */; };
 		9CE1A7E724F4503400BA732C /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A7E624F4503400BA732C /* Sounds.swift */; };
+		BBE8A4F54311A8B6A4AEAB99 /* Pods_pbdrillapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8706185F5322E713062ED19 /* Pods_pbdrillapp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5951273C2B4570A3528B5422 /* Pods-pbdrillapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pbdrillapp.debug.xcconfig"; path = "Target Support Files/Pods-pbdrillapp/Pods-pbdrillapp.debug.xcconfig"; sourceTree = "<group>"; };
 		7AFFDC1F24F58BD900D267A1 /* GameTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerService.swift; sourceTree = "<group>"; };
 		7AFFDC2124F59FA200D267A1 /* 10-seconds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "10-seconds.mp3"; sourceTree = "<group>"; };
+		7AFFDC2324F6F53A00D267A1 /* SoundAssistantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAssistantModel.swift; sourceTree = "<group>"; };
 		9CDBE1122492A8CC0048D95E /* PB Drill Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PB Drill Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDBE1152492A8CC0048D95E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDBE1172492A8CC0048D95E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +57,7 @@
 		9CDBE12F2492A9540048D95E /* TimeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeButton.swift; sourceTree = "<group>"; };
 		9CDBE1302492A9540048D95E /* RunButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunButton.swift; sourceTree = "<group>"; };
 		9CDBE1312492A9540048D95E /* TimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
-		9CDBE1342492A9540048D95E /* RandAssistantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandAssistantViewController.swift; sourceTree = "<group>"; };
+		9CDBE1342492A9540048D95E /* SoundAssistantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundAssistantViewController.swift; sourceTree = "<group>"; };
 		9CDBE1362492A9540048D95E /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		9CDBE1382492A9540048D95E /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		9CDBE1392492A9540048D95E /* PagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 		9CDBE1542492C9E10048D95E /* start-game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "start-game.mp3"; sourceTree = "<group>"; };
 		9CE1A7E424F44B0500BA732C /* DrilTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrilTimerService.swift; sourceTree = "<group>"; };
 		9CE1A7E624F4503400BA732C /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		B8706185F5322E713062ED19 /* Pods_pbdrillapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pbdrillapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5C2ED958F3B7436C38E5800 /* Pods-pbdrillapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pbdrillapp.release.xcconfig"; path = "Target Support Files/Pods-pbdrillapp/Pods-pbdrillapp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE8A4F54311A8B6A4AEAB99 /* Pods_pbdrillapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +91,8 @@
 			children = (
 				9CDBE1142492A8CC0048D95E /* pbdrillapp */,
 				9CDBE1132492A8CC0048D95E /* Products */,
+				C7FBB3CEC5EE15483086F8E8 /* Pods */,
+				CEC4BB4939A36E72C3A1937C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +130,7 @@
 				9CDBE1492492B0CC0048D95E /* DrillModel.swift */,
 				9CDBE1502492C9CD0048D95E /* GameModel.swift */,
 				9CE1A7E624F4503400BA732C /* Sounds.swift */,
+				7AFFDC2324F6F53A00D267A1 /* SoundAssistantModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -150,7 +160,7 @@
 				9CDBE1392492A9540048D95E /* PagesViewController.swift */,
 				9CDBE13A2492A9540048D95E /* BaseDrillViewController.swift */,
 				9CDBE12B2492A9540048D95E /* Root */,
-				9CDBE1332492A9540048D95E /* RandAssistant */,
+				9CDBE1332492A9540048D95E /* SoundAssistant */,
 				9CDBE1352492A9540048D95E /* Game */,
 				9CDBE1372492A9540048D95E /* Feedback */,
 				9CDBE13B2492A9540048D95E /* Drills */,
@@ -158,12 +168,12 @@
 			path = Pages;
 			sourceTree = "<group>";
 		};
-		9CDBE1332492A9540048D95E /* RandAssistant */ = {
+		9CDBE1332492A9540048D95E /* SoundAssistant */ = {
 			isa = PBXGroup;
 			children = (
-				9CDBE1342492A9540048D95E /* RandAssistantViewController.swift */,
+				9CDBE1342492A9540048D95E /* SoundAssistantViewController.swift */,
 			);
-			path = RandAssistant;
+			path = SoundAssistant;
 			sourceTree = "<group>";
 		};
 		9CDBE1352492A9540048D95E /* Game */ = {
@@ -210,6 +220,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		C7FBB3CEC5EE15483086F8E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5951273C2B4570A3528B5422 /* Pods-pbdrillapp.debug.xcconfig */,
+				E5C2ED958F3B7436C38E5800 /* Pods-pbdrillapp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CEC4BB4939A36E72C3A1937C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8706185F5322E713062ED19 /* Pods_pbdrillapp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -217,9 +244,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CDBE1262492A8CD0048D95E /* Build configuration list for PBXNativeTarget "pbdrillapp" */;
 			buildPhases = (
+				B2AC02AA3526D7403E70B9D4 /* [CP] Check Pods Manifest.lock */,
 				9CDBE10E2492A8CC0048D95E /* Sources */,
 				9CDBE10F2492A8CC0048D95E /* Frameworks */,
 				9CDBE1102492A8CC0048D95E /* Resources */,
+				6EBB1F96D40C63EFB5E23341 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -279,11 +308,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6EBB1F96D40C63EFB5E23341 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pbdrillapp/Pods-pbdrillapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pbdrillapp/Pods-pbdrillapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pbdrillapp/Pods-pbdrillapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2AC02AA3526D7403E70B9D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pbdrillapp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9CDBE10E2492A8CC0048D95E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AFFDC2424F6F53A00D267A1 /* SoundAssistantModel.swift in Sources */,
 				9CDBE13E2492A9540048D95E /* RootViewController.swift in Sources */,
 				9CDBE11A2492A8CC0048D95E /* ViewController.swift in Sources */,
 				7AFFDC2024F58BD900D267A1 /* GameTimerService.swift in Sources */,
@@ -294,7 +366,7 @@
 				9CDBE13D2492A9540048D95E /* TimeModel.swift in Sources */,
 				9CE1A7E724F4503400BA732C /* Sounds.swift in Sources */,
 				9CDBE1422492A9540048D95E /* TimeView.swift in Sources */,
-				9CDBE1432492A9540048D95E /* RandAssistantViewController.swift in Sources */,
+				9CDBE1432492A9540048D95E /* SoundAssistantViewController.swift in Sources */,
 				9CDBE1512492C9CD0048D95E /* GameModel.swift in Sources */,
 				9CDBE1472492A9540048D95E /* BaseDrillViewController.swift in Sources */,
 				9CDBE1462492A9540048D95E /* PagesViewController.swift in Sources */,
@@ -446,11 +518,12 @@
 		};
 		9CDBE1272492A8CD0048D95E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5951273C2B4570A3528B5422 /* Pods-pbdrillapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 37LVE8FFX9;
 				INFOPLIST_FILE = pbdrillapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -468,11 +541,12 @@
 		};
 		9CDBE1282492A8CD0048D95E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5C2ED958F3B7436C38E5800 /* Pods-pbdrillapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 37LVE8FFX9;
 				INFOPLIST_FILE = pbdrillapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

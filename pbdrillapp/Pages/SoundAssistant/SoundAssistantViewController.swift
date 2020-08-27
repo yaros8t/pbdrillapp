@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RandAssistantViewController: BaseDrillViewController {
+class SoundAssistantViewController: BaseDrillViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

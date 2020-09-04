@@ -10,7 +10,7 @@ import AVFoundation
 import Foundation
 
 protocol DrilTimerServiceDelegate: class {
-    func drilTimerService(_ service: DrilTimerService, didUpdateDril time: Int)
+    func drilTimerService(_ service: DrilTimerService, didUpdateDrill time: Int)
     func drilTimerService(_ service: DrilTimerService, didUpdatePause time: Int)
     func drilTimerService(_ service: DrilTimerService, didUpdateRepeats count: Int)
     func drilTimerServiceDidEnd()
@@ -193,7 +193,7 @@ final class DrilTimerService: NSObject {
     // MARK: - Delegates
 
     private func updateDrill() {
-        delegate?.drilTimerService(self, didUpdateDril: currentDrillValue)
+        delegate?.drilTimerService(self, didUpdateDrill: currentDrillValue)
     }
 
     private func updatePause() {

@@ -1,15 +1,8 @@
-//
-//  Storage.swift
-//  PaintballTrainingWatch WatchKit Extension
-//
-//  Created by Yaroslav Tytarenko on 22.03.2020.
-//  Copyright © 2020 Yaroslav Tytarenko. All rights reserved.
-//
-
 import Foundation
 
 private let kDrillModel = "DrillModel"
 private let kGameModel = "GameModel"
+private let kSoundAssistantModel = "SoundAssistantModel"
 
 final class Storage {
     private lazy var defaults: UserDefaults = UserDefaults.standard
@@ -21,16 +14,32 @@ final class Storage {
     func save(settings: GameModel) {
         defaults.set(try? JSONEncoder().encode(settings), forKey: kGameModel)
     }
+    
+    func save(settings: SoundAssistantModel) {
+        defaults.set(try? JSONEncoder().encode(settings), forKey: kSoundAssistantModel)
+    }
+    
+    func getSoundAssistantModel() -> SoundAssistantModel {
+        if let data = UserDefaults.standard.object(forKey: kSoundAssistantModel) as? Data {
+            if let settings = try? JSONDecoder().decode(SoundAssistantModel.self, from: data) {
+                return settings
+            } else {
+                return .default
+            }
+        } else {
+            return .default
+        }
+    }
 
     func getDrillModel() -> DrillModel {
         if let data = UserDefaults.standard.object(forKey: kDrillModel) as? Data {
             if let settings = try? JSONDecoder().decode(DrillModel.self, from: data) {
                 return settings
             } else {
-                return DrillModel.default
+                return .default
             }
         } else {
-            return DrillModel.default
+            return .default
         }
     }
 
@@ -39,10 +48,10 @@ final class Storage {
             if let settings = try? JSONDecoder().decode(GameModel.self, from: data) {
                 return settings
             } else {
-                return GameModel.default
+                return .default
             }
         } else {
-            return GameModel.default
+            return .default
         }
     }
 }

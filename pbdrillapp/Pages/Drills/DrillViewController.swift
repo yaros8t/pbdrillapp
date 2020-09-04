@@ -97,7 +97,7 @@ final class DrillViewController: BaseDrillViewController {
 }
 
 extension DrillViewController: DrilTimerServiceDelegate {
-    func drilTimerService(_: DrilTimerService, didUpdateDril time: Int) {
+    func drilTimerService(_: DrilTimerService, didUpdateDrill time: Int) {
         setTimeValue(time)
         pauseTimeView?.backgroundColor = .clear
         repeatsTimeView?.backgroundColor = .clear

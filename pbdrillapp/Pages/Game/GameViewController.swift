@@ -103,7 +103,7 @@ extension GameViewController: GameTimerServiceDelegate {
 
 extension GameViewController: RunButtonDelegate {
     func didChangeValue(_ value: Int) {
-        guard let model = selectedTimeView?.model else { assert(false); return }
+        guard let model = selectedTimeView?.model else { return }
         selectedTime = model
         selectedTime?.value = value
         setTimeValue(value)

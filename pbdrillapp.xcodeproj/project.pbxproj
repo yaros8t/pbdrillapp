@@ -27,7 +27,7 @@
 		9CDBE1422492A9540048D95E /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1312492A9540048D95E /* TimeView.swift */; };
 		9CDBE1432492A9540048D95E /* SoundAssistantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1342492A9540048D95E /* SoundAssistantViewController.swift */; };
 		9CDBE1442492A9540048D95E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1362492A9540048D95E /* GameViewController.swift */; };
-		9CDBE1452492A9540048D95E /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1382492A9540048D95E /* FeedbackViewController.swift */; };
+		9CDBE1452492A9540048D95E /* HornViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1382492A9540048D95E /* HornViewController.swift */; };
 		9CDBE1462492A9540048D95E /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1392492A9540048D95E /* PagesViewController.swift */; };
 		9CDBE1472492A9540048D95E /* BaseDrillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE13A2492A9540048D95E /* BaseDrillViewController.swift */; };
 		9CDBE1482492A9540048D95E /* DrillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE13C2492A9540048D95E /* DrillViewController.swift */; };
@@ -66,7 +66,7 @@
 		9CDBE1312492A9540048D95E /* TimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		9CDBE1342492A9540048D95E /* SoundAssistantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundAssistantViewController.swift; sourceTree = "<group>"; };
 		9CDBE1362492A9540048D95E /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		9CDBE1382492A9540048D95E /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		9CDBE1382492A9540048D95E /* HornViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HornViewController.swift; sourceTree = "<group>"; };
 		9CDBE1392492A9540048D95E /* PagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
 		9CDBE13A2492A9540048D95E /* BaseDrillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDrillViewController.swift; sourceTree = "<group>"; };
 		9CDBE13C2492A9540048D95E /* DrillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrillViewController.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 		9CDBE1372492A9540048D95E /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
-				9CDBE1382492A9540048D95E /* FeedbackViewController.swift */,
+				9CDBE1382492A9540048D95E /* HornViewController.swift */,
 			);
 			path = Feedback;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				9CDBE1512492C9CD0048D95E /* GameModel.swift in Sources */,
 				9CDBE1472492A9540048D95E /* BaseDrillViewController.swift in Sources */,
 				9CDBE1462492A9540048D95E /* PagesViewController.swift in Sources */,
-				9CDBE1452492A9540048D95E /* FeedbackViewController.swift in Sources */,
+				9CDBE1452492A9540048D95E /* HornViewController.swift in Sources */,
 				9CDBE1402492A9540048D95E /* TimeButton.swift in Sources */,
 				9CDBE1182492A8CC0048D95E /* SceneDelegate.swift in Sources */,
 				9CDBE1442492A9540048D95E /* GameViewController.swift in Sources */,

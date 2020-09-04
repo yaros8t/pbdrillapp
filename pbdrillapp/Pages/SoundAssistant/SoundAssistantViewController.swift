@@ -79,6 +79,7 @@ class SoundAssistantViewController: BaseDrillViewController {
         tagView.colorInputPlaceholder = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         tagView.colorInputBoard = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
         tagView.colorInput = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        tagView.delegate = self
     }
 
     private func save(_ time: TimeModel?) {
@@ -97,6 +98,13 @@ class SoundAssistantViewController: BaseDrillViewController {
         storage.save(settings: model)
 
         hideTimeLabel()
+    }
+}
+
+extension SoundAssistantViewController: EYTagViewDelegate {
+    
+    func tagDidBeginEditing(_ tagView: EYTagView!) {
+        stop()
     }
 }
 

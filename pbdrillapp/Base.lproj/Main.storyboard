@@ -134,32 +134,55 @@
             </objects>
             <point key="canvasLocation" x="-348" y="184"/>
         </scene>
-        <!--Feedback View Controller-->
+        <!--Horn View Controller-->
         <scene sceneID="a3R-w0-43a">
             <objects>
-                <viewController storyboardIdentifier="FeedbackViewController" id="FR2-7h-Ubj" customClass="FeedbackViewController" customModule="PB_Drill_Assistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedbackViewController" id="FR2-7h-Ubj" customClass="HornViewController" customModule="PB_Drill_Assistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zui-O9-tz8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIf-ky-JMh">
-                                <rect key="frame" x="138.5" y="64" width="137" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIf-ky-JMh">
+                                <rect key="frame" x="172.5" y="64" width="69" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrP-md-Cpf">
+                                <rect key="frame" x="117" y="358" width="180" height="180"/>
+                                <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="EG3-JZ-XIH"/>
+                                    <constraint firstAttribute="height" constant="180" id="lum-Em-dhQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="90"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapToHorn:" destination="FR2-7h-Ubj" eventType="touchUpInside" id="yUg-h6-NFp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xsc-fH-9Av"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SIf-ky-JMh" firstAttribute="top" secondItem="xsc-fH-9Av" secondAttribute="top" constant="20" id="G01-hx-7Ts"/>
+                            <constraint firstItem="nrP-md-Cpf" firstAttribute="centerX" secondItem="Zui-O9-tz8" secondAttribute="centerX" id="NlB-CY-bDV"/>
                             <constraint firstItem="SIf-ky-JMh" firstAttribute="centerX" secondItem="Zui-O9-tz8" secondAttribute="centerX" id="cCa-wq-J89"/>
+                            <constraint firstItem="nrP-md-Cpf" firstAttribute="centerY" secondItem="Zui-O9-tz8" secondAttribute="centerY" id="jc6-gP-HEl"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUH-R9-0qh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="183"/>
+            <point key="canvasLocation" x="1916" y="177"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="n3e-Zx-jAJ">

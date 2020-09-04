@@ -33,6 +33,7 @@ class SoundAssistantViewController: BaseDrillViewController {
         self.mode = mode
 
         if mode == .edit {
+            stop()
             firstTagsView.alpha = 0
             secondTagsView.alpha = 0
             startEditMode(selectedTimeView!)

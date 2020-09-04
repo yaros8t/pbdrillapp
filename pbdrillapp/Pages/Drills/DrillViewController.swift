@@ -34,6 +34,7 @@ final class DrillViewController: BaseDrillViewController {
         self.mode = mode
 
         if mode == .edit {
+            stop()
             startEditMode(selectedTimeView!)
             delegate?.drillViewController(self, didStartEditMode: selectedTimeView!.model!)
         } else {

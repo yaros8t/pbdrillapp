@@ -15,9 +15,9 @@ struct DrillModel {
     var repeats: TimeModel
 
     static var `default`: DrillModel = DrillModel(id: 1,
-                                                  pause: TimeModel(id: 1, name: "Pause time:", value: 3, range: 0 ... 60, icon: "iconTime"),
-                                                  total: TimeModel(id: 2, name: "Drill time:", value: 4, range: 0 ... 100, icon: "iconDelay"),
-                                                  repeats: TimeModel(id: 3, name: "Repeats:", value: 2, range: 1 ... 200, icon: "iconReplay"))
+                                                  pause: .drillPauseTime,
+                                                  total: .drillTime,
+                                                  repeats: .drillRepeats)
 }
 
 extension DrillModel: Codable {}

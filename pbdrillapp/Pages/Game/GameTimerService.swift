@@ -21,7 +21,7 @@ final class GameTimerService: NSObject {
     private var gameTimer: Timer?
     private var waitTimer: Timer?
 
-    private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: "ru")
+    private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: Locale.current.languageCode)
     private lazy var synthesizer = AVSpeechSynthesizer()
     private var audioPlayer: AVAudioPlayer?
 

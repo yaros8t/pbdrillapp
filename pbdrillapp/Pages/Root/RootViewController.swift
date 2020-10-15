@@ -83,9 +83,36 @@ extension RootViewController: PagesViewControllerDelegate {
 }
 
 extension RootViewController: BaseDrillViewControllerDelegate {
-    func drillViewController(_ controller: BaseDrillViewController, didStartEditMode _: TimeModel) {
+    func drillViewController(_ controller: BaseDrillViewController, didStartEditMode model: TimeModel) {
         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        
         pagesViewController?.isPagingEnabled = false
+        
+        if model.id == TimeModel.drillPauseTime.id {
+            confirmView.titlelabel.text = "Pause time"
+            confirmView.descLabel.text = "Pause time between sets. This time is announced by the voice assistant"
+        } else if model.id == TimeModel.drillTime.id {
+            confirmView.titlelabel.text = "Drill time"
+            confirmView.descLabel.text = "Time to complete the exercise"
+        } else if model.id == TimeModel.drillRepeats.id {
+            confirmView.titlelabel.text = "Repeats count"
+            confirmView.descLabel.text = "The number of repetitions of the exercises. When finished, the end tone will sound"
+            
+        } else if model.id == TimeModel.gameWait.id {
+            confirmView.titlelabel.text = "Wait time"
+            confirmView.descLabel.text = "Time before the start of the game"
+        } else if model.id == TimeModel.gameLimit.id {
+            confirmView.titlelabel.text = "Limit time"
+            confirmView.descLabel.text = "Game completion time. If you put 0, then there will be no time limit"
+            
+        } else if model.id == TimeModel.saDrillTime.id {
+            confirmView.titlelabel.text = "Drill time"
+            confirmView.descLabel.text = "Time to complete the exercise"
+        } else if model.id == TimeModel.saRepeatsTime.id {
+            confirmView.titlelabel.text = "Repeats count"
+            confirmView.descLabel.text = "The number of repetitions of the exercises. When finished, the end tone will sound"
+        }
+ 
         showConfitmView()
         controller.changeMode(.edit)
 

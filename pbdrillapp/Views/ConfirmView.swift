@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConfirmView: UIView {
+final class ConfirmView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -23,14 +23,15 @@ class ConfirmView: UIView {
 
     var doneAction: (() -> Void)?
     var cancelAction: (() -> Void)?
+    
+    private(set) lazy var titlelabel = UILabel()
+    private(set) lazy var descLabel = UILabel()
 
     private func commonSetup() {
         backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
         layer.cornerRadius = 38.0
         layer.masksToBounds = true
 
-        let titlelabel = UILabel()
-        titlelabel.text = "Title"
         titlelabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         titlelabel.translatesAutoresizingMaskIntoConstraints = false
         titlelabel.textColor = #colorLiteral(red: 0.1254901961, green: 0.1254901961, blue: 0.1254901961, alpha: 1)
@@ -40,15 +41,17 @@ class ConfirmView: UIView {
             titlelabel.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
 
-        let descLabel = UILabel()
-        descLabel.text = "dsfkdn ksn fsdnk fds k"
         descLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         descLabel.textColor = #colorLiteral(red: 0.1254901961, green: 0.1254901961, blue: 0.1254901961, alpha: 1)
         descLabel.translatesAutoresizingMaskIntoConstraints = false
+        descLabel.numberOfLines = 0
+        descLabel.textAlignment = .center
         addSubview(descLabel)
         NSLayoutConstraint.activate([
             descLabel.topAnchor.constraint(equalTo: titlelabel.bottomAnchor, constant: 10),
             descLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            leadingAnchor.constraint(equalTo: descLabel.leadingAnchor, constant: -16),
+            trailingAnchor.constraint(equalTo: descLabel.trailingAnchor, constant: 16),
         ])
 
         let doneButton = UIButton()

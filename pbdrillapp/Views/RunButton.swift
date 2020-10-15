@@ -29,6 +29,9 @@ class RunButton: UIView {
     private var startLocation: CGPoint = .zero
     private var currentOverlayPercent: Int = 0
     private var range: ClosedRange<Int> = 0 ... 0
+    
+    private lazy var slide = UIPanGestureRecognizer(target: self, action: #selector(slide(_:)))
+    private lazy var tap = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,10 +74,7 @@ class RunButton: UIView {
             buttonView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
         ])
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         buttonView.addGestureRecognizer(tap)
-
-        let slide = UIPanGestureRecognizer(target: self, action: #selector(slide(_:)))
         buttonView.addGestureRecognizer(slide)
         slide.delegate = self
 
@@ -117,6 +117,8 @@ class RunButton: UIView {
     func setupSliderMode(animated: Bool, range: ClosedRange<Int>, value: Int) {
         self.range = range
         buttonOverlayView.isHidden = false
+        
+        slide.isEnabled = true
 
         buttonOverlayViewTopCnstr.constant = 500
         layoutIfNeeded()
@@ -143,6 +145,8 @@ class RunButton: UIView {
 
     func setupStartMode(animated: Bool = true) {
         buttonView.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.2196078431, blue: 0.3215686275, alpha: 1)
+        
+        slide.isEnabled = false
 
         buttonOverlayView.isHidden = true
         buttonViewWCnstr.constant = 180
@@ -163,6 +167,8 @@ class RunButton: UIView {
 
     func setupStopMode(animated: Bool = true) {
         buttonView.backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+        
+        slide.isEnabled = false
 
         buttonOverlayView.isHidden = true
         buttonViewWCnstr.constant = 180

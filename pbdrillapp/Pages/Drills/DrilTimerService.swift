@@ -22,7 +22,7 @@ final class DrilTimerService: NSObject {
     private var drillTimer: Timer?
     private var pauseTimer: Timer?
 
-    private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: "ru")
+    private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: Locale.current.languageCode)
     private lazy var synthesizer = AVSpeechSynthesizer()
     private var audioPlayer: AVAudioPlayer?
 

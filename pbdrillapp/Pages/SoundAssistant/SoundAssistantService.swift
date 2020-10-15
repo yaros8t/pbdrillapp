@@ -19,7 +19,7 @@ final class SoundAssistantService: NSObject {
 
     private var drillTimer: Timer?
 
-    private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: "ru")
+    private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: Locale.current.languageCode)
     private lazy var synthesizer = AVSpeechSynthesizer()
     private var audioPlayer: AVAudioPlayer?
 

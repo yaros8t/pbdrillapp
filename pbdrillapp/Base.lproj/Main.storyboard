@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eD8-0L-gvW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eD8-0L-gvW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17504.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +24,7 @@
                                 </connections>
                             </containerView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TDB-ie-g25">
-                                <rect key="frame" x="16" y="832.5" width="382" height="29.5"/>
+                                <rect key="frame" x="16" y="834.5" width="382" height="27.5"/>
                                 <color key="pageIndicatorTintColor" red="0.8901960784313725" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
@@ -301,6 +301,18 @@
                                     <constraint firstAttribute="height" constant="100" id="ODY-0S-oAF"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random set 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcH-Am-1XT">
+                                <rect key="frame" x="215" y="435.5" width="78" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random set 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mT4-m5-bZg">
+                                <rect key="frame" x="16" y="435.5" width="76.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8CF-Im-MOf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -309,9 +321,13 @@
                             <constraint firstItem="tpa-Qe-vka" firstAttribute="top" secondItem="N4t-Uq-tvF" secondAttribute="bottom" constant="38" id="5Qb-AD-nU3"/>
                             <constraint firstItem="N4t-Uq-tvF" firstAttribute="top" secondItem="8CF-Im-MOf" secondAttribute="top" constant="20" id="BHf-D7-Q0r"/>
                             <constraint firstItem="CG2-Tp-RLQ" firstAttribute="top" secondItem="tpa-Qe-vka" secondAttribute="bottom" constant="20" id="BPS-Dw-WO2"/>
+                            <constraint firstItem="3tv-0M-izf" firstAttribute="top" secondItem="tcH-Am-1XT" secondAttribute="bottom" id="EBO-h7-kF5"/>
+                            <constraint firstItem="3tv-0M-izf" firstAttribute="top" secondItem="mT4-m5-bZg" secondAttribute="bottom" id="Ji3-jm-qoR"/>
                             <constraint firstItem="vOG-qf-EdP" firstAttribute="leading" secondItem="8CF-Im-MOf" secondAttribute="leading" constant="16" id="LU2-lF-8P9"/>
                             <constraint firstItem="CG2-Tp-RLQ" firstAttribute="centerX" secondItem="vBl-LD-aRJ" secondAttribute="centerX" id="PHF-at-Row"/>
+                            <constraint firstItem="tcH-Am-1XT" firstAttribute="leading" secondItem="SQd-jh-rti" secondAttribute="leading" constant="8" id="WFX-di-kh8"/>
                             <constraint firstItem="3tv-0M-izf" firstAttribute="leading" secondItem="8CF-Im-MOf" secondAttribute="leading" constant="8" id="WG0-cS-NHT"/>
+                            <constraint firstItem="mT4-m5-bZg" firstAttribute="leading" secondItem="nS8-iw-RNf" secondAttribute="leading" constant="8" id="YnQ-NZ-98R"/>
                             <constraint firstItem="8CF-Im-MOf" firstAttribute="trailing" secondItem="3tv-0M-izf" secondAttribute="trailing" constant="8" id="Z5O-ro-mqK"/>
                             <constraint firstItem="vOG-qf-EdP" firstAttribute="top" secondItem="tpa-Qe-vka" secondAttribute="bottom" constant="20" id="bCw-8J-dsd"/>
                             <constraint firstItem="N4t-Uq-tvF" firstAttribute="centerX" secondItem="vBl-LD-aRJ" secondAttribute="centerX" id="hs3-kn-1By"/>
@@ -321,8 +337,10 @@
                     </view>
                     <connections>
                         <outlet property="firstTagsView" destination="nS8-iw-RNf" id="eLa-aP-ucV"/>
+                        <outlet property="firstTagslabel" destination="mT4-m5-bZg" id="iKN-Ss-pgE"/>
                         <outlet property="runButton" destination="CG2-Tp-RLQ" id="kfQ-Mf-clc"/>
                         <outlet property="secondTagsView" destination="SQd-jh-rti" id="lyl-zM-ppR"/>
+                        <outlet property="secondTagslabel" destination="tcH-Am-1XT" id="ZH4-iB-ujE"/>
                         <outlet property="stackView" destination="vOG-qf-EdP" id="FW6-1L-cCw"/>
                         <outlet property="timeLabel" destination="tpa-Qe-vka" id="0Mr-0d-xE0"/>
                         <outlet property="titleLabel" destination="N4t-Uq-tvF" id="T0p-2F-cqO"/>

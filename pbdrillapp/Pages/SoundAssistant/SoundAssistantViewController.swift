@@ -2,7 +2,9 @@ import UIKit
 
 class SoundAssistantViewController: BaseDrillViewController {
     
+    @IBOutlet private var firstTagslabel: UILabel!
     @IBOutlet private var firstTagsView: EYTagView!
+    @IBOutlet private var secondTagslabel: UILabel!
     @IBOutlet private var secondTagsView: EYTagView!
     
     private var model: SoundAssistantModel!
@@ -36,6 +38,8 @@ class SoundAssistantViewController: BaseDrillViewController {
             stop()
             firstTagsView.alpha = 0
             secondTagsView.alpha = 0
+            firstTagslabel.alpha = 0
+            secondTagslabel.alpha = 0
             startEditMode(selectedTimeView!)
             delegate?.drillViewController(self, didStartEditMode: selectedTimeView!.model!)
         } else {
@@ -45,6 +49,8 @@ class SoundAssistantViewController: BaseDrillViewController {
             UIView.animate(withDuration: 0.3, delay: 0.3, options: [.curveEaseInOut]) {
                 self.firstTagsView.alpha = 1
                 self.secondTagsView.alpha = 1
+                self.firstTagslabel.alpha = 1
+                self.secondTagslabel.alpha = 1
             }
         }
     }

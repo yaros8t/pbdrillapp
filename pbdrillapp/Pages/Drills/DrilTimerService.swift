@@ -1,11 +1,3 @@
-//
-//  DrilTimerService.swift
-//  pbdrillapp
-//
-//  Created by Yaroslav Tytarenko on 24.08.2020.
-//  Copyright © 2020 Yaros8T. All rights reserved.
-//
-
 import AVFoundation
 import Foundation
 
@@ -22,7 +14,7 @@ final class DrilTimerService: NSObject {
     private var drillTimer: Timer?
     private var pauseTimer: Timer?
 
-    private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: Locale.current.languageCode)
+    private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: "en")
     private lazy var synthesizer = AVSpeechSynthesizer()
     private var audioPlayer: AVAudioPlayer?
 

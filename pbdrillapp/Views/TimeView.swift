@@ -1,18 +1,11 @@
-//
-//  TimeView.swift
-//  DrillTimers
-//
-//  Created by Yaroslav Tytarenko on 09.06.2020.
-//  Copyright © 2020 Yaros H. All rights reserved.
-//
-
 import UIKit
+import TactileSlider
 
 protocol TimeViewDelegate: class {
     func timeView(_ view: TimeView, didSelect: Bool)
 }
 
-class TimeView: UIView {
+final class TimeView: UIView {
     weak var delegate: TimeViewDelegate?
     var model: TimeModel?
 
@@ -25,6 +18,8 @@ class TimeView: UIView {
 
     private var titleLabelVCnstr: NSLayoutConstraint!
     private var timeLabelVCnstr: NSLayoutConstraint!
+    
+    private var slider: TactileSlider?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,7 +37,7 @@ class TimeView: UIView {
         self.model = model
 
         titleLabel.text = model.name
-        timeLabel.text = "\(model.value)"
+        update(value: "\(model.value)")
 
         let image = UIImage(named: model.icon)?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
@@ -51,7 +46,7 @@ class TimeView: UIView {
     }
 
     func update(value: String) {
-        timeLabel.text = value
+        timeLabel.text = value + " " + model!.format
     }
 
     private func commonSetup() {
@@ -59,7 +54,7 @@ class TimeView: UIView {
         timeLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.262745098, blue: 0.2705882353, alpha: 1)
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(timeLabel)
-        timeLabelVCnstr = timeLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+        timeLabelVCnstr = timeLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 00)
         timeLabelLCnstr = leadingAnchor.constraint(equalTo: timeLabel.leadingAnchor)
         timeLabelXCnstr = timeLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         NSLayoutConstraint.activate([timeLabelLCnstr, timeLabelVCnstr])
@@ -68,20 +63,18 @@ class TimeView: UIView {
         titleLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.262745098, blue: 0.2705882353, alpha: 1)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
-        titleLabelVCnstr = titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+        titleLabelVCnstr = titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
         let titleLabelLCnstr = leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor)
         NSLayoutConstraint.activate([titleLabelVCnstr, titleLabelLCnstr])
 
         button.addTarget(self, action: #selector(tap), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         addSubview(button)
-        let buttonVCnstr = button.centerYAnchor.constraint(equalTo: centerYAnchor)
+        let buttonVCnstr = button.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
         let buttonTCnstr = trailingAnchor.constraint(equalTo: button.trailingAnchor)
-        let buttonWCnstr = button.widthAnchor.constraint(equalToConstant: 53)
-        let buttonHCnstr = button.heightAnchor.constraint(equalToConstant: 53)
+        let buttonWCnstr = button.widthAnchor.constraint(equalToConstant: 52)
+        let buttonHCnstr = button.heightAnchor.constraint(equalToConstant: 52)
         NSLayoutConstraint.activate([buttonVCnstr, buttonTCnstr, buttonWCnstr, buttonHCnstr])
-
-//        backgroundColor = .green
 
         layer.cornerRadius = 8.0
         layer.masksToBounds = true
@@ -92,65 +85,61 @@ class TimeView: UIView {
     @objc private func tap() {
         delegate?.timeView(self, didSelect: true)
     }
-
-    func setActive(_ active: Bool) {
-        var color: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        if active {
-            color = #colorLiteral(red: 0.2549019608, green: 0.262745098, blue: 0.2705882353, alpha: 1)
-        } else {
-            color = #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8705882353, alpha: 1)
-        }
-
-        titleLabel.textColor = color
-        timeLabel.textColor = color
-    }
-
-    func setButtonActive(_ active: Bool) {
-        if active {
-            button.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.262745098, blue: 0.2705882353, alpha: 1)
-            button.tintColor = .white
-        } else {
-            button.backgroundColor = #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8705882353, alpha: 1)
-            button.tintColor = .black
-        }
+    
+    @objc private func valueChanged() {
+        updateModelValue()
+        update(value: "\(Int(slider!.value))")
     }
 
     func setupEditMode(animated: Bool = true) {
         button.isSelected = true
-
-        timeLabelXCnstr.isActive = false
-        timeLabelLCnstr.isActive = true
-        titleLabelVCnstr.constant = -14
-        timeLabelVCnstr.constant = 10
-
-        let duration: TimeInterval = animated ? 0.3 : 0
-        UIView.animate(withDuration: duration) {
-            self.layoutIfNeeded()
+        
+        slider?.removeFromSuperview()
+        slider = TactileSlider(frame: CGRect(origin: .zero, size: frame.size))
+        slider?.trackBackground = #colorLiteral(red: 0.5529411765, green: 0.5529411765, blue: 0.5529411765, alpha: 1)
+        slider?.tintColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+        slider?.cornerRadius = 15
+        slider?.isPointerInteractionEnabled = true
+        slider?.feedbackStyle = .medium
+        slider?.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
+        slider?.minimum = Float(model!.range.min() ?? 0)
+        slider?.maximum = Float(model!.range.max() ?? 0)
+        slider?.setValue(Float(model?.value ?? 0), animated: false)
+        addSubview(slider!)
+        sendSubviewToBack(slider!)
+        
+        UIView.animate(withDuration: 0.3) {
+            self.titleLabel.alpha = 0
         }
-
-        UIView.animate(withDuration: duration) {
-            self.timeLabel.transform = .identity
-        }
+        
+        button.backgroundColor = .clear
+        button.tintColor = .white
     }
 
     func setupRegularMode(animated: Bool = true) {
         button.isSelected = false
+        
+        slider?.removeFromSuperview()
 
         timeLabelLCnstr.isActive = false
         timeLabelXCnstr.isActive = true
-        titleLabelVCnstr.constant = 0
-        timeLabelVCnstr.constant = 0
-
-        let duration: TimeInterval = animated ? 0.3 : 0
-        UIView.animate(withDuration: duration) {
-            self.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.3) {
+            self.titleLabel.alpha = 1
         }
-
-        UIView.animate(withDuration: duration) {
-            self.timeLabel.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        }
-
-        setActive(true)
-        setButtonActive(false)
+        
+        button.backgroundColor = #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8705882353, alpha: 1)
+        button.tintColor = .black
+        
+        updateModelValue()
+    }
+    
+    private func updateModelValue() {
+        guard let slider = slider else { return }
+        
+        var newModel = model
+        newModel?.value = Int(slider.value)
+        model = newModel
     }
 }
+

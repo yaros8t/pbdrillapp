@@ -19,50 +19,13 @@ class SoundAssistantViewController: BaseDrillViewController {
         model = storage.getSoundAssistantModel()
         drillTimeView = addTimeView(with: model.drill)
         repeatsTimeView = addTimeView(with: model.repeats)
-
-        hideTimeLabel()
-        runButton.delegate = self
         
         prepareTagView(firstTagsView)
         prepareTagView(secondTagsView)
         firstTagsView.addTags(model.firstTags)
         secondTagsView.addTags(model.secondTags)
-    }
-
-    override func changeMode(_ mode: BaseDrillViewController.Mode) {
-        guard self.mode != mode else { return }
-
-        self.mode = mode
-
-        if mode == .edit {
-            stop()
-            firstTagsView.alpha = 0
-            secondTagsView.alpha = 0
-            firstTagslabel.alpha = 0
-            secondTagslabel.alpha = 0
-            startEditMode(selectedTimeView!)
-            delegate?.drillViewController(self, didStartEditMode: selectedTimeView!.model!)
-        } else {
-            endEditMode()
-            delegate?.drillViewController(self, didEndEditMode: selectedTimeView!.model!)
-            
-            UIView.animate(withDuration: 0.3, delay: 0.3, options: [.curveEaseInOut]) {
-                self.firstTagsView.alpha = 1
-                self.secondTagsView.alpha = 1
-                self.firstTagslabel.alpha = 1
-                self.secondTagslabel.alpha = 1
-            }
-        }
-    }
-
-    override func applyNewValue() {
-        save(selectedTime)
-        changeMode(.regular)
-    }
-
-    override func cancelNewValue() {
-        selectedTime = nil
-        changeMode(.regular)
+        
+        resetTimeLabel()
     }
 
     override func start() {
@@ -74,11 +37,11 @@ class SoundAssistantViewController: BaseDrillViewController {
         super.stop()
         service.stop()
         drillTimeView?.backgroundColor = .clear
+        
+        resetTimeLabel()
     }
     
     private func prepareTagView(_ tagView: EYTagView) {
-        tagView.fontTag = UIFont.systemFont(ofSize: 14)
-        tagView.fontInput = UIFont.systemFont(ofSize: 14)
         tagView.colorTag = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         tagView.colorTagBg = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
         tagView.colorInputBg = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -86,9 +49,11 @@ class SoundAssistantViewController: BaseDrillViewController {
         tagView.colorInputBoard = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
         tagView.colorInput = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         tagView.delegate = self
+        
+        tagView.layoutTagviews()
     }
 
-    private func save(_ time: TimeModel?) {
+    override func save(_ time: TimeModel?) {
         guard let time = time else { assert(false); return }
 
         if time.id == model.drill.id {
@@ -102,8 +67,16 @@ class SoundAssistantViewController: BaseDrillViewController {
         }
 
         storage.save(settings: model)
-
-        hideTimeLabel()
+    }
+    
+    private func resetTimeLabel() {
+        timeLabel.text = "\(model.drill.value)s"
+    }
+    
+    private func saveModel() {
+        model.firstTags = firstTagsView.tagStrings() as! [String]
+        model.secondTags = secondTagsView.tagStrings() as! [String]
+        storage.save(settings: model)
     }
 }
 
@@ -111,6 +84,18 @@ extension SoundAssistantViewController: EYTagViewDelegate {
     
     func tagDidBeginEditing(_ tagView: EYTagView!) {
         stop()
+    }
+    
+    func tagDidEndEditing(_ tagView: EYTagView!) {
+        saveModel()
+    }
+    
+    func willRemoveTag(_ tagView: EYTagView!, index: Int) -> Bool {
+        return true
+    }
+    
+    func didRemoveTag(_ tagView: EYTagView!, index: Int) {
+        saveModel()
     }
 }
 
@@ -143,24 +128,3 @@ extension SoundAssistantViewController: SoundAssistantServiceDataSource {
         secondTagsView.tagStrings() as! [String]
     }
 }
-
-extension SoundAssistantViewController: RunButtonDelegate {
-    
-    func didChangeValue(_ value: Int) {
-        guard let model = selectedTimeView?.model else { assert(false); return }
-        selectedTime = model
-        selectedTime?.value = value
-        setTimeValue(value)
-    }
-
-    func runButtonDidTap() {
-        guard mode != .edit else { return }
-
-        if isRunned {
-            stop()
-        } else {
-            start()
-        }
-    }
-}
-

@@ -1,14 +1,6 @@
-//
-//  TimeButton.swift
-//  DrillTimers
-//
-//  Created by Yaroslav Tytarenko on 09.06.2020.
-//  Copyright © 2020 Yaros H. All rights reserved.
-//
-
 import UIKit
 
-class TimeButton: UIButton {
+final class TimeButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
 

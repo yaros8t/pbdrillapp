@@ -1,11 +1,3 @@
-//
-//  Sounds.swift
-//  pbdrillapp
-//
-//  Created by Yaroslav Tytarenko on 24.08.2020.
-//  Copyright © 2020 Yaros8T. All rights reserved.
-//
-
 import Foundation
 
 extension String {

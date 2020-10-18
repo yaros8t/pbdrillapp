@@ -1,11 +1,3 @@
-//
-//  DrilTimerService.swift
-//  pbdrillapp
-//
-//  Created by Yaroslav Tytarenko on 24.08.2020.
-//  Copyright © 2020 Yaros8T. All rights reserved.
-//
-
 import AVFoundation
 import Foundation
 
@@ -21,7 +13,7 @@ final class GameTimerService: NSObject {
     private var gameTimer: Timer?
     private var waitTimer: Timer?
 
-    private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: Locale.current.languageCode)
+    private lazy var synthesisVoice = AVSpeechSynthesisVoice(language: "en")
     private lazy var synthesizer = AVSpeechSynthesizer()
     private var audioPlayer: AVAudioPlayer?
 
@@ -47,7 +39,7 @@ final class GameTimerService: NSObject {
 
     func stop() {
         resetAllTimers()
-        stopAudioPlayer()
+        playSound(name: .stopGame)
     }
 
     // MARK: -
@@ -63,6 +55,7 @@ final class GameTimerService: NSObject {
 
     private func startGameTimer() {
         updateGame()
+        resetWaitTimer()
 
         gameTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
             guard let self = self else { return }
@@ -101,13 +94,13 @@ final class GameTimerService: NSObject {
             self.updateWait()
 
             if self.currentWaitValue == 61 {
-                self.speech(text: "\(self.currentWaitValue - 1) было")
+                self.speech(text: "\(self.currentWaitValue - 1) seconds")
             } else if self.currentWaitValue == 46 {
-                self.speech(text: "\(self.currentWaitValue - 1) было")
+                self.speech(text: "\(self.currentWaitValue - 1) seconds")
             } else if self.currentWaitValue == 31 {
-                self.speech(text: "\(self.currentWaitValue - 1) было")
+                self.speech(text: "\(self.currentWaitValue - 1) seconds")
             } else if self.currentWaitValue == 16 {
-                self.speech(text: "\(self.currentWaitValue - 1) было")
+                self.speech(text: "\(self.currentWaitValue - 1) seconds")
             } else if self.currentWaitValue == 11 {
                 self.playSound(name: .tenSeconds)
             } else if self.currentWaitValue == 0 {
@@ -179,6 +172,7 @@ final class GameTimerService: NSObject {
 }
 
 extension GameTimerService: AVAudioPlayerDelegate {
+    
     func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully _: Bool) {
         stopAudioPlayer()
     }

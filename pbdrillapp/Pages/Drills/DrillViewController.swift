@@ -1,12 +1,5 @@
-//
-//  ViewController.swift
-//  DrillTimers
-//
-//  Created by Yaroslav Tytarenko on 09.06.2020.
-//  Copyright © 2020 Yaros H. All rights reserved.
-//
-
 import UIKit
+import TactileSlider
 
 final class DrillViewController: BaseDrillViewController {
     var drillModel: DrillModel!
@@ -23,37 +16,12 @@ final class DrillViewController: BaseDrillViewController {
         drillTimeView = addTimeView(with: drillModel.total)
         pauseTimeView = addTimeView(with: drillModel.pause)
         repeatsTimeView = addTimeView(with: drillModel.repeats)
-
-        hideTimeLabel()
-        runButton.delegate = self
-    }
-
-    override func changeMode(_ mode: BaseDrillViewController.Mode) {
-        guard self.mode != mode else { return }
-
-        self.mode = mode
-
-        if mode == .edit {
-            stop()
-            startEditMode(selectedTimeView!)
-            delegate?.drillViewController(self, didStartEditMode: selectedTimeView!.model!)
-        } else {
-            endEditMode()
-            delegate?.drillViewController(self, didEndEditMode: selectedTimeView!.model!)
-        }
-    }
-
-    override func applyNewValue() {
-        save(selectedTime)
-        changeMode(.regular)
-    }
-
-    override func cancelNewValue() {
-        selectedTime = nil
-        changeMode(.regular)
+        
+        resetTimeLabel()
     }
 
     override func start() {
+        resetTimeViews()
         super.start()
         service.start(with: drillModel)
     }
@@ -65,17 +33,28 @@ final class DrillViewController: BaseDrillViewController {
         drillTimeView?.backgroundColor = .clear
         repeatsTimeView?.backgroundColor = .clear
         pauseTimeView?.backgroundColor = .clear
+        
+        resetTimeLabel()
     }
     
-    override func startEditMode(_ view: TimeView) {
-        super.startEditMode(view)
-        
-        if view == repeatsTimeView {
-            timeLabel.text = "\(view.model?.value ?? 0)"
+    private func resetTimeLabel() {
+        if drillModel.pause.value != 0 {
+            timeLabel.text = "\(drillModel.pause.value)s"
+        } else {
+            timeLabel.text = "\(drillModel.total.value)s"
         }
     }
+    
+    private func resetTimeViews() {
+        drillTimeView?.setupRegularMode()
+        pauseTimeView?.setupRegularMode()
+        repeatsTimeView?.setupRegularMode()
+        timeView(drillTimeView!, didSelect: false)
+        timeView(pauseTimeView!, didSelect: false)
+        timeView(repeatsTimeView!, didSelect: false)
+    }
 
-    private func save(_ time: TimeModel?) {
+    override func save(_ time: TimeModel?) {
         guard let time = time else { assert(false); return }
 
         if time.id == drillModel.pause.id {
@@ -92,8 +71,6 @@ final class DrillViewController: BaseDrillViewController {
         }
 
         storage.save(settings: drillModel)
-
-        hideTimeLabel()
     }
 }
 
@@ -128,30 +105,5 @@ extension DrillViewController: DrilTimerServiceDelegate {
 
     func drilTimerServiceDidEnd() {
         stop()
-    }
-}
-
-extension DrillViewController: RunButtonDelegate {
-    func didChangeValue(_ value: Int) {
-        guard let model = selectedTimeView?.model else { assert(false); return }
-        
-        selectedTime = model
-        selectedTime?.value = value
-        
-        if selectedTimeView == repeatsTimeView {
-            timeLabel.text = "\(value)"
-        } else {
-            setTimeValue(value)
-        }
-    }
-
-    func runButtonDidTap() {
-        guard mode != .edit else { return }
-
-        if isRunned {
-            stop()
-        } else {
-            start()
-        }
     }
 }

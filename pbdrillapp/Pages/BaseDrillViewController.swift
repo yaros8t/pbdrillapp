@@ -1,12 +1,5 @@
-//
-//  BaseDrillViewController.swift
-//  DrillTimers
-//
-//  Created by Yaroslav Tytarenko on 11.06.2020.
-//  Copyright © 2020 Yaros H. All rights reserved.
-//
-
 import UIKit
+
 
 protocol BaseDrillViewControllerDelegate: class {
     func drillViewController(_ controller: BaseDrillViewController, didStartEditMode model: TimeModel)
@@ -17,36 +10,64 @@ protocol BaseDrillViewControllerDelegate: class {
 }
 
 class BaseDrillViewController: UIViewController {
+    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var runButton: RunButton!
-
+    @IBOutlet var runButtonCenterY: NSLayoutConstraint!
+    
+    @IBOutlet var constraints: [NSLayoutConstraint]!
+    
     weak var delegate: BaseDrillViewControllerDelegate?
-    var mode: Mode = .regular
+
     var isRunned: Bool = false
 
     lazy var storage: Storage = Storage()
 
-    var selectedTimeView: TimeView?
+    var selectedTimeViews: [TimeView: Bool] = [:]
     var selectedTime: TimeModel?
 
     enum Mode {
         case regular
         case edit
     }
-
-    func changeMode(_: Mode) {}
-
-    func applyNewValue() {}
-
-    func cancelNewValue() {}
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+                case 1136: // iPhone 5 or 5S or 5C
+                    stackView?.spacing = 4.0
+                    constraints?.forEach { constraint in
+                        constraint.constant = constraint.constant / 2
+                    }
+            default:
+                break
+            }
+        }
+        
+        stackView?.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    }
+    
+    @IBAction func didSekectRunButton(_ sender: RunButton) {
+        sender.isSelected = !sender.isSelected
+        
+        if sender.isSelected {
+            start()
+        } else {
+            stop()
+        }
+    }
+    
+    func save(_ time: TimeModel?) {}
 
     func addTimeView(with model: TimeModel) -> TimeView {
         let timeView = TimeView()
         timeView.delegate = self
         timeView.translatesAutoresizingMaskIntoConstraints = false
-        timeView.heightAnchor.constraint(equalToConstant: 53).isActive = true
+        timeView.heightAnchor.constraint(equalToConstant: 52).isActive = true
         timeView.setup(model: model)
         timeView.setupRegularMode(animated: false)
         stackView.addArrangedSubview(timeView)
@@ -55,69 +76,36 @@ class BaseDrillViewController: UIViewController {
     }
 
     func startEditMode(_ view: TimeView) {
-        guard let model = view.model else { assert(false); return }
-
-        showTimeLabel()
-        setTimeValue(model.value)
-
-        (stackView.arrangedSubviews as! [TimeView]).forEach {
-            $0.setupEditMode()
-            $0.setActive($0 == view)
-            $0.setButtonActive($0 == view)
-        }
-
-        runButton.setupSliderMode(animated: true, range: model.range, value: model.value)
+        view.setupEditMode()
     }
 
-    func endEditMode() {
-        (stackView.arrangedSubviews as! [TimeView]).forEach {
-            $0.setupRegularMode()
-            $0.setActive(true)
-            $0.setButtonActive(false)
-        }
-
-        runButton.setupStopMode()
-
-        hideTimeLabel()
+    func endEditMode(_ view: TimeView) {
+        view.setupRegularMode()
+        runButton.isSelected = false
     }
 
     func start() {
         isRunned = true
-        runButton.setupStartMode()
+        runButton.isSelected = true
         delegate?.drillViewControllerDidStartTimer()
-
-        showTimeLabel()
     }
 
     func stop() {
         isRunned = false
-        runButton.setupStopMode()
+        runButton.isSelected = false
         delegate?.drillViewControllerDidStopTimer()
-        hideTimeLabel()
     }
-
+    
     // MARK: - Time Label
-
-    func showTimeLabel() {
-        timeLabel.text = ""
-        UIView.animate(withDuration: 0.3) {
-            self.timeLabel.alpha = 1
-        }
-    }
-
-    func hideTimeLabel() {
-        timeLabel.text = ""
-        UIView.animate(withDuration: 0.3) {
-            self.timeLabel.alpha = 0
-        }
-    }
-
     func setTimeValue(_ value: Int) {
+        if value <= 0 {
+            ()
+        }
+        
         timeLabel.text = secondsToHoursMinutesSeconds(interval: value)
     }
 
     // MARK: - Utils
-
     private func secondsToHoursMinutesSeconds(interval: Int) -> String {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute, .second]
@@ -127,13 +115,21 @@ class BaseDrillViewController: UIViewController {
 }
 
 extension BaseDrillViewController: TimeViewDelegate {
-    func timeView(_ view: TimeView, didSelect _: Bool) {
-        selectedTimeView = view
-
-        if mode == .edit, selectedTimeView == view {
-            changeMode(.regular)
+    
+    func timeView(_ view: TimeView, didSelect: Bool) {
+        guard !isRunned else { UINotificationFeedbackGenerator().notificationOccurred(.error); return }
+        
+        if selectedTimeViews[view] == true || !didSelect {
+            selectedTimeViews[view] = false
+            view.setupRegularMode()
+            
+            save(view.model)
+            
         } else {
-            changeMode(.edit)
+            selectedTimeViews[view] = true
+            view.setupEditMode()
         }
     }
+    
+    func timeView(_ view: TimeView, change value: Int) {}
 }

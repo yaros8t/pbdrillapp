@@ -49,10 +49,8 @@ alpha:1.0]
 -(void)tagDidBeginEditing:(EYTagView*)tagView;
 -(void)tagDidEndEditing:(EYTagView*)tagView;
 
-/**
- *  @return whether delete
- */
 -(BOOL)willRemoveTag:(EYTagView*)tagView index:(NSInteger)index;
+-(void)didRemoveTag:(EYTagView*)tagView index:(NSInteger)index;
 @end
 
 typedef enum{

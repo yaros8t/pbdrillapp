@@ -1,15 +1,7 @@
-//
-//  ViewController.swift
-//  DrillTimers
-//
-//  Created by Yaroslav Tytarenko on 09.06.2020.
-//  Copyright © 2020 Yaros H. All rights reserved.
-//
-
 import UIKit
 
-class GameViewController: BaseDrillViewController {
-    private var gameModel: GameModel!
+final class GameViewController: BaseDrillViewController {
+    private var model: GameModel!
     private var waitTimeView: TimeView?
     private var limitTimeView: TimeView?
 
@@ -18,67 +10,52 @@ class GameViewController: BaseDrillViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        gameModel = storage.getGameSettings()
+        model = storage.getGameSettings()
 
-        waitTimeView = addTimeView(with: gameModel.wait)
-        limitTimeView = addTimeView(with: gameModel.limit)
-
-        hideTimeLabel()
-        runButton.delegate = self
-    }
-
-    override func changeMode(_ mode: BaseDrillViewController.Mode) {
-        guard self.mode != mode else { return }
-
-        self.mode = mode
-
-        if mode == .edit {
-            stop()
-            startEditMode(selectedTimeView!)
-            delegate?.drillViewController(self, didStartEditMode: selectedTimeView!.model!)
-        } else {
-            endEditMode()
-            delegate?.drillViewController(self, didEndEditMode: selectedTimeView!.model!)
-        }
-    }
-
-    override func applyNewValue() {
-        save(selectedTime)
-        changeMode(.regular)
-    }
-
-    override func cancelNewValue() {
-        selectedTime = nil
-        changeMode(.regular)
+        waitTimeView = addTimeView(with: model.wait)
+        limitTimeView = addTimeView(with: model.limit)
+        
+        resetTimeLabel()
     }
 
     override func start() {
+        resetTimeViews()
         super.start()
-        service.start(with: gameModel)
+        service.start(with: model)
     }
 
     override func stop() {
         super.stop()
         service.stop()
         waitTimeView?.backgroundColor = .clear
+        resetTimeLabel()
     }
 
-    private func save(_ time: TimeModel?) {
+    override func save(_ time: TimeModel?) {
         guard let time = time else { assert(false); return }
 
-        if time.id == gameModel.wait.id {
-            gameModel.wait = time
+        if time.id == model.wait.id {
+            model.wait = time
             waitTimeView?.setup(model: time)
-        } else if time.id == gameModel.limit.id {
-            gameModel.limit = time
+        } else if time.id == model.limit.id {
+            model.limit = time
             limitTimeView?.setup(model: time)
         } else {
             assert(false)
         }
 
-        storage.save(settings: gameModel)
-
-        hideTimeLabel()
+        storage.save(settings: model)
+    }
+    
+    private func resetTimeViews() {
+        waitTimeView?.setupRegularMode()
+        limitTimeView?.setupRegularMode()
+        timeView(waitTimeView!, didSelect: false)
+        timeView(limitTimeView!, didSelect: false)
+    }
+    
+    private func resetTimeLabel() {
+        timeLabel.text = "\(model.wait.value)s"
     }
 }
 
@@ -98,26 +75,7 @@ extension GameViewController: GameTimerServiceDelegate {
 
     func drilTimerServiceDidEnd() {
         super.stop()
+        resetTimeLabel()
         waitTimeView?.backgroundColor = .clear
     }
 }
-
-extension GameViewController: RunButtonDelegate {
-    func didChangeValue(_ value: Int) {
-        guard let model = selectedTimeView?.model else { return }
-        selectedTime = model
-        selectedTime?.value = value
-        setTimeValue(value)
-    }
-
-    func runButtonDidTap() {
-        guard mode != .edit else { return }
-
-        if isRunned {
-            stop()
-        } else {
-            start()
-        }
-    }
-}
-

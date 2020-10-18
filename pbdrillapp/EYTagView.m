@@ -17,6 +17,8 @@
 #define EYLOCALSTRING(STR) NSLocalizedString(STR, STR)
 #endif
 
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
 @interface EYCheckBoxButton :UIButton
 @property (nonatomic, strong) UIColor* colorBg;
 @property (nonatomic, strong) UIColor* colorText;
@@ -82,11 +84,21 @@
 {
     _newHeight=self.frame.size.height;
     _type=EYTagView_Type_Edit;
-    _tagHeight=36;
-    _tagPaddingSize=CGSizeMake(6, 6);
-    _textPaddingSize=CGSizeMake(0, 3);
-    _fontTag=[UIFont systemFontOfSize:14];
-    self.fontInput=[UIFont systemFontOfSize:14];
+    
+    if IS_IPHONE_5 {
+        _tagHeight=24;
+        _tagPaddingSize=CGSizeMake(4, 2);
+        _textPaddingSize=CGSizeMake(0, 3);
+        _fontTag=[UIFont systemFontOfSize:12];
+        self.fontInput=[UIFont systemFontOfSize:12];
+    } else {
+        _tagHeight=36;
+        _tagPaddingSize=CGSizeMake(6, 6);
+        _textPaddingSize=CGSizeMake(0, 3);
+        _fontTag=[UIFont systemFontOfSize:14];
+        self.fontInput=[UIFont systemFontOfSize:14];
+    }
+
     _colorTag=COLORRGB(0xffffff);
     _colorTagUnselected=COLORRGB(0xa1a2a2);
     _colorInput=COLORRGB(0x2ab44e);
@@ -95,7 +107,7 @@
     _colorTagBoard=COLORRGB(0xdddddd);
     _colorInputBg=COLORRGB(0xbbbbbb);
     _colorInputBoard=COLORRGB(0x2ab44e);
-    _viewMaxHeight=130;
+    _viewMaxHeight=160;
     self.clipsToBounds=YES;
     self.backgroundColor=COLORRGB(0xffffff);
     _maxSelected = 0;
@@ -589,7 +601,7 @@
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
+    
     if (!textField.text
         || [textField.text isEqualToString:@""]) {
         return NO;
@@ -597,6 +609,9 @@
     [self addTagToLast:textField.text];
     textField.text=nil;
     [self layoutTagviews];
+    
+    [textField resignFirstResponder];
+    
     return NO;
 }
 
@@ -638,6 +653,10 @@
         if ([_delegate willRemoveTag:self index:_editingTagIndex]) {
             [self removeTag:_tagStrings[_editingTagIndex]];
         }
+    }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(didRemoveTag:index:)]) {
+        [_delegate didRemoveTag:self index:_editingTagIndex];
     }
 }
 - (BOOL) canPerformAction:(SEL)selector withSender:(id) sender {

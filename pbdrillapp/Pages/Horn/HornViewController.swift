@@ -1,15 +1,7 @@
-//
-//  FeedbackViewController.swift
-//  DrillTimers
-//
-//  Created by Yaroslav Tytarenko on 11.06.2020.
-//  Copyright © 2020 Yaros H. All rights reserved.
-//
-
 import UIKit
 import AVFoundation
 
-class HornViewController: BaseDrillViewController {
+final class HornViewController: BaseDrillViewController {
     
     private var audioPlayer: AVAudioPlayer?
     

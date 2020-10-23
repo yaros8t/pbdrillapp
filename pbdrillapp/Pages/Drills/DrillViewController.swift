@@ -80,7 +80,7 @@ extension DrillViewController: DrilTimerServiceDelegate {
         pauseTimeView?.backgroundColor = .clear
         repeatsTimeView?.backgroundColor = .clear
         UIView.animate(withDuration: 0.3) {
-            self.drillTimeView?.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+            self.drillTimeView?.backgroundColor = UIColor(named: "timeHighlight")
         }
     }
 
@@ -89,7 +89,7 @@ extension DrillViewController: DrilTimerServiceDelegate {
         drillTimeView?.backgroundColor = .clear
         repeatsTimeView?.backgroundColor = .clear
         UIView.animate(withDuration: 0.3) {
-            self.pauseTimeView?.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+            self.pauseTimeView?.backgroundColor = UIColor(named: "timeHighlight")
         }
     }
 
@@ -97,7 +97,7 @@ extension DrillViewController: DrilTimerServiceDelegate {
         drillTimeView?.backgroundColor = .clear
         pauseTimeView?.backgroundColor = .clear
         UIView.animate(withDuration: 0.3) {
-            self.repeatsTimeView?.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+            self.repeatsTimeView?.backgroundColor = UIColor(named: "timeHighlight")
         }
 
         repeatsTimeView?.update(value: "\(count)")

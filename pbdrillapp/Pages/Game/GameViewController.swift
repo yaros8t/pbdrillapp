@@ -69,7 +69,7 @@ extension GameViewController: GameTimerServiceDelegate {
     func drilTimerService(_: GameTimerService, didUpdateWait time: Int) {
         setTimeValue(time)
         UIView.animate(withDuration: 0.3) {
-            self.waitTimeView?.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+            self.waitTimeView?.backgroundColor = UIColor(named: "timeHighlight")
         }
     }
 

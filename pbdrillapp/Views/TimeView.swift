@@ -42,7 +42,7 @@ final class TimeView: UIView {
         let image = UIImage(named: model.icon)?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.setImage(image, for: .selected)
-        button.tintColor = .black
+        button.tintColor = UIColor(named: "timeButtonIcon")
     }
 
     func update(value: String) {
@@ -51,7 +51,7 @@ final class TimeView: UIView {
 
     private func commonSetup() {
         timeLabel.font = UIFont.systemFont(ofSize: 30)
-        timeLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.262745098, blue: 0.2705882353, alpha: 1)
+        timeLabel.textColor = UIColor(named: "timeText")
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(timeLabel)
         timeLabelVCnstr = timeLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 00)
@@ -60,7 +60,7 @@ final class TimeView: UIView {
         NSLayoutConstraint.activate([timeLabelLCnstr, timeLabelVCnstr])
 
         titleLabel.font = UIFont.systemFont(ofSize: 18)
-        titleLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.262745098, blue: 0.2705882353, alpha: 1)
+        titleLabel.textColor = UIColor(named: "titleText")
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         titleLabelVCnstr = titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
@@ -96,8 +96,8 @@ final class TimeView: UIView {
         
         slider?.removeFromSuperview()
         slider = TactileSlider(frame: CGRect(origin: .zero, size: frame.size))
-        slider?.trackBackground = #colorLiteral(red: 0.5529411765, green: 0.5529411765, blue: 0.5529411765, alpha: 1)
-        slider?.tintColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+        slider?.trackBackground = UIColor(named: "sliderTrackBackground")!
+        slider?.tintColor = UIColor(named: "sliderTrack")!
         slider?.cornerRadius = 15
         slider?.isPointerInteractionEnabled = true
         slider?.feedbackStyle = .medium
@@ -128,8 +128,8 @@ final class TimeView: UIView {
             self.titleLabel.alpha = 1
         }
         
-        button.backgroundColor = #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8705882353, alpha: 1)
-        button.tintColor = .black
+        button.backgroundColor = UIColor(named: "timeButton")
+        button.tintColor = UIColor(named: "timeButtonIcon")
         
         updateModelValue()
     }

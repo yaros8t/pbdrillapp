@@ -6,11 +6,11 @@ final class RunButton: UIButton {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.2196078431, blue: 0.3215686275, alpha: 1)
-                tintColor = #colorLiteral(red: 0.9647058824, green: 0.2196078431, blue: 0.3215686275, alpha: 1)
+                backgroundColor = UIColor(named: "stop")
+                tintColor = UIColor(named: "stop")
             } else {
-                backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
-                tintColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+                backgroundColor = UIColor(named: "start")
+                tintColor = UIColor(named: "start")
             }
         }
     }

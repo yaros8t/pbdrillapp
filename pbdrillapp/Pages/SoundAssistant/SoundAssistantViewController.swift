@@ -42,12 +42,13 @@ class SoundAssistantViewController: BaseDrillViewController {
     }
     
     private func prepareTagView(_ tagView: EYTagView) {
-        tagView.colorTag = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        tagView.colorTagBg = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
-        tagView.colorInputBg = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        tagView.colorInputPlaceholder = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        tagView.colorInputBoard = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
-        tagView.colorInput = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        tagView.backgroundColor = .clear
+        tagView.colorTag = UIColor(named: "tagText")
+        tagView.colorTagBg = UIColor(named: "tagBackground")
+        tagView.colorInputBg = UIColor(named: "tagBackground")
+        tagView.colorInputPlaceholder = UIColor(named: "tagText")
+        tagView.colorInputBoard = UIColor(named: "tagBoard")
+        tagView.colorInput = UIColor(named: "tagText")
         tagView.delegate = self
         
         tagView.layoutTagviews()
@@ -105,7 +106,7 @@ extension SoundAssistantViewController: SoundAssistantServiceDelegate {
         setTimeValue(time)
         
         UIView.animate(withDuration: 0.3) {
-            self.drillTimeView?.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+            self.drillTimeView?.backgroundColor = UIColor(named: "timeHighlight")
         }
     }
 

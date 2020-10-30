@@ -33,6 +33,8 @@ class BaseDrillViewController: UIViewController {
         case edit
     }
     
+    private lazy var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Self.tapToBackground))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +50,8 @@ class BaseDrillViewController: UIViewController {
             }
         }
         
+        view.addGestureRecognizer(tap)
+        
         stackView?.arrangedSubviews.forEach { $0.removeFromSuperview() }
     }
     
@@ -58,6 +62,12 @@ class BaseDrillViewController: UIViewController {
             start()
         } else {
             stop()
+        }
+    }
+    
+    @objc func tapToBackground() {
+        selectedTimeViews.forEach { (key: TimeView, value: Bool) in
+            timeView(key, didSelect: false)
         }
     }
     

@@ -519,7 +519,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 37LVE8FFX9;
 				INFOPLIST_FILE = pbdrillapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -527,6 +527,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yaros8t.pbdrilltimers;
 				PRODUCT_NAME = "PB Drill Assistant";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -545,7 +546,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 37LVE8FFX9;
 				INFOPLIST_FILE = pbdrillapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -553,6 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yaros8t.pbdrilltimers;
 				PRODUCT_NAME = "PB Drill Assistant";
 				PROVISIONING_PROFILE_SPECIFIER = "";

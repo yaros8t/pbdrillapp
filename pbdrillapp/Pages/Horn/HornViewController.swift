@@ -3,10 +3,13 @@ import AVFoundation
 
 final class HornViewController: BaseDrillViewController {
     
+    @IBOutlet private var playButton: UIButton!
     private var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        playButton.backgroundColor = UIColor(named: "start")
     }
     
     @IBAction func didTapToHorn(_ sender: UIButton) {

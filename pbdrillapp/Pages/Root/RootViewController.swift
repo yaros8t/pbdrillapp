@@ -1,6 +1,6 @@
 import UIKit
 
-final class RootViewController: UIViewController {
+final class RootViewController: UIViewController, SessionCommands {
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var containerView: UIView!
 

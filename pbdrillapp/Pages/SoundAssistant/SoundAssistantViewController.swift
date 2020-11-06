@@ -1,13 +1,13 @@
 import UIKit
 
-class SoundAssistantViewController: BaseDrillViewController {
+final class SoundAssistantViewController: BaseDrillViewController {
     
     @IBOutlet private var firstTagslabel: UILabel!
     @IBOutlet private var firstTagsView: EYTagView!
     @IBOutlet private var secondTagslabel: UILabel!
     @IBOutlet private var secondTagsView: EYTagView!
     
-    private var model: SoundAssistantModel!
+    private var model: DrillModel!
     private var drillTimeView: TimeView?
     private var repeatsTimeView: TimeView?
 
@@ -16,14 +16,16 @@ class SoundAssistantViewController: BaseDrillViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        model = storage.getSoundAssistantModel()
-        drillTimeView = addTimeView(with: model.drill)
-        repeatsTimeView = addTimeView(with: model.repeats)
+        model = storage.getDrillModel(type: .rand)
+        drillTimeView = addTimeView(with: model.saDrillTime)
+        repeatsTimeView = addTimeView(with: model.saRepeatsTime)
         
         prepareTagView(firstTagsView)
         prepareTagView(secondTagsView)
         firstTagsView.addTags(model.firstTags)
         secondTagsView.addTags(model.secondTags)
+        
+        updateSoundTimerState(model.dictionary)
         
         resetTimeLabel()
     }
@@ -57,21 +59,20 @@ class SoundAssistantViewController: BaseDrillViewController {
     override func save(_ time: TimeModel?) {
         guard let time = time else { assert(false); return }
 
-        if time.id == model.drill.id {
-            model.drill = time
+        if time.type == .saDrillTime {
             drillTimeView?.setup(model: time)
-        } else if time.id == model.repeats.id {
-            model.repeats = time
+        } else if time.type == .saRepeatsTime {
             repeatsTimeView?.setup(model: time)
         } else {
             assert(false)
         }
 
+        model.update(time)
         storage.save(settings: model)
     }
     
     private func resetTimeLabel() {
-        timeLabel.text = "\(model.drill.value)s"
+        timeLabel.text = "\(model.saDrillTime.value)s"
     }
     
     private func saveModel() {

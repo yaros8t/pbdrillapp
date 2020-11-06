@@ -1,9 +1,24 @@
 import UIKit
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    private lazy var sessionDelegater: SessionDelegater = SessionDelegater()
+    
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Trigger WCSession activation at the early phase of app launching.
+        //
+        assert(WCSession.isSupported(), "This sample requires Watch Connectivity support!")
+        WCSession.default.delegate = sessionDelegater
+        WCSession.default.activate()
+        
+        // Remind the setup of WatchSettings.sharedContainerID.
+        //
+//        if WatchSettings.sharedContainerID.isEmpty {
+//            print("Specify a shared container ID for WatchSettings.sharedContainerID to use watch settings!")
+//        }
+        
         return true
     }
 

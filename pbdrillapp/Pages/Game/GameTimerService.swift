@@ -22,7 +22,7 @@ final class GameTimerService: NSObject {
     private var currentWaitValue: Int = 0
     private var currentLimitValue: Int = 0
 
-    private var model: GameModel = .default
+    private var model: DrillModel = .initDefault(.game)
 
     init(delegate: GameTimerServiceDelegate?) {
         super.init()
@@ -32,7 +32,7 @@ final class GameTimerService: NSObject {
 
     // MARK: -
 
-    func start(with model: GameModel) {
+    func start(with model: DrillModel) {
         setup(model: model)
         startWaitTimer()
     }
@@ -44,11 +44,11 @@ final class GameTimerService: NSObject {
 
     // MARK: -
 
-    private func setup(model: GameModel) {
+    private func setup(model: DrillModel) {
         self.model = model
         currentGameValue = 0
-        currentWaitValue = model.wait.value
-        currentLimitValue = model.limit.value
+        currentWaitValue = model.gameWait.value
+        currentLimitValue = model.gameLimit.value
     }
 
     // MARK: - Drill timer
@@ -115,7 +115,7 @@ final class GameTimerService: NSObject {
         waitTimer?.invalidate()
         waitTimer = nil
 
-        currentWaitValue = model.wait.value
+        currentWaitValue = model.gameWait.value
     }
 
     private func resetAllTimers() {

@@ -1,7 +1,8 @@
 import UIKit
 
 final class GameViewController: BaseDrillViewController {
-    private var model: GameModel!
+    
+    private var model: DrillModel!
     private var waitTimeView: TimeView?
     private var limitTimeView: TimeView?
 
@@ -10,10 +11,12 @@ final class GameViewController: BaseDrillViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        model = storage.getGameSettings()
+        model = storage.getDrillModel(type: .game)
 
-        waitTimeView = addTimeView(with: model.wait)
-        limitTimeView = addTimeView(with: model.limit)
+        waitTimeView = addTimeView(with: model.gameWait)
+        limitTimeView = addTimeView(with: model.gameLimit)
+        
+        updateGameTimerState(model.dictionary)
         
         resetTimeLabel()
     }
@@ -34,16 +37,15 @@ final class GameViewController: BaseDrillViewController {
     override func save(_ time: TimeModel?) {
         guard let time = time else { assert(false); return }
 
-        if time.id == model.wait.id {
-            model.wait = time
+        if time.type == .gameWait {
             waitTimeView?.setup(model: time)
-        } else if time.id == model.limit.id {
-            model.limit = time
+        } else if time.type == .gameLimit {
             limitTimeView?.setup(model: time)
         } else {
             assert(false)
         }
 
+        model.update(time)
         storage.save(settings: model)
     }
     
@@ -55,7 +57,7 @@ final class GameViewController: BaseDrillViewController {
     }
     
     private func resetTimeLabel() {
-        timeLabel.text = "\(model.wait.value)s"
+        timeLabel.text = "\(model.gameWait.value)s"
     }
 }
 

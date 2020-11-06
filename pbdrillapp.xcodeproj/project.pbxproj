@@ -13,7 +13,17 @@
 		7A2D775924F83D3E008A575C /* EYTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D775724F83D3E008A575C /* EYTextField.m */; };
 		7AFFDC2024F58BD900D267A1 /* GameTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFFDC1F24F58BD900D267A1 /* GameTimerService.swift */; };
 		7AFFDC2224F59FA200D267A1 /* 10-seconds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AFFDC2124F59FA200D267A1 /* 10-seconds.mp3 */; };
-		7AFFDC2424F6F53A00D267A1 /* SoundAssistantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFFDC2324F6F53A00D267A1 /* SoundAssistantModel.swift */; };
+		9C43789A254DB86A00D1662E /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A7E624F4503400BA732C /* Sounds.swift */; };
+		9C4378B1254E06D600D1662E /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE12A2492A9540048D95E /* TimeModel.swift */; };
+		9C4378B5254E06D900D1662E /* DrillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1492492B0CC0048D95E /* DrillModel.swift */; };
+		9C4378BE254E18AB00D1662E /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378BD254E18AB00D1662E /* Encodable+Extensions.swift */; };
+		9C4378C4254E190B00D1662E /* Emptyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378C3254E190B00D1662E /* Emptyable.swift */; };
+		9C4378C8254E1A4600D1662E /* Emptyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378C3254E190B00D1662E /* Emptyable.swift */; };
+		9C4378CC254E1A4900D1662E /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378BD254E18AB00D1662E /* Encodable+Extensions.swift */; };
+		9C4378D1254E1B0A00D1662E /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378D0254E1B0A00D1662E /* Parser.swift */; };
+		9C4378D5254E1F3600D1662E /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378D0254E1B0A00D1662E /* Parser.swift */; };
+		9C4378DA254E232C00D1662E /* Formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378D9254E232C00D1662E /* Formater.swift */; };
+		9C4378DE254E234D00D1662E /* Formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378D9254E232C00D1662E /* Formater.swift */; };
 		9CDBE1162492A8CC0048D95E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1152492A8CC0048D95E /* AppDelegate.swift */; };
 		9CDBE1182492A8CC0048D95E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1172492A8CC0048D95E /* SceneDelegate.swift */; };
 		9CDBE11D2492A8CC0048D95E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBE11B2492A8CC0048D95E /* Main.storyboard */; };
@@ -32,12 +42,68 @@
 		9CDBE1482492A9540048D95E /* DrillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE13C2492A9540048D95E /* DrillViewController.swift */; };
 		9CDBE14A2492B0CC0048D95E /* DrillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1492492B0CC0048D95E /* DrillModel.swift */; };
 		9CDBE14D2492C7D50048D95E /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE14C2492C7D50048D95E /* Storage.swift */; };
-		9CDBE1512492C9CD0048D95E /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1502492C9CD0048D95E /* GameModel.swift */; };
 		9CDBE1552492C9E10048D95E /* stop-game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBE1532492C9E10048D95E /* stop-game.mp3 */; };
 		9CDBE1562492C9E10048D95E /* start-game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBE1542492C9E10048D95E /* start-game.mp3 */; };
 		9CE1A7E524F44B0500BA732C /* DrilTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A7E424F44B0500BA732C /* DrilTimerService.swift */; };
-		9CE1A7E724F4503400BA732C /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A7E624F4503400BA732C /* Sounds.swift */; };
+		9CF8109A254C5D0A00566AF1 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF81098254C5D0A00566AF1 /* Interface.storyboard */; };
+		9CF8109C254C5D0B00566AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF8109B254C5D0B00566AF1 /* Assets.xcassets */; };
+		9CF810A3254C5D0B00566AF1 /* watchapp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9CF810A2254C5D0B00566AF1 /* watchapp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9CF810A8254C5D0B00566AF1 /* TrainingInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810A7254C5D0B00566AF1 /* TrainingInterfaceController.swift */; };
+		9CF810AA254C5D0B00566AF1 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810A9254C5D0B00566AF1 /* ExtensionDelegate.swift */; };
+		9CF810AC254C5D0B00566AF1 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810AB254C5D0B00566AF1 /* ComplicationController.swift */; };
+		9CF810AE254C5D0B00566AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF810AD254C5D0B00566AF1 /* Assets.xcassets */; };
+		9CF810B2254C5D0B00566AF1 /* watchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9CF81096254C5D0A00566AF1 /* watchapp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9CF810CC254C605D00566AF1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810C5254C605C00566AF1 /* Logger.swift */; };
+		9CF810CE254C605D00566AF1 /* CommandStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810C7254C605C00566AF1 /* CommandStatus.swift */; };
+		9CF810D1254C605D00566AF1 /* SessionCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810CA254C605D00566AF1 /* SessionCommands.swift */; };
+		9CF810D2254C605D00566AF1 /* SessionDelegater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810CB254C605D00566AF1 /* SessionDelegater.swift */; };
+		9CF810D8254C608D00566AF1 /* SessionCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810CA254C605D00566AF1 /* SessionCommands.swift */; };
+		9CF810D9254C608D00566AF1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810C5254C605C00566AF1 /* Logger.swift */; };
+		9CF810DA254C608D00566AF1 /* SessionDelegater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810CB254C605D00566AF1 /* SessionDelegater.swift */; };
+		9CF810DB254C608D00566AF1 /* CommandStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF810C7254C605C00566AF1 /* CommandStatus.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9CF810A4254C5D0B00566AF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CDBE10A2492A8CC0048D95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CF810A1254C5D0B00566AF1;
+			remoteInfo = "watchapp Extension";
+		};
+		9CF810B0254C5D0B00566AF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CDBE10A2492A8CC0048D95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CF81095254C5D0A00566AF1;
+			remoteInfo = watchapp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9CF810B3254C5D0B00566AF1 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				9CF810B2254C5D0B00566AF1 /* watchapp.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF810B6254C5D0B00566AF1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9CF810A3254C5D0B00566AF1 /* watchapp Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		268A157E0D60ECEE37F94E56 /* Pods-pbdrillapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pbdrillapp.release.xcconfig"; path = "Target Support Files/Pods-pbdrillapp/Pods-pbdrillapp.release.xcconfig"; sourceTree = "<group>"; };
@@ -50,7 +116,10 @@
 		7A2D775724F83D3E008A575C /* EYTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EYTextField.m; sourceTree = "<group>"; };
 		7AFFDC1F24F58BD900D267A1 /* GameTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerService.swift; sourceTree = "<group>"; };
 		7AFFDC2124F59FA200D267A1 /* 10-seconds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "10-seconds.mp3"; sourceTree = "<group>"; };
-		7AFFDC2324F6F53A00D267A1 /* SoundAssistantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAssistantModel.swift; sourceTree = "<group>"; };
+		9C4378BD254E18AB00D1662E /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
+		9C4378C3254E190B00D1662E /* Emptyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emptyable.swift; sourceTree = "<group>"; };
+		9C4378D0254E1B0A00D1662E /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		9C4378D9254E232C00D1662E /* Formater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formater.swift; sourceTree = "<group>"; };
 		9CDBE1122492A8CC0048D95E /* PB Drill Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PB Drill Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDBE1152492A8CC0048D95E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDBE1172492A8CC0048D95E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,11 +140,27 @@
 		9CDBE13C2492A9540048D95E /* DrillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrillViewController.swift; sourceTree = "<group>"; };
 		9CDBE1492492B0CC0048D95E /* DrillModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillModel.swift; sourceTree = "<group>"; };
 		9CDBE14C2492C7D50048D95E /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		9CDBE1502492C9CD0048D95E /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		9CDBE1532492C9E10048D95E /* stop-game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "stop-game.mp3"; sourceTree = "<group>"; };
 		9CDBE1542492C9E10048D95E /* start-game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "start-game.mp3"; sourceTree = "<group>"; };
 		9CE1A7E424F44B0500BA732C /* DrilTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrilTimerService.swift; sourceTree = "<group>"; };
 		9CE1A7E624F4503400BA732C /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		9CF81096254C5D0A00566AF1 /* watchapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF81099254C5D0A00566AF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		9CF8109B254C5D0B00566AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CF8109D254C5D0B00566AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CF810A2254C5D0B00566AF1 /* watchapp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watchapp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF810A7254C5D0B00566AF1 /* TrainingInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingInterfaceController.swift; sourceTree = "<group>"; };
+		9CF810A9254C5D0B00566AF1 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		9CF810AB254C5D0B00566AF1 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		9CF810AD254C5D0B00566AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CF810AF254C5D0B00566AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CF810C5254C605C00566AF1 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		9CF810C7254C605C00566AF1 /* CommandStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandStatus.swift; sourceTree = "<group>"; };
+		9CF810CA254C605D00566AF1 /* SessionCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCommands.swift; sourceTree = "<group>"; };
+		9CF810CB254C605D00566AF1 /* SessionDelegater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegater.swift; sourceTree = "<group>"; };
+		9CF810E0254C7B0400566AF1 /* PB Drill Assistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PB Drill Assistant.entitlements"; sourceTree = "<group>"; };
+		9CF810E4254C7B3A00566AF1 /* watchapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchapp.entitlements; sourceTree = "<group>"; };
+		9CF810E5254C7B4700566AF1 /* watchapp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "watchapp Extension.entitlements"; sourceTree = "<group>"; };
 		E36A07E9BD260A0AF87DF13E /* Pods-pbdrillapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pbdrillapp.debug.xcconfig"; path = "Target Support Files/Pods-pbdrillapp/Pods-pbdrillapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,13 +173,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CF8109F254C5D0B00566AF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C4378BC254E189B00D1662E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9C4378BD254E18AB00D1662E /* Encodable+Extensions.swift */,
+				9C4378C3254E190B00D1662E /* Emptyable.swift */,
+				9C4378D0254E1B0A00D1662E /* Parser.swift */,
+				9C4378D9254E232C00D1662E /* Formater.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		9CDBE1092492A8CC0048D95E = {
 			isa = PBXGroup;
 			children = (
 				9CDBE1142492A8CC0048D95E /* pbdrillapp */,
+				9CF81097254C5D0A00566AF1 /* watchapp */,
+				9CF810A6254C5D0B00566AF1 /* watchapp Extension */,
 				9CDBE1132492A8CC0048D95E /* Products */,
 				CEC4BB4939A36E72C3A1937C /* Frameworks */,
 				9DD7751BF19877E0D4FFF23A /* Pods */,
@@ -105,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				9CDBE1122492A8CC0048D95E /* PB Drill Assistant.app */,
+				9CF81096254C5D0A00566AF1 /* watchapp.app */,
+				9CF810A2254C5D0B00566AF1 /* watchapp Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +219,9 @@
 		9CDBE1142492A8CC0048D95E /* pbdrillapp */ = {
 			isa = PBXGroup;
 			children = (
+				9C4378BC254E189B00D1662E /* Utils */,
+				9CF810E0254C7B0400566AF1 /* PB Drill Assistant.entitlements */,
+				9CF810C4254C605C00566AF1 /* Shared */,
 				7A2D775624F83D3E008A575C /* EYTagView.h */,
 				7A2D775524F83D3E008A575C /* EYTagView.m */,
 				7A2D775424F83D3D008A575C /* EYTextField.h */,
@@ -137,9 +247,7 @@
 			children = (
 				9CDBE12A2492A9540048D95E /* TimeModel.swift */,
 				9CDBE1492492B0CC0048D95E /* DrillModel.swift */,
-				9CDBE1502492C9CD0048D95E /* GameModel.swift */,
 				9CE1A7E624F4503400BA732C /* Sounds.swift */,
-				7AFFDC2324F6F53A00D267A1 /* SoundAssistantModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,6 +337,41 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9CF81097254C5D0A00566AF1 /* watchapp */ = {
+			isa = PBXGroup;
+			children = (
+				9CF810E4254C7B3A00566AF1 /* watchapp.entitlements */,
+				9CF81098254C5D0A00566AF1 /* Interface.storyboard */,
+				9CF8109B254C5D0B00566AF1 /* Assets.xcassets */,
+				9CF8109D254C5D0B00566AF1 /* Info.plist */,
+			);
+			path = watchapp;
+			sourceTree = "<group>";
+		};
+		9CF810A6254C5D0B00566AF1 /* watchapp Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9CF810E5254C7B4700566AF1 /* watchapp Extension.entitlements */,
+				9CF810A7254C5D0B00566AF1 /* TrainingInterfaceController.swift */,
+				9CF810A9254C5D0B00566AF1 /* ExtensionDelegate.swift */,
+				9CF810AB254C5D0B00566AF1 /* ComplicationController.swift */,
+				9CF810AD254C5D0B00566AF1 /* Assets.xcassets */,
+				9CF810AF254C5D0B00566AF1 /* Info.plist */,
+			);
+			path = "watchapp Extension";
+			sourceTree = "<group>";
+		};
+		9CF810C4254C605C00566AF1 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9CF810C5254C605C00566AF1 /* Logger.swift */,
+				9CF810C7254C605C00566AF1 /* CommandStatus.swift */,
+				9CF810CA254C605D00566AF1 /* SessionCommands.swift */,
+				9CF810CB254C605D00566AF1 /* SessionDelegater.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		9DD7751BF19877E0D4FFF23A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,15 +400,51 @@
 				9CDBE10E2492A8CC0048D95E /* Sources */,
 				9CDBE10F2492A8CC0048D95E /* Frameworks */,
 				9CDBE1102492A8CC0048D95E /* Resources */,
+				9CF810B3254C5D0B00566AF1 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9CF810B1254C5D0B00566AF1 /* PBXTargetDependency */,
 			);
 			name = pbdrillapp;
 			productName = pbdrillapp;
 			productReference = 9CDBE1122492A8CC0048D95E /* PB Drill Assistant.app */;
 			productType = "com.apple.product-type.application";
+		};
+		9CF81095254C5D0A00566AF1 /* watchapp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CF810BA254C5D0B00566AF1 /* Build configuration list for PBXNativeTarget "watchapp" */;
+			buildPhases = (
+				9CF81094254C5D0A00566AF1 /* Resources */,
+				9CF810B6254C5D0B00566AF1 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9CF810A5254C5D0B00566AF1 /* PBXTargetDependency */,
+			);
+			name = watchapp;
+			productName = watchapp;
+			productReference = 9CF81096254C5D0A00566AF1 /* watchapp.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		9CF810A1254C5D0B00566AF1 /* watchapp Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CF810B9254C5D0B00566AF1 /* Build configuration list for PBXNativeTarget "watchapp Extension" */;
+			buildPhases = (
+				9CF8109E254C5D0B00566AF1 /* Sources */,
+				9CF8109F254C5D0B00566AF1 /* Frameworks */,
+				9CF810A0254C5D0B00566AF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "watchapp Extension";
+			productName = "watchapp Extension";
+			productReference = 9CF810A2254C5D0B00566AF1 /* watchapp Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -273,13 +452,19 @@
 		9CDBE10A2492A8CC0048D95E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Yaros8T;
 				TargetAttributes = {
 					9CDBE1112492A8CC0048D95E = {
 						CreatedOnToolsVersion = 11.5;
 						LastSwiftMigration = 1160;
+					};
+					9CF81095254C5D0A00566AF1 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					9CF810A1254C5D0B00566AF1 = {
+						CreatedOnToolsVersion = 12.2;
 					};
 				};
 			};
@@ -297,6 +482,8 @@
 			projectRoot = "";
 			targets = (
 				9CDBE1112492A8CC0048D95E /* pbdrillapp */,
+				9CF81095254C5D0A00566AF1 /* watchapp */,
+				9CF810A1254C5D0B00566AF1 /* watchapp Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -312,6 +499,23 @@
 				7AFFDC2224F59FA200D267A1 /* 10-seconds.mp3 in Resources */,
 				9CDBE1562492C9E10048D95E /* start-game.mp3 in Resources */,
 				9CDBE11D2492A8CC0048D95E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF81094254C5D0A00566AF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CF8109C254C5D0B00566AF1 /* Assets.xcassets in Resources */,
+				9CF8109A254C5D0A00566AF1 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF810A0254C5D0B00566AF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CF810AE254C5D0B00566AF1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,32 +552,71 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A2D775924F83D3E008A575C /* EYTextField.m in Sources */,
-				7AFFDC2424F6F53A00D267A1 /* SoundAssistantModel.swift in Sources */,
 				9CDBE13E2492A9540048D95E /* RootViewController.swift in Sources */,
 				7AFFDC2024F58BD900D267A1 /* GameTimerService.swift in Sources */,
 				9CDBE1482492A9540048D95E /* DrillViewController.swift in Sources */,
 				9CDBE14A2492B0CC0048D95E /* DrillModel.swift in Sources */,
 				9CDBE1162492A8CC0048D95E /* AppDelegate.swift in Sources */,
+				9CF810CC254C605D00566AF1 /* Logger.swift in Sources */,
 				9CDBE1412492A9540048D95E /* RunButton.swift in Sources */,
+				9C4378C4254E190B00D1662E /* Emptyable.swift in Sources */,
+				9C4378DA254E232C00D1662E /* Formater.swift in Sources */,
 				9CDBE13D2492A9540048D95E /* TimeModel.swift in Sources */,
-				9CE1A7E724F4503400BA732C /* Sounds.swift in Sources */,
+				9CF810D2254C605D00566AF1 /* SessionDelegater.swift in Sources */,
+				9CF810CE254C605D00566AF1 /* CommandStatus.swift in Sources */,
+				9CF810D1254C605D00566AF1 /* SessionCommands.swift in Sources */,
 				9CDBE1422492A9540048D95E /* TimeView.swift in Sources */,
 				7A2D775824F83D3E008A575C /* EYTagView.m in Sources */,
 				9CDBE1432492A9540048D95E /* SoundAssistantViewController.swift in Sources */,
-				9CDBE1512492C9CD0048D95E /* GameModel.swift in Sources */,
 				9CDBE1472492A9540048D95E /* BaseDrillViewController.swift in Sources */,
+				9C43789A254DB86A00D1662E /* Sounds.swift in Sources */,
 				9CDBE1462492A9540048D95E /* PagesViewController.swift in Sources */,
 				9CDBE1452492A9540048D95E /* HornViewController.swift in Sources */,
+				9C4378D1254E1B0A00D1662E /* Parser.swift in Sources */,
 				9CDBE1402492A9540048D95E /* TimeButton.swift in Sources */,
 				9CDBE1182492A8CC0048D95E /* SceneDelegate.swift in Sources */,
 				9CDBE1442492A9540048D95E /* GameViewController.swift in Sources */,
 				7A2D775224F83492008A575C /* SoundAssistantService.swift in Sources */,
+				9C4378BE254E18AB00D1662E /* Encodable+Extensions.swift in Sources */,
 				9CDBE14D2492C7D50048D95E /* Storage.swift in Sources */,
 				9CE1A7E524F44B0500BA732C /* DrilTimerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CF8109E254C5D0B00566AF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CF810D8254C608D00566AF1 /* SessionCommands.swift in Sources */,
+				9C4378B5254E06D900D1662E /* DrillModel.swift in Sources */,
+				9CF810DB254C608D00566AF1 /* CommandStatus.swift in Sources */,
+				9C4378B1254E06D600D1662E /* TimeModel.swift in Sources */,
+				9CF810DA254C608D00566AF1 /* SessionDelegater.swift in Sources */,
+				9C4378C8254E1A4600D1662E /* Emptyable.swift in Sources */,
+				9C4378CC254E1A4900D1662E /* Encodable+Extensions.swift in Sources */,
+				9CF810AA254C5D0B00566AF1 /* ExtensionDelegate.swift in Sources */,
+				9C4378D5254E1F3600D1662E /* Parser.swift in Sources */,
+				9CF810D9254C608D00566AF1 /* Logger.swift in Sources */,
+				9CF810A8254C5D0B00566AF1 /* TrainingInterfaceController.swift in Sources */,
+				9CF810AC254C5D0B00566AF1 /* ComplicationController.swift in Sources */,
+				9C4378DE254E234D00D1662E /* Formater.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9CF810A5254C5D0B00566AF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CF810A1254C5D0B00566AF1 /* watchapp Extension */;
+			targetProxy = 9CF810A4254C5D0B00566AF1 /* PBXContainerItemProxy */;
+		};
+		9CF810B1254C5D0B00566AF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CF81095254C5D0A00566AF1 /* watchapp */;
+			targetProxy = 9CF810B0254C5D0B00566AF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9CDBE11B2492A8CC0048D95E /* Main.storyboard */ = {
@@ -390,6 +633,14 @@
 				9CDBE1212492A8CD0048D95E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9CF81098254C5D0A00566AF1 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9CF81099254C5D0A00566AF1 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -517,9 +768,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "pbdrillapp/PB Drill Assistant.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 37LVE8FFX9;
 				INFOPLIST_FILE = pbdrillapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -527,7 +779,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yaros8t.pbdrilltimers;
 				PRODUCT_NAME = "PB Drill Assistant";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -544,9 +796,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "pbdrillapp/PB Drill Assistant.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 37LVE8FFX9;
 				INFOPLIST_FILE = pbdrillapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -554,13 +807,111 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yaros8t.pbdrilltimers;
 				PRODUCT_NAME = "PB Drill Assistant";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "pbdrillapp/pbdrillapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9CF810B4254C5D0B00566AF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = watchapp/watchapp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
+				DEVELOPMENT_TEAM = 37LVE8FFX9;
+				IBSC_MODULE = watchapp_Extension;
+				INFOPLIST_FILE = watchapp/Info.plist;
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaros8t.pbdrilltimers.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		9CF810B5254C5D0B00566AF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = watchapp/watchapp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
+				DEVELOPMENT_TEAM = 37LVE8FFX9;
+				IBSC_MODULE = watchapp_Extension;
+				INFOPLIST_FILE = watchapp/Info.plist;
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaros8t.pbdrilltimers.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		9CF810B7254C5D0B00566AF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "watchapp Extension/watchapp Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
+				DEVELOPMENT_TEAM = 37LVE8FFX9;
+				INFOPLIST_FILE = "watchapp Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaros8t.pbdrilltimers.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		9CF810B8254C5D0B00566AF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "watchapp Extension/watchapp Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
+				DEVELOPMENT_TEAM = 37LVE8FFX9;
+				INFOPLIST_FILE = "watchapp Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaros8t.pbdrilltimers.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -581,6 +932,24 @@
 			buildConfigurations = (
 				9CDBE1272492A8CD0048D95E /* Debug */,
 				9CDBE1282492A8CD0048D95E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CF810B9254C5D0B00566AF1 /* Build configuration list for PBXNativeTarget "watchapp Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CF810B7254C5D0B00566AF1 /* Debug */,
+				9CF810B8254C5D0B00566AF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CF810BA254C5D0B00566AF1 /* Build configuration list for PBXNativeTarget "watchapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CF810B4254C5D0B00566AF1 /* Debug */,
+				9CF810B5254C5D0B00566AF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

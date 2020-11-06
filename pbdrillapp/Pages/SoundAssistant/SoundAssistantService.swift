@@ -29,7 +29,7 @@ final class SoundAssistantService: NSObject {
     private var speechTextFirst: String = ""
     private var speechTextSecond: String = ""
 
-    private var model: SoundAssistantModel = .default
+    private var model: DrillModel = .initDefault(.rand)
 
     init(delegate: SoundAssistantServiceDelegate?, dataSource: SoundAssistantServiceDataSource?) {
         super.init()
@@ -41,7 +41,7 @@ final class SoundAssistantService: NSObject {
 
     // MARK: -
 
-    func start(with model: SoundAssistantModel) {
+    func start(with model: DrillModel) {
         isRuned = true
         setup(model: model)
         startDrillTimer()
@@ -58,10 +58,10 @@ final class SoundAssistantService: NSObject {
 
     // MARK: -
 
-    private func setup(model: SoundAssistantModel) {
+    private func setup(model: DrillModel) {
         self.model = model
-        currentDrillValue = model.drill.value
-        currentRepeatsValue = model.repeats.value
+        currentDrillValue = model.saDrillTime.value
+        currentRepeatsValue = model.saRepeatsTime.value
     }
 
     // MARK: - Drill timer
@@ -79,7 +79,7 @@ final class SoundAssistantService: NSObject {
 
             if self.currentDrillValue == 0 && self.currentRepeatsValue > 0 {
                 timer.invalidate()
-                self.currentDrillValue = self.model.drill.value
+                self.currentDrillValue = self.model.saRepeatsTime.value
                 self.speechFirstTag()
                 
                 self.currentRepeatsValue -= 1
@@ -109,8 +109,8 @@ final class SoundAssistantService: NSObject {
     }
     
     private func resetValues() {
-        currentDrillValue = model.drill.value
-        currentRepeatsValue = model.repeats.value
+        currentDrillValue = model.saDrillTime.value
+        currentRepeatsValue = model.saRepeatsTime.value
     }
     
     // MARK: - Tags

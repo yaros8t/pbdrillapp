@@ -1,5 +1,5 @@
 import UIKit
-
+import WatchConnectivity
 
 protocol BaseDrillViewControllerDelegate: class {
     func drillViewController(_ controller: BaseDrillViewController, didStartEditMode model: TimeModel)
@@ -9,8 +9,9 @@ protocol BaseDrillViewControllerDelegate: class {
     func drillViewControllerDidStopTimer()
 }
 
-class BaseDrillViewController: UIViewController {
+class BaseDrillViewController: UIViewController, SessionCommands {
     
+    @IBOutlet var reachableLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var stackView: UIStackView!
@@ -37,6 +38,21 @@ class BaseDrillViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(type(of: self).dataDidFlow(_:)),
+            name: .dataDidFlow, object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(type(of: self).activationDidComplete(_:)),
+            name: .activationDidComplete, object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(type(of: self).reachabilityDidChange(_:)),
+            name: .reachabilityDidChange, object: nil
+        )
         
         if UIDevice().userInterfaceIdiom == .phone {
             switch UIScreen.main.nativeBounds.height {
@@ -73,7 +89,9 @@ class BaseDrillViewController: UIViewController {
     
     func save(_ time: TimeModel?) {}
 
-    func addTimeView(with model: TimeModel) -> TimeView {
+    func addTimeView(with model: TimeModel?) -> TimeView {
+        guard let model = model else { fatalError() }
+        
         let timeView = TimeView()
         timeView.delegate = self
         timeView.translatesAutoresizingMaskIntoConstraints = false
@@ -95,6 +113,7 @@ class BaseDrillViewController: UIViewController {
     }
 
     func start() {
+        
         isRunned = true
         runButton.isSelected = true
         delegate?.drillViewControllerDidStartTimer()
@@ -108,19 +127,28 @@ class BaseDrillViewController: UIViewController {
     
     // MARK: - Time Label
     func setTimeValue(_ value: Int) {
-        if value <= 0 {
-            ()
-        }
-        
-        timeLabel.text = secondsToHoursMinutesSeconds(interval: value)
+        timeLabel.text = Formater.secondsToHoursMinutesSeconds(interval: value)
     }
-
-    // MARK: - Utils
-    private func secondsToHoursMinutesSeconds(interval: Int) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.unitsStyle = .abbreviated
-        return formatter.string(from: TimeInterval(interval))!
+    
+    // .activationDidComplete notification handler.
+    //
+    @objc
+    func activationDidComplete(_ notification: Notification) {
+        updateReachabilityColor()
+    }
+    
+    // .reachabilityDidChange notification handler.
+    //
+    @objc
+    func reachabilityDidChange(_ notification: Notification) {
+        updateReachabilityColor()
+    }
+    
+    // .dataDidFlow notification handler.
+    // Update the UI based on the userInfo dictionary of the notification.
+    //
+    @objc
+    func dataDidFlow(_ notification: Notification) {
     }
 }
 
@@ -142,4 +170,16 @@ extension BaseDrillViewController: TimeViewDelegate {
     }
     
     func timeView(_ view: TimeView, change value: Int) {}
+}
+
+extension BaseDrillViewController {
+    
+    func updateReachabilityColor() {
+        // WCSession.isReachable triggers a warning if the session is not activated.
+        var isReachable = false
+        if WCSession.default.activationState == .activated {
+            isReachable = WCSession.default.isReachable
+        }
+        reachableLabel.backgroundColor = isReachable ? .green : .red
+    }
 }

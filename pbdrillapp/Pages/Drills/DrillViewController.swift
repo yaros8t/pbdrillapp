@@ -2,7 +2,9 @@ import UIKit
 import TactileSlider
 
 final class DrillViewController: BaseDrillViewController {
-    var drillModel: DrillModel!
+    
+    private var model: DrillModel!
+    
     private var drillTimeView: TimeView?
     private var pauseTimeView: TimeView?
     private var repeatsTimeView: TimeView?
@@ -11,22 +13,25 @@ final class DrillViewController: BaseDrillViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        drillModel = storage.getDrillModel()
-
-        drillTimeView = addTimeView(with: drillModel.total)
-        pauseTimeView = addTimeView(with: drillModel.pause)
-        repeatsTimeView = addTimeView(with: drillModel.repeats)
+        model = storage.getDrillModel(type: .training)
+        drillTimeView = addTimeView(with: model.drillTime)
+        pauseTimeView = addTimeView(with: model.drillPauseTime)
+        repeatsTimeView = addTimeView(with: model.drillRepeats)
+        
+        updateDrillTimerState(model.dictionary)
         
         resetTimeLabel()
     }
 
     override func start() {
+        guard !isRunned else { return }
         resetTimeViews()
         super.start()
-        service.start(with: drillModel)
+        service.start(with: model)
     }
 
     override func stop() {
+        guard isRunned else { return }
         super.stop()
         service.stop()
 
@@ -38,10 +43,10 @@ final class DrillViewController: BaseDrillViewController {
     }
     
     private func resetTimeLabel() {
-        if drillModel.pause.value != 0 {
-            timeLabel.text = "\(drillModel.pause.value)s"
+        if model.drillPauseTime.value != 0 {
+            timeLabel.text = "\(model.drillPauseTime.value)s"
         } else {
-            timeLabel.text = "\(drillModel.total.value)s"
+            timeLabel.text = "\(model.drillTime.value)s"
         }
     }
     
@@ -57,20 +62,26 @@ final class DrillViewController: BaseDrillViewController {
     override func save(_ time: TimeModel?) {
         guard let time = time else { assert(false); return }
 
-        if time.id == drillModel.pause.id {
-            drillModel.pause = time
+        if time.type == .drillPauseTime {
             pauseTimeView?.setup(model: time)
-        } else if time.id == drillModel.total.id {
-            drillModel.total = time
+        } else if time.type == .drillTime {
             drillTimeView?.setup(model: time)
-        } else if time.id == drillModel.repeats.id {
-            drillModel.repeats = time
+        } else if time.type == .drillRepeats {
             repeatsTimeView?.setup(model: time)
         } else {
             assert(false)
         }
 
-        storage.save(settings: drillModel)
+        model.update(time)
+        storage.save(settings: model)
+    }
+    
+    @objc
+    override func dataDidFlow(_ notification: Notification) {
+        guard let commandStatus = notification.object as? CommandStatus else { return }
+        guard commandStatus.command == .updateDrillTimerState else { return }
+        
+//        start()
     }
 }
 

@@ -23,7 +23,7 @@ final class DrilTimerService: NSObject {
     private var currentRepeatsValue: Int = 0
     private var currentPauseValue: Int = 0
 
-    private var model: DrillModel = .default
+    private var model: DrillModel = .initDefault(.training)
 
     init(delegate: DrilTimerServiceDelegate?) {
         super.init()
@@ -41,7 +41,7 @@ final class DrilTimerService: NSObject {
     func stop() {
         resetAllTimers()
         
-        currentRepeatsValue = model.repeats.value
+        currentRepeatsValue = model.drillRepeats.value
         updateRepeats()
     }
 
@@ -49,9 +49,9 @@ final class DrilTimerService: NSObject {
 
     private func setup(model: DrillModel) {
         self.model = model
-        currentDrillValue = model.total.value
-        currentRepeatsValue = model.repeats.value
-        currentPauseValue = model.pause.value
+        currentDrillValue = model.drillTime.value
+        currentRepeatsValue = model.drillRepeats.value
+        currentPauseValue = model.drillPauseTime.value
     }
 
     // MARK: - Drill timer
@@ -91,7 +91,7 @@ final class DrilTimerService: NSObject {
     private func resetDrillTimer() {
         drillTimer?.invalidate()
         drillTimer = nil
-        currentDrillValue = model.total.value
+        currentDrillValue = model.drillTime.value
     }
 
     // MARK: - Pause timer
@@ -137,7 +137,7 @@ final class DrilTimerService: NSObject {
         pauseTimer?.invalidate()
         pauseTimer = nil
 
-        currentPauseValue = model.pause.value
+        currentPauseValue = model.drillPauseTime.value
     }
 
     private func resetAllTimers() {

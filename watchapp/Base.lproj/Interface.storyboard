@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17506" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7IR-jN-pQn">
+    <device id="watch44"/>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17504.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+    </dependencies>
+    <scenes>
+        <!--TrainingInterfaceController-->
+        <scene sceneID="lNK-FV-wkw">
+            <objects>
+                <controller identifier="TrainingInterfaceController" id="7IR-jN-pQn" customClass="TrainingInterfaceController" customModule="watchapp_Extension">
+                    <items>
+                        <group width="1" alignment="center" contentMode="scaleAspectFit" layout="vertical" spacing="15" id="28T-fE-U38">
+                            <items>
+                                <group width="1" alignment="left" layout="vertical" id="wYS-2T-JhN">
+                                    <items>
+                                        <label width="1" height="25" alignment="left" text="Training" textAlignment="center" id="oMZ-cE-PAR">
+                                            <fontDescription key="font" style="UICTFontTextStyleTitle3"/>
+                                        </label>
+                                        <timer width="1" height="32" alignment="left" textAlignment="center" id="QDC-6q-EFW">
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            <calendarUnit key="units" minute="YES" second="YES"/>
+                                        </timer>
+                                        <group alignment="center" verticalAlignment="center" spacing="8" id="8vB-8k-S8d">
+                                            <items>
+                                                <label alignment="left" text="D: 4s" textAlignment="center" id="Bkk-d7-GrM">
+                                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                </label>
+                                                <label alignment="left" text="P: 3s" textAlignment="center" id="2tb-IH-5XQ">
+                                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                </label>
+                                                <label alignment="left" text="R: 2t" textAlignment="center" id="WmR-PJ-mrn">
+                                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                        <group width="1" alignment="center" verticalAlignment="bottom" layout="vertical" id="Z13-WQ-Zy8">
+                            <items>
+                                <button width="1" height="40" alignment="center" verticalAlignment="center" title="Start" id="SqN-YD-DfW">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="start"/>
+                                    <connections>
+                                        <action selector="commandAction" destination="7IR-jN-pQn" id="1RN-nI-kmN"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="8"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="commandButton" destination="SqN-YD-DfW" id="npW-LK-vhG"/>
+                        <outlet property="optionLabel1" destination="Bkk-d7-GrM" id="U83-PQ-VdH"/>
+                        <outlet property="optionLabel2" destination="2tb-IH-5XQ" id="wMJ-kU-dxM"/>
+                        <outlet property="optionLabel3" destination="WmR-PJ-mrn" id="Kaa-zr-cqu"/>
+                        <outlet property="settingsGroup" destination="8vB-8k-S8d" id="YXq-S3-FFh"/>
+                        <outlet property="timeLabel" destination="QDC-6q-EFW" id="wd6-eP-TwC"/>
+                        <outlet property="titleLabel" destination="oMZ-cE-PAR" id="BMA-eg-fXb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-363" y="-49"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="start">
+            <color red="0.86699998378753662" green="0.86699998378753662" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

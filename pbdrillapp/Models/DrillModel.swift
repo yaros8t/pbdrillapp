@@ -15,6 +15,17 @@ enum DrillModelType: Int {
             return "Sound Assistant"
         }
     }
+    
+    var str: String {
+        switch self {
+        case .training:
+            return "training"
+        case .game:
+            return "game"
+        case .rand:
+            return "rand"
+        }
+    }
 }
 
 extension DrillModelType: Codable {}
@@ -50,7 +61,7 @@ extension DrillModel {
 extension DrillModel {
     
     mutating func update(_ model: TimeModel) {
-        if let index = options.firstIndex(of: model) {
+        if let index = options.firstIndex(where: { $0.name == model.name }) {
             options.remove(at: index)
             options.insert(model, at: index)
         } else {

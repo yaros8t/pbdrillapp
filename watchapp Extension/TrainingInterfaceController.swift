@@ -17,7 +17,7 @@ final class TrainingInterfaceController: WKInterfaceController, SessionCommands 
     @IBOutlet private var optionLabel2: WKInterfaceLabel!
     @IBOutlet private var optionLabel3: WKInterfaceLabel!
     
-    private static var instances = [TrainingInterfaceController]()
+//    private static var instances = [TrainingInterfaceController]()
     private var context: CommandStatus?
 
     override func awake(withContext context: Any?) {
@@ -26,10 +26,10 @@ final class TrainingInterfaceController: WKInterfaceController, SessionCommands 
         if let context = context as? CommandStatus {
             self.context = context
             updateUI(with: context)
-            type(of: self).instances.append(self)
+//            type(of: self).instances.append(self)
         } else {
-            titleLabel.setText("Activating...")
-            reloadRootController()
+//            titleLabel.setText("Activating...")
+//            reloadRootController()
         }
 
         NotificationCenter.default.addObserver(
@@ -56,26 +56,26 @@ final class TrainingInterfaceController: WKInterfaceController, SessionCommands 
         updateUI(with: context)
     }
     
-    private func reloadRootController(with currentContext: CommandStatus? = nil) {
-        let commands: [Command] = [.updateDrillTimerState, .updateGameTimerState, .updateSoundTimerState]
-        var contexts = [CommandStatus]()
-        for aCommand in commands {
-            var commandStatus = CommandStatus(command: aCommand, phrase: .finished)
-            if let currentContext = currentContext, aCommand == currentContext.command {
-                commandStatus.phrase = currentContext.phrase
-                commandStatus.model = currentContext.model
-            }
-            contexts.append(commandStatus)
-        }
-        
-        let names = Array(repeating: ControllerID.mainInterfaceController, count: contexts.count)
-        typealias ControllersType = (name: String, context: AnyObject)
-        var controllers: [ControllersType] = []
-        for (index, name) in names.enumerated() {
-            controllers += [(name, contexts[index] as AnyObject)]
-        }
-        WKInterfaceController.reloadRootControllers(withNamesAndContexts: controllers)
-    }
+//    private func reloadRootController(with currentContext: CommandStatus? = nil) {
+//        let commands: [Command] = [.updateDrillTimerState, .updateGameTimerState, .updateSoundTimerState]
+//        var contexts = [CommandStatus]()
+//        for aCommand in commands {
+//            var commandStatus = CommandStatus(command: aCommand, phrase: .finished)
+//            if let currentContext = currentContext, aCommand == currentContext.command {
+//                commandStatus.phrase = currentContext.phrase
+//                commandStatus.model = currentContext.model
+//            }
+//            contexts.append(commandStatus)
+//        }
+//
+//        let names = Array(repeating: ControllerID.mainInterfaceController, count: contexts.count)
+//        typealias ControllersType = (name: String, context: AnyObject)
+//        var controllers: [ControllersType] = []
+//        for (index, name) in names.enumerated() {
+//            controllers += [(name, contexts[index] as AnyObject)]
+//        }
+//        WKInterfaceController.reloadRootControllers(withNamesAndContexts: controllers)
+//    }
     
     @objc
     func dataDidFlow(_ notification: Notification) {
@@ -83,12 +83,12 @@ final class TrainingInterfaceController: WKInterfaceController, SessionCommands 
 
         if commandStatus.command == context?.command {
             updateUI(with: commandStatus, errorMessage: commandStatus.errorMessage)
-            
-        } else if let index = type(of: self).instances.firstIndex(where: { $0.context?.command == commandStatus.command }) {
-            let controller = TrainingInterfaceController.instances[index]
-            controller.becomeCurrentPage()
-            controller.updateUI(with: commandStatus, errorMessage: commandStatus.errorMessage)
         }
+//        } else if let index = type(of: self).instances.firstIndex(where: { $0.context?.command == commandStatus.command }) {
+//            let controller = TrainingInterfaceController.instances[index]
+//            controller.becomeCurrentPage()
+//            controller.updateUI(with: commandStatus, errorMessage: commandStatus.errorMessage)
+//        }
     }
 
     @objc
@@ -114,6 +114,8 @@ final class TrainingInterfaceController: WKInterfaceController, SessionCommands 
             updateSoundTimerState(model)
         case .updateAppContext:
             updateAppContext(model)
+//        case .updateDrillTimerSettings, .updateGameTimerSettings, .updateSoundTimerSettings:
+//            break
         }
     }
 }
@@ -126,6 +128,8 @@ extension TrainingInterfaceController {
         switch commandStatus.command {
         case .updateAppContext:
             break
+//        case .updateDrillTimerSettings, .updateGameTimerSettings, .updateSoundTimerSettings:
+//            break
         case .updateDrillTimerState, .updateGameTimerState, .updateSoundTimerState:
             Parser<DrillModel>.parse(commandStatus.model.orEmpty()) { model in
                 

@@ -8,6 +8,21 @@ enum Command: String {
     case updateSoundTimerState = "UpdateSoundTimerState"
 }
 
+extension Command {
+    var modelType: DrillModelType? {
+        switch self {
+        case .updateAppContext:
+            return nil
+        case .updateDrillTimerState:
+            return .training
+        case .updateGameTimerState:
+            return .game
+        case .updateSoundTimerState:
+            return .rand
+        }
+    }
+}
+
 enum Phrase: String {
     case updated = "Updated"
     case sent = "Sent"

@@ -24,6 +24,8 @@
 		9C4378D5254E1F3600D1662E /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378D0254E1B0A00D1662E /* Parser.swift */; };
 		9C4378DA254E232C00D1662E /* Formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378D9254E232C00D1662E /* Formater.swift */; };
 		9C4378DE254E234D00D1662E /* Formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4378D9254E232C00D1662E /* Formater.swift */; };
+		9CD443D2256C3C87000B92B5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE14C2492C7D50048D95E /* Storage.swift */; };
+		9CD443D7256C45EA000B92B5 /* RootInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD443D6256C45EA000B92B5 /* RootInterfaceController.swift */; };
 		9CDBE1162492A8CC0048D95E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1152492A8CC0048D95E /* AppDelegate.swift */; };
 		9CDBE1182492A8CC0048D95E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1172492A8CC0048D95E /* SceneDelegate.swift */; };
 		9CDBE11D2492A8CC0048D95E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBE11B2492A8CC0048D95E /* Main.storyboard */; };
@@ -120,6 +122,7 @@
 		9C4378C3254E190B00D1662E /* Emptyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emptyable.swift; sourceTree = "<group>"; };
 		9C4378D0254E1B0A00D1662E /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		9C4378D9254E232C00D1662E /* Formater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formater.swift; sourceTree = "<group>"; };
+		9CD443D6256C45EA000B92B5 /* RootInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInterfaceController.swift; sourceTree = "<group>"; };
 		9CDBE1122492A8CC0048D95E /* PB Drill Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PB Drill Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDBE1152492A8CC0048D95E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDBE1172492A8CC0048D95E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -351,8 +354,9 @@
 		9CF810A6254C5D0B00566AF1 /* watchapp Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9CF810E5254C7B4700566AF1 /* watchapp Extension.entitlements */,
+				9CD443D6256C45EA000B92B5 /* RootInterfaceController.swift */,
 				9CF810A7254C5D0B00566AF1 /* TrainingInterfaceController.swift */,
+				9CF810E5254C7B4700566AF1 /* watchapp Extension.entitlements */,
 				9CF810A9254C5D0B00566AF1 /* ExtensionDelegate.swift */,
 				9CF810AB254C5D0B00566AF1 /* ComplicationController.swift */,
 				9CF810AD254C5D0B00566AF1 /* Assets.xcassets */,
@@ -588,12 +592,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CF810D8254C608D00566AF1 /* SessionCommands.swift in Sources */,
+				9CD443D2256C3C87000B92B5 /* Storage.swift in Sources */,
 				9C4378B5254E06D900D1662E /* DrillModel.swift in Sources */,
 				9CF810DB254C608D00566AF1 /* CommandStatus.swift in Sources */,
 				9C4378B1254E06D600D1662E /* TimeModel.swift in Sources */,
 				9CF810DA254C608D00566AF1 /* SessionDelegater.swift in Sources */,
 				9C4378C8254E1A4600D1662E /* Emptyable.swift in Sources */,
 				9C4378CC254E1A4900D1662E /* Encodable+Extensions.swift in Sources */,
+				9CD443D7256C45EA000B92B5 /* RootInterfaceController.swift in Sources */,
 				9CF810AA254C5D0B00566AF1 /* ExtensionDelegate.swift in Sources */,
 				9C4378D5254E1F3600D1662E /* Parser.swift in Sources */,
 				9CF810D9254C608D00566AF1 /* Logger.swift in Sources */,

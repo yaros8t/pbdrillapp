@@ -16,7 +16,7 @@ final class GameViewController: BaseDrillViewController {
         waitTimeView = addTimeView(with: model.gameWait)
         limitTimeView = addTimeView(with: model.gameLimit)
         
-        updateGameTimerState(model.dictionary)
+//        updateGameTimerState(model.dictionary)
         
         resetTimeLabel()
     }

@@ -25,7 +25,7 @@ final class SoundAssistantViewController: BaseDrillViewController {
         firstTagsView.addTags(model.firstTags)
         secondTagsView.addTags(model.secondTags)
         
-        updateSoundTimerState(model.dictionary)
+//        updateSoundTimerState(model.dictionary)
         
         resetTimeLabel()
     }

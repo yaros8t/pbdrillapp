@@ -3,6 +3,8 @@ import UIKit
 final class RootViewController: UIViewController, SessionCommands {
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var containerView: UIView!
+    
+    private lazy var storage: Storage = Storage()
 
     private var pagesViewController: PagesViewController? {
         didSet {
@@ -16,10 +18,27 @@ final class RootViewController: UIViewController, SessionCommands {
          initController("SoundAssistantViewController"),
          initController("FeedbackViewController")]
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let training = storage.getDrillModel(type: .training)
+        let game = storage.getDrillModel(type: .game)
+        let rand = storage.getDrillModel(type: .rand)
+        
+        var trainingState = CommandStatus(command: .updateDrillTimerState, phrase: .sent)
+        trainingState.model = training.dictionary
+        var gameState = CommandStatus(command: .updateGameTimerState, phrase: .sent)
+        gameState.model = game.dictionary
+        var randState = CommandStatus(command: .updateSoundTimerState, phrase: .sent)
+        randState.model = rand.dictionary
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        updateAppContext([DrillModelType.training.str + formatter.string(from: Date()): trainingState,
+                          DrillModelType.game.str + formatter.string(from: Date()): gameState,
+                          DrillModelType.rand.str + formatter.string(from: Date()): randState])
+        
         pageControl.addTarget(self, action: #selector(didChangePageControlValue), for: .valueChanged)
     }
 

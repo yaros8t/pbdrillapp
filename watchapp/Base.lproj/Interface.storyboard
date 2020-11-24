@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17506" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7IR-jN-pQn">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17700" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aLB-X7-ceW">
     <device id="watch44"/>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17504.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
     </dependencies>
     <scenes>
+        <!--RootInterfaceController-->
+        <scene sceneID="BGz-Vy-CiJ">
+            <objects>
+                <controller identifier="RootInterfaceController" id="aLB-X7-ceW" customClass="RootInterfaceController" customModule="watchapp_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="center" verticalAlignment="center" id="Ikj-PS-L1r">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Label" id="Oq3-Pz-VL3"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="titleLabel" destination="Oq3-Pz-VL3" id="geF-Tr-8jW"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-576" y="-49"/>
+        </scene>
         <!--TrainingInterfaceController-->
         <scene sceneID="lNK-FV-wkw">
             <objects>

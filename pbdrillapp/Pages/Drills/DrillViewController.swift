@@ -18,7 +18,7 @@ final class DrillViewController: BaseDrillViewController {
         pauseTimeView = addTimeView(with: model.drillPauseTime)
         repeatsTimeView = addTimeView(with: model.drillRepeats)
         
-        updateDrillTimerState(model.dictionary)
+//        updateDrillTimerState(model.dictionary)
         
         resetTimeLabel()
     }

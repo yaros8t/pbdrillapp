@@ -14,6 +14,8 @@
 		7AFFDC2024F58BD900D267A1 /* GameTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFFDC1F24F58BD900D267A1 /* GameTimerService.swift */; };
 		7AFFDC2224F59FA200D267A1 /* 10-seconds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AFFDC2124F59FA200D267A1 /* 10-seconds.mp3 */; };
 		7AFFDC2424F6F53A00D267A1 /* SoundAssistantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFFDC2324F6F53A00D267A1 /* SoundAssistantModel.swift */; };
+		9CD93584256D14160027F10F /* AppStoreReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD93583256D14160027F10F /* AppStoreReviewManager.swift */; };
+		9CD93588256D146C0027F10F /* UserDefaults+Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD93587256D146C0027F10F /* UserDefaults+Key.swift */; };
 		9CDBE1162492A8CC0048D95E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1152492A8CC0048D95E /* AppDelegate.swift */; };
 		9CDBE1182492A8CC0048D95E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBE1172492A8CC0048D95E /* SceneDelegate.swift */; };
 		9CDBE11D2492A8CC0048D95E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBE11B2492A8CC0048D95E /* Main.storyboard */; };
@@ -51,6 +53,8 @@
 		7AFFDC1F24F58BD900D267A1 /* GameTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerService.swift; sourceTree = "<group>"; };
 		7AFFDC2124F59FA200D267A1 /* 10-seconds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "10-seconds.mp3"; sourceTree = "<group>"; };
 		7AFFDC2324F6F53A00D267A1 /* SoundAssistantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAssistantModel.swift; sourceTree = "<group>"; };
+		9CD93583256D14160027F10F /* AppStoreReviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewManager.swift; sourceTree = "<group>"; };
+		9CD93587256D146C0027F10F /* UserDefaults+Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Key.swift"; sourceTree = "<group>"; };
 		9CDBE1122492A8CC0048D95E /* PB Drill Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PB Drill Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDBE1152492A8CC0048D95E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDBE1172492A8CC0048D95E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9CD93582256D14080027F10F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9CD93587256D146C0027F10F /* UserDefaults+Key.swift */,
+				9CD93583256D14160027F10F /* AppStoreReviewManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		9CDBE1092492A8CC0048D95E = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +125,7 @@
 		9CDBE1142492A8CC0048D95E /* pbdrillapp */ = {
 			isa = PBXGroup;
 			children = (
+				9CD93582256D14080027F10F /* Services */,
 				7A2D775624F83D3E008A575C /* EYTagView.h */,
 				7A2D775524F83D3E008A575C /* EYTagView.m */,
 				7A2D775424F83D3D008A575C /* EYTextField.h */,
@@ -363,7 +377,9 @@
 				9CDBE1512492C9CD0048D95E /* GameModel.swift in Sources */,
 				9CDBE1472492A9540048D95E /* BaseDrillViewController.swift in Sources */,
 				9CDBE1462492A9540048D95E /* PagesViewController.swift in Sources */,
+				9CD93588256D146C0027F10F /* UserDefaults+Key.swift in Sources */,
 				9CDBE1452492A9540048D95E /* HornViewController.swift in Sources */,
+				9CD93584256D14160027F10F /* AppStoreReviewManager.swift in Sources */,
 				9CDBE1402492A9540048D95E /* TimeButton.swift in Sources */,
 				9CDBE1182492A8CC0048D95E /* SceneDelegate.swift in Sources */,
 				9CDBE1442492A9540048D95E /* GameViewController.swift in Sources */,

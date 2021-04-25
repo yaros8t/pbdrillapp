@@ -19,6 +19,12 @@ final class DrillViewController: BaseDrillViewController {
         
         resetTimeLabel()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        AppStoreReviewManager.requestReviewIfAppropriate()
+    }
 
     override func start() {
         resetTimeViews()

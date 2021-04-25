@@ -59,6 +59,7 @@ final class DrilTimerService: NSObject {
     private func startDrillTimer() {
         updateDrill()
 
+        drillTimer?.invalidate()
         drillTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
             guard let self = self else { return }
 
@@ -66,6 +67,11 @@ final class DrilTimerService: NSObject {
                 self.currentDrillValue -= 1
                 self.updateDrill()
             } else {
+                
+                self.currentDrillValue -= 1
+                self.updateDrill()
+                self.resetDrillTimer()
+                
                 if self.currentPauseValue == 0 {
                     self.playSound(name: .startTrainig)
                     self.currentRepeatsValue -= 1
@@ -76,12 +82,12 @@ final class DrilTimerService: NSObject {
                             self.playSound(name: .stopTrainig)
                         }
                         self.delegate?.drilTimerServiceDidEnd()
+                    } else {
+                        self.startPauseTimer()
                     }
+                } else {
+                    self.startPauseTimer()
                 }
-                self.currentDrillValue -= 1
-                self.updateDrill()
-                self.resetDrillTimer()
-                self.startPauseTimer()
             }
         })
 
@@ -103,31 +109,32 @@ final class DrilTimerService: NSObject {
             updatePause()
             speech(text: "\(currentPauseValue)")
             
-                    pauseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
-                        guard let self = self else { return }
+            pauseTimer?.invalidate()
+            pauseTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+                guard let self = self else { return }
 
-                        if self.currentPauseValue > 1 {
-                            self.currentPauseValue -= 1
-                            self.updatePause()
+                if self.currentPauseValue > 1 {
+                    self.currentPauseValue -= 1
+                    self.updatePause()
 
-                        } else if self.currentRepeatsValue == 1 {
-                            self.resetAllTimers()
-                            self.updateRepeats()
-                            self.playSound(name: .startTrainig)
+                } else if self.currentRepeatsValue == 1 {
+                    self.resetAllTimers()
+                    self.updateRepeats()
+                    self.playSound(name: .startTrainig)
 
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                self.playSound(name: .stopTrainig)
-                            }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.playSound(name: .stopTrainig)
+                    }
 
-                            self.delegate?.drilTimerServiceDidEnd()
-                        } else {
-                            self.currentRepeatsValue -= 1
-                            self.updateRepeats()
-                            self.playSound(name: .startTrainig)
-                            self.resetPauseTimer()
-                            self.startDrillTimer()
-                        }
-                    })
+                    self.delegate?.drilTimerServiceDidEnd()
+                } else {
+                    self.currentRepeatsValue -= 1
+                    self.updateRepeats()
+                    self.playSound(name: .startTrainig)
+                    self.resetPauseTimer()
+                    self.startDrillTimer()
+                }
+            })
         } else {
             self.startDrillTimer()
         }

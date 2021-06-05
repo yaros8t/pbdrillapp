@@ -104,6 +104,7 @@ final class GameTimerService: NSObject {
             } else if self.currentWaitValue == 11 {
                 self.playSound(name: .tenSeconds)
             } else if self.currentWaitValue == 0 {
+                self.playSound(name: .startGame)
                 self.startGameTimer()
             }
         })

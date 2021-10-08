@@ -1,0 +1,17 @@
+"start" = "Start";
+"stop" = "Stop";
+"time" = "Time";
+"pause_time" = "Pause time:";
+"drill_time" = "Drill time:";
+"repeats" = "Repeats:";
+"wait_time" = "Wait time:";
+"limit_time" = "Limit time:";
+"s" = "s";
+"add" = "Add";
+"play" = "Play";
+"horn" = "Horn";
+"training_timer" = "Training";
+"game_timer" = "Game";
+"sound_timer" = "Sound Assistant";
+"random_tags_1" = "Random set 1";
+"random_tags_2" = "Random set 2";

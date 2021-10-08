@@ -12,6 +12,7 @@ final class RunButton: UIButton {
                 backgroundColor = UIColor(named: "start")
                 tintColor = UIColor(named: "start")
             }
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
         }
     }
 
@@ -35,10 +36,14 @@ final class RunButton: UIButton {
     }
 
     private func commonSetup() {
-        setTitle("start", for: .normal)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        titleLabel?.minimumScaleFactor = 0.5
+        titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        setTitle("start".localized, for: .normal)
         setTitleColor(#colorLiteral(red: 0.1137254902, green: 0.1176470588, blue: 0.1176470588, alpha: 1), for: .normal)
         
-        setTitle("stop", for: .selected)
+        setTitle("stop".localized, for: .selected)
         setTitleColor(#colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1), for: .selected)
 
         isSelected = false

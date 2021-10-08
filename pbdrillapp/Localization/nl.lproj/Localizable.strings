@@ -1,0 +1,17 @@
+"start" = "Begin";
+"stop" = "Stop";
+"time" = "Tijd";
+"pause_time" = "Pauzetijd:";
+"drill_time" = "Oefen tijd:";
+"repeats" = "Herhalingen:";
+"wait_time" = "Pauzetijd:";
+"limit_time" = "Tijd om te spelen:";
+"s" = "s";
+"add" = "Toevoegen";
+"play" = "Begin";
+"horn" = "Signaal";
+"training_timer" = "Training";
+"game_timer" = "Het spel";
+"sound_timer" = "Spraakassistent";
+"random_tags_1" = "Willekeurige reeks 1";
+"random_tags_2" = "Willekeurige reeks 2";

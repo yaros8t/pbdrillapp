@@ -1,0 +1,17 @@
+"start" = "Başlangıç";
+"stop" = "Durmak";
+"time" = "Zaman";
+"pause_time" = "Duraklama zamanı:";
+"drill_time" = "Egzersiz zamanı:";
+"repeats" = "Tekrarlar:";
+"wait_time" = "Duraklama zamanı:";
+"limit_time" = "Oyun zamanı:";
+"s" = "s";
+"add" = "Ekle";
+"play" = "Başlangıç";
+"horn" = "Sinyal";
+"training_timer" = "Egzersiz yapmak";
+"game_timer" = "Oyun";
+"sound_timer" = "Sesli asistan";
+"random_tags_1" = "Rastgele set 1";
+"random_tags_2" = "Rastgele set 2";

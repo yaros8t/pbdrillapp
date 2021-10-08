@@ -1,10 +1,11 @@
 import UIKit
 
-class SoundAssistantViewController: BaseDrillViewController {
+final class SoundAssistantViewController: BaseDrillViewController {
     
-    @IBOutlet private var firstTagslabel: UILabel!
+    @IBOutlet private var timeTitleLabel: UILabel!
+    @IBOutlet private var firstTagsLabel: UILabel!
     @IBOutlet private var firstTagsView: EYTagView!
-    @IBOutlet private var secondTagslabel: UILabel!
+    @IBOutlet private var secondTagsLabel: UILabel!
     @IBOutlet private var secondTagsView: EYTagView!
     
     private var model: SoundAssistantModel!
@@ -15,6 +16,11 @@ class SoundAssistantViewController: BaseDrillViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLabel.text = "sound_timer".localized
+        timeTitleLabel.text = ""
+        firstTagsLabel.text = "random_tags_1".localized
+        secondTagsLabel.text = "random_tags_2".localized
 
         model = storage.getSoundAssistantModel()
         drillTimeView = addTimeView(with: model.drill)
@@ -71,7 +77,7 @@ class SoundAssistantViewController: BaseDrillViewController {
     }
     
     private func resetTimeLabel() {
-        timeLabel.text = "\(model.drill.value)s"
+        timeLabel.text = "\(model.drill.value) " + "s".localized
     }
     
     private func saveModel() {

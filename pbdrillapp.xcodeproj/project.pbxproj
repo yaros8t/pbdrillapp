@@ -11,6 +11,8 @@
 		7A2D775224F83492008A575C /* SoundAssistantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D775124F83492008A575C /* SoundAssistantService.swift */; };
 		7A2D775824F83D3E008A575C /* EYTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D775524F83D3E008A575C /* EYTagView.m */; };
 		7A2D775924F83D3E008A575C /* EYTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D775724F83D3E008A575C /* EYTextField.m */; };
+		7AEA9CB827106715008FBE83 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AEA9CB427106715008FBE83 /* Localizable.strings */; };
+		7AEA9CB927106715008FBE83 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEA9CB627106715008FBE83 /* Localization.swift */; };
 		7AFFDC2024F58BD900D267A1 /* GameTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFFDC1F24F58BD900D267A1 /* GameTimerService.swift */; };
 		7AFFDC2224F59FA200D267A1 /* 10-seconds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AFFDC2124F59FA200D267A1 /* 10-seconds.mp3 */; };
 		7AFFDC2424F6F53A00D267A1 /* SoundAssistantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFFDC2324F6F53A00D267A1 /* SoundAssistantModel.swift */; };
@@ -50,6 +52,20 @@
 		7A2D775524F83D3E008A575C /* EYTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EYTagView.m; sourceTree = "<group>"; };
 		7A2D775624F83D3E008A575C /* EYTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYTagView.h; sourceTree = "<group>"; };
 		7A2D775724F83D3E008A575C /* EYTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EYTextField.m; sourceTree = "<group>"; };
+		7AEA9CB527106715008FBE83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CB627106715008FBE83 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		7AEA9CB727106715008FBE83 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CBA2710803E008FBE83 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CBB271085B6008FBE83 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CBC27108834008FBE83 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CBD27108881008FBE83 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CBE271088D7008FBE83 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CBF27108988008FBE83 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CC027108A18008FBE83 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		7AEA9CC127108A9A008FBE83 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CC227108B73008FBE83 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CC327108BDA008FBE83 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7AEA9CC427108C45008FBE83 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7AFFDC1F24F58BD900D267A1 /* GameTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerService.swift; sourceTree = "<group>"; };
 		7AFFDC2124F59FA200D267A1 /* 10-seconds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "10-seconds.mp3"; sourceTree = "<group>"; };
 		7AFFDC2324F6F53A00D267A1 /* SoundAssistantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAssistantModel.swift; sourceTree = "<group>"; };
@@ -95,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7AEA9CB327106715008FBE83 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				7AEA9CB427106715008FBE83 /* Localizable.strings */,
+				7AEA9CB627106715008FBE83 /* Localization.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		9CD93582256D14080027F10F /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +150,7 @@
 		9CDBE1142492A8CC0048D95E /* pbdrillapp */ = {
 			isa = PBXGroup;
 			children = (
+				7AEA9CB327106715008FBE83 /* Localization */,
 				9CD93582256D14080027F10F /* Services */,
 				7A2D775624F83D3E008A575C /* EYTagView.h */,
 				7A2D775524F83D3E008A575C /* EYTagView.m */,
@@ -304,6 +330,18 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				uk,
+				pl,
+				cs,
+				fr,
+				de,
+				nl,
+				"pt-PT",
+				es,
+				it,
+				tr,
+				sv,
 			);
 			mainGroup = 9CDBE1092492A8CC0048D95E;
 			productRefGroup = 9CDBE1132492A8CC0048D95E /* Products */;
@@ -323,6 +361,7 @@
 				9CDBE1552492C9E10048D95E /* stop-game.mp3 in Resources */,
 				9CDBE1222492A8CD0048D95E /* LaunchScreen.storyboard in Resources */,
 				9CDBE11F2492A8CD0048D95E /* Assets.xcassets in Resources */,
+				7AEA9CB827106715008FBE83 /* Localizable.strings in Resources */,
 				7AFFDC2224F59FA200D267A1 /* 10-seconds.mp3 in Resources */,
 				9CDBE1562492C9E10048D95E /* start-game.mp3 in Resources */,
 				9CDBE11D2492A8CC0048D95E /* Main.storyboard in Resources */,
@@ -379,6 +418,7 @@
 				9CDBE1462492A9540048D95E /* PagesViewController.swift in Sources */,
 				9CD93588256D146C0027F10F /* UserDefaults+Key.swift in Sources */,
 				9CDBE1452492A9540048D95E /* HornViewController.swift in Sources */,
+				7AEA9CB927106715008FBE83 /* Localization.swift in Sources */,
 				9CD93584256D14160027F10F /* AppStoreReviewManager.swift in Sources */,
 				9CDBE1402492A9540048D95E /* TimeButton.swift in Sources */,
 				9CDBE1182492A8CC0048D95E /* SceneDelegate.swift in Sources */,
@@ -392,6 +432,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		7AEA9CB427106715008FBE83 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7AEA9CB527106715008FBE83 /* en */,
+				7AEA9CB727106715008FBE83 /* ru */,
+				7AEA9CBA2710803E008FBE83 /* uk */,
+				7AEA9CBB271085B6008FBE83 /* pl */,
+				7AEA9CBC27108834008FBE83 /* cs */,
+				7AEA9CBD27108881008FBE83 /* fr */,
+				7AEA9CBE271088D7008FBE83 /* de */,
+				7AEA9CBF27108988008FBE83 /* nl */,
+				7AEA9CC027108A18008FBE83 /* pt-PT */,
+				7AEA9CC127108A9A008FBE83 /* es */,
+				7AEA9CC227108B73008FBE83 /* it */,
+				7AEA9CC327108BDA008FBE83 /* tr */,
+				7AEA9CC427108C45008FBE83 /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		9CDBE11B2492A8CC0048D95E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -535,7 +595,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 37LVE8FFX9;
 				INFOPLIST_FILE = pbdrillapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -543,7 +603,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yaros8t.pbdrilltimers;
 				PRODUCT_NAME = "PB Drill Assistant";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -562,7 +622,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 37LVE8FFX9;
 				INFOPLIST_FILE = pbdrillapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -570,7 +630,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yaros8t.pbdrilltimers;
 				PRODUCT_NAME = "PB Drill Assistant";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -1,6 +1,9 @@
 import UIKit
 
 final class GameViewController: BaseDrillViewController {
+    
+    @IBOutlet private var timeTitleLabel: UILabel!
+    
     private var model: GameModel!
     private var waitTimeView: TimeView?
     private var limitTimeView: TimeView?
@@ -9,6 +12,9 @@ final class GameViewController: BaseDrillViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLabel.text = "game_timer".localized
+        timeTitleLabel.text = ""
 
         model = storage.getGameSettings()
 
@@ -55,7 +61,7 @@ final class GameViewController: BaseDrillViewController {
     }
     
     private func resetTimeLabel() {
-        timeLabel.text = "\(model.wait.value)s"
+        timeLabel.text = "\(model.wait.value) " + "s".localized
     }
 }
 

@@ -1,0 +1,17 @@
+"start" = "Początek";
+"stop" = "Zatrzymać";
+"time" = "Czas";
+"pause_time" = "Czas przerwy:";
+"drill_time" = "Czas wiercenia:";
+"repeats" = "Powtórzenia:";
+"wait_time" = "Czas oczekiwania:";
+"limit_time" = "Ograniczony czas:";
+"s" = "s";
+"add" = "Dodać";
+"play" = "Bawić się";
+"horn" = "Klakson";
+"training_timer" = "Ćwiczyć";
+"game_timer" = "Gra";
+"sound_timer" = "Asystent głosowy";
+"random_tags_1" = "Zestaw losowy 1";
+"random_tags_2" = "Zestaw losowy 2";

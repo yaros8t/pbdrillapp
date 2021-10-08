@@ -9,6 +9,11 @@ final class HornViewController: BaseDrillViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleLabel.text = "horn".localized
+        playButton.setTitle("play".localized, for: .normal)
+        playButton.titleLabel?.minimumScaleFactor = 0.5
+        playButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        playButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         playButton.backgroundColor = UIColor(named: "start")
     }
     

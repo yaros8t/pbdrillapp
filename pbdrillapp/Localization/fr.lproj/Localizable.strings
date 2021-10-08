@@ -1,0 +1,17 @@
+"start" = "Début";
+"stop" = "Arrêter";
+"time" = "Temps";
+"pause_time" = "Le temps de pause:";
+"drill_time" = "Temps d'exercic:";
+"repeats" = "Répétitions:";
+"wait_time" = "Le temps de pause:";
+"limit_time" = "L'heure de jouer:";
+"s" = "s";
+"add" = "Ajouter";
+"play" = "Début";
+"horn" = "Signal";
+"training_timer" = "Entraînement";
+"game_timer" = "Le jeu";
+"sound_timer" = "Assistant vocal";
+"random_tags_1" = "Ensemble aléatoire 1";
+"random_tags_2" = "Ensemble aléatoire 2";

@@ -1,0 +1,17 @@
+"start" = "Start";
+"stop" = "Halt";
+"time" = "Zeit";
+"pause_time" = "Pausenzeit:";
+"drill_time" = "Übungszeit:";
+"repeats" = "Wiederholungen:";
+"wait_time" = "Pausenzeit:";
+"limit_time" = "Zeit zum spielen:";
+"s" = "s";
+"add" = "Hinzufügen";
+"play" = "Start";
+"horn" = "Signal";
+"training_timer" = "Trainieren";
+"game_timer" = "Das Spiel";
+"sound_timer" = "Sprachassistent";
+"random_tags_1" = "Zufälliger Satz 1";
+"random_tags_2" = "Zufallssatz Satz 2";

@@ -1,7 +1,7 @@
 import UIKit
 import TactileSlider
 
-protocol TimeViewDelegate: class {
+protocol TimeViewDelegate: AnyObject {
     func timeView(_ view: TimeView, didSelect: Bool)
 }
 
@@ -59,13 +59,17 @@ final class TimeView: UIView {
         timeLabelXCnstr = timeLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         NSLayoutConstraint.activate([timeLabelLCnstr, timeLabelVCnstr])
 
+        titleLabel.minimumScaleFactor = 0.5
+        titleLabel.numberOfLines = 2
+        titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.font = UIFont.systemFont(ofSize: 18)
         titleLabel.textColor = UIColor(named: "titleText")
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         titleLabelVCnstr = titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
         let titleLabelLCnstr = leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor)
-        NSLayoutConstraint.activate([titleLabelVCnstr, titleLabelLCnstr])
+        let titleLabelRCnstr = titleLabel.rightAnchor.constraint(equalTo: timeLabel.leftAnchor)
+        NSLayoutConstraint.activate([titleLabelVCnstr, titleLabelLCnstr, titleLabelRCnstr])
 
         button.addTarget(self, action: #selector(tap), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -114,6 +118,8 @@ final class TimeView: UIView {
         
         button.backgroundColor = .clear
         button.tintColor = .white
+        
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
     }
 
     func setupRegularMode(animated: Bool = true) {
@@ -132,10 +138,16 @@ final class TimeView: UIView {
         button.tintColor = UIColor(named: "timeButtonIcon")
         
         updateModelValue()
+        
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
     }
     
     private func updateModelValue() {
         guard let slider = slider else { return }
+        
+        let generator = UISelectionFeedbackGenerator()
+        generator.prepare()
+        generator.selectionChanged()
         
         var newModel = model
         newModel?.value = Int(slider.value)

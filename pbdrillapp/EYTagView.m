@@ -136,7 +136,7 @@
         [tf addTarget:self action:@selector(textFieldDidChange:)forControlEvents:UIControlEventEditingChanged];
         tf.delegate = self;
         tf.textAlignment = NSTextAlignmentCenter;
-        tf.placeholder=EYLOCALSTRING(@"Add");
+        tf.placeholder=EYLOCALSTRING(@"add");
         tf.returnKeyType = UIReturnKeyDone;
         [_svContainer addSubview:tf];
         _tfInput=tf;
@@ -333,7 +333,7 @@
             CGRect frame=_tfInput.frame;
             frame.size.width = [_tfInput.text sizeWithAttributes:@{NSFontAttributeName:_fontInput}].width + (_tfInput.layer.cornerRadius * 2.0f) + _textPaddingSize.width*2;
             //place holde width
-            frame.size.width=MAX(frame.size.width, [EYLOCALSTRING(@"Add") sizeWithAttributes:@{NSFontAttributeName:_fontInput}].width + (_tfInput.layer.cornerRadius * 2.0f) + _textPaddingSize.width*2);
+            frame.size.width=MAX(frame.size.width, [EYLOCALSTRING(@"add") sizeWithAttributes:@{NSFontAttributeName:_fontInput}].width + (_tfInput.layer.cornerRadius * 2.0f) + _textPaddingSize.width*2);
             _tfInput.frame=frame;
         }
         
@@ -624,7 +624,7 @@
     
     CGRect frame=_tfInput.frame;
     frame.size.width = [sting2 sizeWithAttributes:@{NSFontAttributeName:_fontInput}].width + (_tfInput.layer.cornerRadius * 2.0f) + _textPaddingSize.width*2;
-    frame.size.width=MAX(frame.size.width, [EYLOCALSTRING(@"Add") sizeWithAttributes:@{NSFontAttributeName:_fontInput}].width + (_tfInput.layer.cornerRadius * 2.0f) + _textPaddingSize.width*2);
+    frame.size.width=MAX(frame.size.width, [EYLOCALSTRING(@"add") sizeWithAttributes:@{NSFontAttributeName:_fontInput}].width + (_tfInput.layer.cornerRadius * 2.0f) + _textPaddingSize.width*2);
     
     if (frame.size.width+_tagPaddingSize.width*2>_svContainer.contentSize.width) {
         NSLog(@"!!!  _tfInput width tooooooooo large");

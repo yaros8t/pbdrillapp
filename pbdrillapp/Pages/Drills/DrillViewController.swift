@@ -2,7 +2,11 @@ import UIKit
 import TactileSlider
 
 final class DrillViewController: BaseDrillViewController {
+    
     var drillModel: DrillModel!
+    
+    @IBOutlet private var timeTitleLabel: UILabel!
+    
     private var drillTimeView: TimeView?
     private var pauseTimeView: TimeView?
     private var repeatsTimeView: TimeView?
@@ -11,6 +15,9 @@ final class DrillViewController: BaseDrillViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        titleLabel.text = "training_timer".localized
+        timeTitleLabel.text = ""
+        
         drillModel = storage.getDrillModel()
 
         drillTimeView = addTimeView(with: drillModel.total)
@@ -45,9 +52,9 @@ final class DrillViewController: BaseDrillViewController {
     
     private func resetTimeLabel() {
         if drillModel.pause.value != 0 {
-            timeLabel.text = "\(drillModel.pause.value)s"
+            timeLabel.text = "\(drillModel.pause.value) " + "s".localized
         } else {
-            timeLabel.text = "\(drillModel.total.value)s"
+            timeLabel.text = "\(drillModel.total.value) " + "s".localized
         }
     }
     

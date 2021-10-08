@@ -1,0 +1,17 @@
+"start" = "Start";
+"stop" = "Stop";
+"time" = "Čas";
+"pause_time" = "Čas pauzy:";
+"drill_time" = "Čas cvičení:";
+"repeats" = "Opakování:";
+"wait_time" = "Čas pauzy:";
+"limit_time" = "Čas na hraní:";
+"s" = "s";
+"add" = "Přidat";
+"play" = "Start";
+"horn" = "Signál";
+"training_timer" = "Cvičení";
+"game_timer" = "Hra";
+"sound_timer" = "Hlasový asistent";
+"random_tags_1" = "Náhodná sada 1";
+"random_tags_2" = "Náhodná sada 2";

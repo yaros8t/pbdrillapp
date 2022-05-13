@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "ios-tactile-slider",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daprice/iOS-Tactile-Slider",
+      "state" : {
+        "revision" : "f80290f2e0d153baeed2c5d522be7c14b126055c",
+        "version" : "3.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}
